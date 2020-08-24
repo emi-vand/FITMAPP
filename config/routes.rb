@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'gyms/index'
+  get 'gyms/show'
+  get 'gyms/new'
+  get 'gyms/edit'
+  get 'restaurants/index'
+  get 'restaurants/show'
+  get 'restaurants/new'
+  get 'restaurants/edit'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
