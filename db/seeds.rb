@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 users = User.create([{email: "emilia@gmail.com", password: "123456", first_name: "Emilia", last_name: "Vandamme", username: "emivand", dietary_requirements: "vegan"},
   {email: "matt@gmail.com", password: "123456", first_name: "Matt", last_name: "Hardy", username: "matthardy", dietary_requirements: "keto"},
   {email: "denisa@gmail.com", password: "123456", first_name: "Denisa", last_name: "Milian", username: "denisamil", dietary_requirements: "vegetarian"},
@@ -17,4 +18,28 @@ gym1= Gym.create(name:'Third Space Tower Bridge', location:'2b More London River
 gym2= Gym.create(name:'Third Space Soho', location:'67 Brewer St, Soho, London W1F 9US', category:'General', user_id:4)
 gym3= Gym.create(name: 'London Boxing Classes', location:'87-89 Shepperton Rd, Islington, London N1 3DF', user_id:5)
 
- 
+puts "creating restaurants"
+
+hellosalad = Restaurant.create!(
+  name: "Hello Salad",
+  location: "Shoreditch, London",
+  category: "Salads",
+  user_id: 4
+)
+
+wagonwok = Restaurant.create!(
+  name: "Wagon Wok",
+  location: "Hoxton, London",
+  category: "Asian",
+  user_id: 5
+)
+
+sushisamaba = Restaurant.create!(
+  name: "Sushi Samaba",
+  location: "Liverpool Street, London",
+  category: "Sushi",
+  user_id: 5
+)
+
+puts "finished"
+
