@@ -10,10 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_132736) do
+ActiveRecord::Schema.define(version: 2020_08_24_141159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "class_bookings", force: :cascade do |t|
+    t.date "date"
+    t.bigint "user_id", null: false
+    t.bigint "gym_class_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gym_class_id"], name: "index_class_bookings_on_gym_class_id"
+    t.index ["user_id"], name: "index_class_bookings_on_user_id"
+  end
+
+  create_table "dishes", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
+  end
+
+  create_table "gym_classes", force: :cascade do |t|
+    t.string "name"
+    t.time "time"
+    t.bigint "gym_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gym_id"], name: "index_gym_classes_on_gym_id"
+  end
+
+  create_table "gyms", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "category"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_gyms_on_user_id"
+  end
+
+  create_table "restaurant_bookings", force: :cascade do |t|
+    t.date "date"
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_restaurant_bookings_on_restaurant_id"
+    t.index ["user_id"], name: "index_restaurant_bookings_on_user_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "category"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_restaurants_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +81,20 @@ ActiveRecord::Schema.define(version: 2020_08_24_132736) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "dietary_requirements"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "class_bookings", "gym_classes"
+  add_foreign_key "class_bookings", "users"
+  add_foreign_key "dishes", "restaurants"
+  add_foreign_key "gym_classes", "gyms"
+  add_foreign_key "gyms", "users"
+  add_foreign_key "restaurant_bookings", "restaurants"
+  add_foreign_key "restaurant_bookings", "users"
+  add_foreign_key "restaurants", "users"
 end
