@@ -1,8 +1,19 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
-
-<%= @restaurant.name %>
-<%= @restaurant.location %>
-<%= @restaurant.category %>
-
-<%= link_to ,  %>
+<div class="container mt-3">
+  <div class="rest-card" style="">
+    <img src="https://images.unsplash.com/photo-1565700549653-3ae074ab0d6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"   class="card-img-top" alt="...">
+    <div class="rest-card-body">
+      <h5 class="rest-card-title"><%= @restaurant.name %></h5>
+      <p class="rest-card-text"><%= @restaurant.location %></p>
+      <p class="rest-card-text"><%= @restaurant.category %></p>
+    <ul class="list-group list-group-flush">
+      <% @restaurant.dishes.each do |dish| %>
+        <li class="list-group-item"><i class="fas fa-utensils"></i> - <strong> <%= dish.name %> </strong>- <%= dish.description %></li>    
+      <% end %>    
+    </ul>
+    </div>
+    <div class="card-body">
+      <%= link_to "Book #{@restaurant.name} Now", "...", class: "btn btn-primary btn-sm" %>
+      <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
+    </div>
+  </div>
+</div>
