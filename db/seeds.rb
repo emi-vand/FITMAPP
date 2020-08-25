@@ -31,16 +31,16 @@ restaurants = Restaurant.create!([{
   puts "Seeding Dishes"
 dishes = Dish.create!([{
   name: "Stir Fry Noodles", description: "Delicious egg noodles stir fried with your choice of chicken or vegetables", restaurant_id: 2},
-  name: "Teriyaki Salmon", description: "Juicy, flakey salmon with an absolutely delicious homemade teriyaki sauce", restaurant_id: 2},
-  name: "Steamed Dumplings", description: "Pockets of dough filled with seasoned meat and vegetables", restaurant_id: 2}
+  {name: "Teriyaki Salmon", description: "Juicy, flakey salmon with an absolutely delicious homemade teriyaki sauce", restaurant_id: 2},
+  {name: "Steamed Dumplings", description: "Pockets of dough filled with seasoned meat and vegetables", restaurant_id: 2}
 ])
 puts "Done!"
 
 puts "Seeding Gym Classes"
-classes = Gym_class.create!([{
-  name: "Boxercise", time: 12:30, gym_id: 1},
-  name: "Spin", time: 15:30, gym_id: 1},
-  name: "Hot Yoga", time: 19:00, gym_id: 1}
+classes = GymClass.create!([{
+  name: "Boxercise", time: '12:30', gym_id: 1},
+  {name: "Spin", time: '15:30', gym_id: 1},
+  {name: "Hot Yoga", time: '19:00', gym_id: 1}
 ])
 puts "Done!"
 puts "Database seeded!"
