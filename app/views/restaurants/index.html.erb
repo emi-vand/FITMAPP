@@ -5,8 +5,7 @@
   <div class="row">
     <% @restaurants.each do |restaurant| %>
       <div class="col-xs-12 col-md-6 col-lg-4 mb-3">
-        <%= link_to restaurant_path(restaurant) do %>
-          <div class="card-product">
+          <div class="card-product" data-toggle="modal" data-target="#exampleModal">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
             <div class="card-product-infos w-100">
               <h2><%= restaurant.name %> </h2>
@@ -14,8 +13,30 @@
               <p class="text-right">Distance</p>
               <p class="text-right">Rating</p>
             </div>
+          </div>  
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <img src="https://images.unsplash.com/photo-1565700549653-3ae074ab0d6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="...">
+              <div class="rest-card-body">
+                <h5 class="rest-card-title"><%= restaurant.name %></h5>
+                <p class="rest-card-text"><%= restaurant.location %></p>
+                <p class="rest-card-text"><%= restaurant.category %></p>
+                <ul class="list-group list-group-flush">
+                  <% restaurant.dishes.each do |dish| %>
+                    <li class="list-group-item"><i class="fas fa-utensils"></i> - <strong> <%= dish.name %> </strong>- <%= dish.description %></li>
+                  <% end %>    
+                </ul>
+              </div>
+              <div class="card-body">
+                <%= link_to "Book #{restaurant.name} Now", "...", class: "btn btn-primary btn-sm" %>
+                <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
+              </div>          
           </div>
-        <% end %>
+        </div>
+      </div>    
+
       </div>
     <% end %>
   </div>

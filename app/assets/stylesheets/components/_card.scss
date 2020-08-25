@@ -30,3 +30,19 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+// card styling for cards on resturant show page
+
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.rest-card {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.rest-card-body {
+  padding: 16px;
+}
