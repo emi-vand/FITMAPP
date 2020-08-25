@@ -21,7 +21,7 @@
   border: none;
   background: transparent;
   &:hover {
-    color: rgb(79, 150, 250);
+    color: #E6E6E6;
   }
 }
 .navbar-wagon-search-input {
@@ -30,15 +30,19 @@
   line-height: 40px;
   width: 120px;
   font-weight: lighter;
-  color: #666666;
+  color: #E6E6E6;
   border: none;
-  background-color: rgb(255, 255, 255);
+  background-color: transparent;
   padding: 0 10px;
   font-size: 14px;
   outline: none;
+  &::placeholder {
+    color: #E6E6E6;
+  }
   &:focus {
     &::placeholder {
-      color: rgb(79, 150, 250);
+
+      color: #E6E6E6;
     }
   }
 }
