@@ -1,2 +1,37 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-home">
+  <div class="navbar-search d-flex justify-content-between align-items-center">
+
+      <div class="social-media">
+          <i class="fab fa-instagram" href="https://www.instagram.com/fitmapp/"></i>
+          <i class="fab fa-facebook-f" hreg="https://www.facebook.com/pages/category/Health---Wellness-Website/Fitmapp-100254108127279/"></i>
+      </div>
+
+        <!-- Right Navigation -->
+
+        <!-- Search form -->
+       <%= form_tag restaurants_path, class: "navbar-wagon-search rounded", method: :get do %>
+            <%= text_field_tag :name,
+            params[:make],
+            class: "navbar-wagon-search-input nav-rounded",
+            placeholder: "Search" %>
+
+            <%= button_tag( :class => "btn navbar-wagon-search-btn d-flex") do%>
+              <i class="fa fa-search"> </i>
+            <% end %>
+        <% end %>
+          <!-- Notification -->
+  </div>
+
+      <div id="banner" class="logo_banner">
+        <%= image_tag "LOGOFINAL.WHITE.ZOOM", class: "logo_white" %>
+      <div class="home-button">
+        <%= link_to "Explore", restaurants_path, class: "btn-home btn btn-primary" %>
+      </div>
+      </div>
+
+     <!--  <div class="banner-london">
+        <%= image_tag "london", class: "london-banner" %>
+      </div> -->
+
+
+</div>

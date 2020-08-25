@@ -1,1 +1,32 @@
 // Specific CSS for your home-page
+body {
+  background-color: white;
+}
+.logo_white {
+  height: 300px;
+}
+.logo_banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#banner {
+  height: 500px;
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), asset-url('victor-freitas-Pnm-9vBEQhk-unsplash');
+  background-size: cover;
+  background-position: center;
+}
+.btn-home {
+  background-color: #4599E5;
+}
+.btn-home:hover {
+  background-color: #91A3B0;
+  border: none;
+}
+// .london-banner {
+//   width: 500px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
