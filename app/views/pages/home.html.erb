@@ -2,8 +2,9 @@
   <div class="navbar-search d-flex justify-content-between align-items-center">
 
       <div class="social-media">
-          <i class="fab fa-instagram" href="https://www.instagram.com/fitmapp/"></i>
-          <i class="fab fa-facebook-f" hreg="https://www.facebook.com/pages/category/Health---Wellness-Website/Fitmapp-100254108127279/"></i>
+          <a href="https://www.instagram.com/fitmapp/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/pages/category/Health---Wellness-Website/Fitmapp-100254108127279/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.pinterest.co.uk/fitmapp/" target="_blank"><i class="fab fa-pinterest-p"></i></a>
       </div>
 
         <!-- Right Navigation -->
@@ -31,8 +32,25 @@
 
 </div>
 
-<div class="container">
-  <div class="card-explore">
+<div class="container col">
+  <div class="card-explore col">
+    <h1> London </h1>
+ <!--    <h3> Healthy Made Simple </h3> -->
     <%= link_to "Explore", restaurants_path, class: "btn-home btn btn-primary" %>
   </div>
 </div>
+
+<div class="container col-xs-12 col-md-6 col-lg-4 mb-3">
+  <div class="home-cards">
+    <div class="card-health">
+      <%= link_to "Health", root_path, class: "btn-cards" %>
+    </div>
+    <div class="card-fitness">
+      <%= link_to "Fitness", root_path, class: "btn-cards" %>
+    </div>
+    <div class="card-recipes">
+      <%= link_to "Recipes", root_path, class: "btn-cards" %>
+    </div>
+  </div>
+</div>
+

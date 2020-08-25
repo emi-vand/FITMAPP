@@ -47,5 +47,17 @@
   }
 }
 .social-media {
-  margin-left: 40px;
+  margin-left: 26px;
+  justify-content: space-between;
+
 }
+
+.social-media a {
+  color: #EDEDED;
+    padding: 0px 5px;
+    opacity: 0.6;
+  }
+.social-media a:hover {
+      color: #E6E6E6;
+      opacity: 1;
+    }

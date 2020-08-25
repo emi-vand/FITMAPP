@@ -9,6 +9,25 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 90px;
+  width: 100px;
 }
+.btn-login  {
+    background: #4599E5;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.5s;
+    border: 0;
 
+    &:hover {
+        background: #91A3B0;
+        color: #3C3744;
+        box-shadow: 0px 6px 15px #3C3744;
+        padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+
+    }
+
+
+}
+.navbar-light .navbar-nav .nav-link {
+  color: white
+}
