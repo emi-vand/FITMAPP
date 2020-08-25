@@ -1,2 +1,9 @@
 <h1>Gyms#show</h1>
 <p>Find me in app/views/gyms/show.html.erb</p>
+
+<h1> <%= @gym.name %> </h1>
+<p> Location: <%= @gym.location %></p>
+<p> Category: <%= @gym.category %> </p>
+<p> Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %> </p>
+
+<%= link_to 'Back', gyms_path, class: 'btn btn-primary' %>
