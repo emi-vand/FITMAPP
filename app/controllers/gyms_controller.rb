@@ -3,11 +3,23 @@ class GymsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+    @gyms = Gym.geocoded
     @gyms = policy_scope(Gym)
     authorize @gyms
+    @markers = @gyms.map do |gym|
+      {
+        lat: gym.latitude,
+        lng: gym.longitude
+      }
+    end
   end
 
   def show
+    @markers = [{
+      lat: @gym.latitude,
+      lng: @gym.longitude
+      # infoWindow: render_to_string(partial: "info_window", locals: { gym: @gym })
+    }]
   end
 
   def new
@@ -49,6 +61,7 @@ class GymsController < ApplicationController
   end
 
   def set_gym
+    @gym = Gym.geocoded
     @gym = Gym.find(params[:id])
     authorize @gym
   end

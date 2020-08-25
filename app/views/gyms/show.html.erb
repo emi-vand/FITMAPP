@@ -3,7 +3,7 @@
     <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"   class="card-img-top" alt="...">
     <div class="rest-card-body">
       <h5 class="rest-card-title"><%= @gym.name %></h5>
-      <p class="rest-card-text"><%= @gym.location %></p>
+      <p class="rest-card-text"><%= @gym.address %></p>
       <p class="rest-card-text"><%= @gym.category %></p>
       <p class="rest-card-text">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
     <ul class="list-group list-group-flush">
@@ -16,5 +16,11 @@
       <%= link_to "Book #{@gym.name} Now", "...", class: "btn btn-primary btn-sm" %>
       <%= link_to "Back to all Gyms", gyms_path, class: "btn btn-secondary btn-sm"  %>
     </div>
+  </div>
+
+  <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
