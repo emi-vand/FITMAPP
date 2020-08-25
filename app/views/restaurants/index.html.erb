@@ -1,2 +1,22 @@
 <h1>Restaurants#index</h1>
 <p>Find me in app/views/restaurants/index.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-xs-12 col-md-6 col-lg-4 mb-3">
+        <%= link_to restaurant_path(restaurant) do %>
+          <div class="card-product">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos w-100">
+              <h2><%= restaurant.name %> </h2>
+              <p><%= restaurant.category %></p>
+              <p class="text-right">Distance</p>
+              <p class="text-right">Rating</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
