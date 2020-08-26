@@ -9,7 +9,7 @@
       <p class="rest-card-text"><%= @restaurant.category %></p>
     <ul class="list-group list-group-flush">
       <% @restaurant.dishes.each do |dish| %>
-        <li class="list-group-item"><i class="fas fa-utensils"></i> - <strong> <%= dish.name %> </strong>- <%= dish.description %></li>
+        <li class="list-group-item"><i class="fas fa-utensils"></i> - <strong> <%= dish.name %> </strong> - <%= dish.description %></li>
       <% end %>
     </ul>
     </div>
