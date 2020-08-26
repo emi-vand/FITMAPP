@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>My gyms</h1>
+  <div class="row">
+    <% current_user.gyms.each do |gym|%>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card">
+          <% if gym.photo.attached? %>
+            <%= cl_image_tag gym.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+          <% end %>
+          <div class="card-title">
+            <%= gym.name %>
+            <%= link_to "View gym", gym_path(gym) %>
+            <%= link_to "Edit gym", edit_gym_path(gym) %>
+            <%= link_to "Add classes", new_gym_gym_class_path(gym) %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+

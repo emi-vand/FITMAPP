@@ -1,6 +1,9 @@
 <div class="container mt-3">
   <div class="rest-card">
-    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"   class="card-img-top" alt="...">
+    <% if @gym.photo.attached? %>
+    <%= cl_image_tag @gym.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <!-- <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"   class="card-img-top" alt="..."> -->
     <div class="rest-card-body">
       <h5 class="rest-card-title"><%= @gym.name %></h5>
       <p class="rest-card-text"><%= @gym.address %></p>
@@ -8,8 +11,8 @@
       <p class="rest-card-text">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
     <ul class="list-group list-group-flush">
       <% @gym.gym_classes.each do |gymclass| %>
-        <li class="list-group-item"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %></li>    
-      <% end %>    
+        <li class="list-group-item"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %></li>
+      <% end %>
     </ul>
     </div>
     <div class="card-body">

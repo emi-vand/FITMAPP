@@ -12,13 +12,14 @@ class GymClassesController < ApplicationController
 
   def new
     @gym_class = GymClass.new
+    @gym = Gym.find(params[:gym_id])
     authorize @gym_class
   end
 
   def create
     @gym_class = GymClass.new(gym_class_params)
     if @gym_class.save
-      redirect_to @gym_class
+      redirect_to gym_path(@gym_class)
     else
       render :new
     end
@@ -45,10 +46,10 @@ class GymClassesController < ApplicationController
   private
 
   def gym_class_params
-    params.require(:gym_class).permit(:name, :time)
+    params.require(:gym_class).permit(:name, :time, :photo, :gym_id)
   end
 
-  def set_class
+  def set_gym_class
     @gym_class = GymClass.find(params[:id])
     authorize @gym_class
   end

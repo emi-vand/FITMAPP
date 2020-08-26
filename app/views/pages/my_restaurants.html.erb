@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>My restaurants</h1>
+  <div class="row">
+    <% current_user.restaurants.each do |restaurant|%>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card">
+          <% if restaurant.photo.attached? %>
+            <%= cl_image_tag restaurant.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+          <% end %>
+          <div class="card-title">
+            <%= restaurant.name %>
+            <%= link_to "View restaurant", restaurant_path(restaurant) %>
+            <%= link_to "Edit restaurant", edit_restaurant_path(restaurant) %>
+            <%= link_to "Add dishes", new_restaurant_dish_path(restaurant) %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
