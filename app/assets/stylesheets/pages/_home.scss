@@ -23,6 +23,9 @@ body {
 .btn-home {
   background-color: #91A3B0;
   border: none;
+  font-size: 18px;
+  font-style: bold;
+  font-weight: 1000;
 }
 .btn-home:hover {
   background-color: #4599E5;
@@ -30,13 +33,54 @@ body {
 }
 
 .card-explore {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('london2');
   height: 400px;
+  background-position: center;
   background-size: cover;
-  background-position: top;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), asset-url('london');
-  margin: 10px;
+  color: white;
+  margin: 5px;
+  margin-right: 4px;
+  border-radius: 2px;
+}
+  h1 {
+    font-weight: 1000;
+  }
+ .card-category {
+  background-size: cover;
+  background-position: center;
+  height:300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+  margin: 20px;
+}
+h3{
+  font-weight: 20px;
+  text-align: center;
+  font-style: bold;
+}
+#health {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('health_card');
+}
+#fitness {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('fitness_card');
+}
+#recipes {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('recipes_card');
 }

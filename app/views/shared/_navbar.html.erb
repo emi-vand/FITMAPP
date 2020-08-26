@@ -29,13 +29,13 @@
             <%= link_to "My Profile", "#", class: "dropdown-item" %>
             <%= link_to "My Bookings", "#", class: "dropdown-item" %>
             <%= link_to "Favourites", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
+        <button class="btn-login rounded">
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link rounded", style: "color: white" %>
+        </button>
       <% end %>
     </ul>
   </div>
