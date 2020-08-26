@@ -1,0 +1,53 @@
+// Checkboxes design
+.choice {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+
+.choice {
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 30%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background-color: #e4f2f7;
+  color: #3C3744;
+  opacity: 1;
+  }
+}
+
+.registration-img {
+  background-image: linear-gradient(rgba(60,55,68,0.3), rgba(60,55,68,0.3)), url('https://images.unsplash.com/photo-1535743686920-55e4145369b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+
+.registration-container {
+  background-color: #3C3744;
+  color: #EDEDED;
+  height: 100%;
+}
+
+.signin-img {
+  background-image: linear-gradient(rgba(60,55,68,0.3), rgba(60,55,68,0.3)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1694&q=80');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+
+.singin-links a {
+  color: #EDEDED;
+  &:hover {
+    text-decoration: none;
+    color: #E4F2F7;
+  }
+}
