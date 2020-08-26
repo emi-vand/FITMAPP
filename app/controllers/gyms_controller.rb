@@ -10,7 +10,8 @@ class GymsController < ApplicationController
       {
         lat: gym.latitude,
         lng: gym.longitude,
-        infoWindow: render_to_string(partial: "infowindow", locals: { gym: gym })
+        infoWindow: render_to_string(partial: "infowindow", locals: { gym: gym }),
+        image_url: helpers.asset_url('logofinal_colour_marker.png')
       }
     end
   end
@@ -19,7 +20,8 @@ class GymsController < ApplicationController
     @markers = [{
       lat: @gym.latitude,
       lng: @gym.longitude,
-      infoWindow: render_to_string(partial: "infowindow", locals: { gym: @gym })
+      infoWindow: render_to_string(partial: "infowindow", locals: { gym: @gym }),
+      image_url: helpers.asset_url('app/assets/images/logofinal_colour_marker.png')
     }]
   end
 
