@@ -34,23 +34,26 @@
 
 <div class="container col">
   <div class="card-explore col">
+    <h3> HEALTHY NEAR YOU </h3>
     <h1> London </h1>
  <!--    <h3> Healthy Made Simple </h3> -->
     <%= link_to "Explore", restaurants_path, class: "btn-home btn btn-primary" %>
   </div>
 </div>
 
-<div class="container col-xs-12 col-md-6 col-lg-4 mb-3">
-  <div class="home-cards">
-    <div class="card-health">
-      <%= link_to "Health", root_path, class: "btn-cards" %>
+<div class="cards">
+
+    <div class="card-category" id="health">
+      Health
     </div>
-    <div class="card-fitness">
-      <%= link_to "Fitness", root_path, class: "btn-cards" %>
+
+    <div class="card-category" id="fitness">
+      Fitness
     </div>
-    <div class="card-recipes">
-      <%= link_to "Recipes", root_path, class: "btn-cards" %>
+
+    <div class="card-category" id="recipes">
+      Recipes
     </div>
-  </div>
 </div>
+
 
