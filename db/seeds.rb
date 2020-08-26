@@ -15,17 +15,17 @@ puts "Done!"
 
 puts "Seeding Gyms"
 gyms = Gym.create!([{
-  name:'Third Space Tower Bridge', location:'2b More London Riverside, London SE1 2AP', category:'General', user_id:4},
-  {name:'Third Space Soho', location:'67 Brewer St, Soho, London W1F 9US', category:'General', user_id:4},
-  {name: 'London Boxing Classes', location:'87-89 Shepperton Rd, Islington, London N1 3DF', category:'Boxing', user_id:5}
+  name:'Fitness First London Bridge', address:'49 Tooley St, London SE1 2QN', category:'General', user_id:4},
+  {name:'Third Space Soho', address:'67 Brewer St, Soho, London, W1F 9US', category:'General', user_id:4},
+  {name: 'London Boxing Classes', address:'87-89 Shepperton Rd, Islington, London, N1 3DF', category:'Boxing', user_id:5}
 ])
 puts "Done!"
 
 puts "Seeding Restaurants"
 restaurants = Restaurant.create!([{
-  name: "Hello Salad", location: "Shoreditch, London", category: "Salads", user_id: 4},
-  {name: "Wagon Wok", location: "Hoxton, London", category: "Asian", user_id: 5},
-  {name: "Sushi Samaba", location: "Liverpool Street, London", category: "Sushi", user_id: 5}])
+  name: "Hello Salad", address: "Shoreditch, London", category: "Salads", user_id: 4},
+  {name: "Wagon Wok", address: "Hoxton, London", category: "Asian", user_id: 5},
+  {name: "Sushi Samaba", address: "Liverpool Street, London", category: "Sushi", user_id: 5}])
   puts "Done!"
 
   puts "Seeding Dishes"

@@ -5,7 +5,7 @@
     <% end %>
     <div class="rest-card-body">
       <h5 class="rest-card-title"><%= @restaurant.name %></h5>
-      <p class="rest-card-text"><%= @restaurant.location %></p>
+      <p class="rest-card-text"><%= @restaurant.address %></p>
       <p class="rest-card-text"><%= @restaurant.category %></p>
     <ul class="list-group list-group-flush">
       <% @restaurant.dishes.each do |dish| %>
@@ -18,4 +18,12 @@
       <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
     </div>
   </div>
+
+  <div id="map"
+    class="container"
+    style="width: 100%; height: 300px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
 </div>
