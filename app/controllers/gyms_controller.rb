@@ -1,6 +1,6 @@
 class GymsController < ApplicationController
   before_action :set_gym, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :show]
 
   def index
     @gyms = Gym.geocoded
@@ -9,7 +9,8 @@ class GymsController < ApplicationController
     @markers = @gyms.map do |gym|
       {
         lat: gym.latitude,
-        lng: gym.longitude
+        lng: gym.longitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { gym: gym })
       }
     end
   end
@@ -17,8 +18,8 @@ class GymsController < ApplicationController
   def show
     @markers = [{
       lat: @gym.latitude,
-      lng: @gym.longitude
-      # infoWindow: render_to_string(partial: "info_window", locals: { gym: @gym })
+      lng: @gym.longitude,
+      infoWindow: render_to_string(partial: "infowindow", locals: { gym: @gym })
     }]
   end
 
