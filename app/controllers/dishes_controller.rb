@@ -1,55 +1,57 @@
 class DishesController < ApplicationController
-  before_action :set_restaurant_dish, only: [:show, :edit, :update, :destroy]
+  before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @restaurant_dishes = policy_scope(RestaurantDish)
-    authorize @restaurant_dish
+    @dishes = policy_scope(Dish)
+    authorize @dish
   end
 
   def show
   end
 
   def new
-    @restaurant_dish = RestaurantDish.new
-    authorize @restaurant_dish
+    @dish = Dish.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @dish
   end
 
   def create
-    @restaurant_dish = RestaurantDish.new(restaurant_dish_params)
-    if @restaurant_dish.save
-      redirect_to @restaurant_dish
+    @dish = Dish.new(dish_params)
+    @dish.restaurant = Restaurant.find(params[:restaurant_id])
+    if @dish.save
+      redirect_to restaurant_path(@dish.restaurant)
     else
       render :new
     end
-    authorize @restaurant_dish
+    authorize @dish
   end
 
   def edit
   end
 
   def update
-    if @restaurant_dish.update(restaurant_dish_params)
-      redirect_to @restaurant_dish
+    if @dish.update(dish_params)
+      redirect_to @dish
     else
       render :edit
     end
-    authorize @restaurant_dish
+    authorize @dish
   end
 
   def destroy
-    @restaurant_dish.destroy
+    @dish.destroy
     redirect_to :index
   end
 
   private
 
-  def restaurant_dish_params
-    params.require(:restaurant_dish).permit(:name, :time, :photo)
+  def dish_params
+    params.require(:dish).permit(:name, :time, :photo, :restaurant_id)
   end
 
-  def set_restaurant_dish
-    @restaurant_dish = RestaurantDish.find(params[:id])
-    authorize @restaurant_dish
+  def set_dish
+    @dish = Dish.find(params[:id])
+    authorize @dish
   end
 end

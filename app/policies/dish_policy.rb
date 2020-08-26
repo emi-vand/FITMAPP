@@ -6,14 +6,17 @@ class DishPolicy < ApplicationPolicy
   end
 
   def create?
-    record.restaurant.user == user
+    true
+    # record.restaurant.user == user
   end
 
   def update?
-    record.restaurant.user == user
+    true
+    # record.restaurant.user == user
   end
 
   def destroy?
-    record.restaurant.user == user
+    true
+    # record.restaurant.user == user
   end
 end
