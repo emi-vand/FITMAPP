@@ -21,7 +21,7 @@ class GymsController < ApplicationController
       lat: @gym.latitude,
       lng: @gym.longitude,
       infoWindow: render_to_string(partial: "infowindow", locals: { gym: @gym }),
-      image_url: helpers.asset_url('app/assets/images/logofinal_colour_marker.png')
+      image_url: helpers.asset_url('logofinal_colour_marker.png')
     }]
   end
 
