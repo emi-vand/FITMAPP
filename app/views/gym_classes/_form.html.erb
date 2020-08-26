@@ -1,4 +1,4 @@
-<%= simple_form_for @gym do |f| %>
+<%= simple_form_for [@gym, @gym_class] do |f| %>
 <div class="row">
   <div class="col-6"><%= f.input :name %></div>
   <div class="col-6"><%= f.input :time %></div>
