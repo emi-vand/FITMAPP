@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
       lat: @restaurant.latitude,
       lng: @restaurant.longitude,
       infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: @restaurant })
-      
+
     }]
   end
 
@@ -37,7 +37,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
     if @restaurant.save
-      redirect_to @restaurant
+      redirect_to my_restaurants_path
     else
       render :new
     end
@@ -60,7 +60,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :location, :category, :photo)
+    params.require(:restaurant).permit(:name, :address, :category, :photo)
   end
 
   def set_restaurant

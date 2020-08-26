@@ -18,6 +18,8 @@ class GymClassesController < ApplicationController
 
   def create
     @gym_class = GymClass.new(gym_class_params)
+    @gym = Gym.find(params[:gym_id])
+    @gym_class.gym = @gym
     if @gym_class.save
       redirect_to gym_path(@gym_class)
     else

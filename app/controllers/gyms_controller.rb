@@ -34,7 +34,7 @@ class GymsController < ApplicationController
     @gym = Gym.new(gym_params)
     @gym.user = current_user
     if @gym.save
-      redirect_to @gym
+      redirect_to my_gyms_path
     else
       render :new
     end
@@ -60,7 +60,7 @@ class GymsController < ApplicationController
   private
 
   def gym_params
-    params.require(:gym).permit(:name, :location, :category, :photo)
+    params.require(:gym).permit(:name, :address, :category, :photo)
   end
 
   def set_gym
