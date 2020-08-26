@@ -1,2 +1,9 @@
-<h1>Gyms#new</h1>
-<p>Find me in app/views/gyms/new.html.erb</p>
+<div class="container justify-content-center w-50">
+      <h1 class="pt-4 text-center">Add a new Gym</h1>
+
+      <%= render "form_gym", gym: @gym %>
+  <br>
+  <div class="back-to-gyms">
+    <%= link_to "Back to my gyms", user_session_path, class: "btn btn-primary" %>
+  </div>
+</div>

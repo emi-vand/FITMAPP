@@ -3,6 +3,6 @@ class Restaurant < ApplicationRecord
   has_many :dishes
   has_many :restaurant_bookings
 
-  has_many_attached :photos
+  has_one_attached :photo
 
 end

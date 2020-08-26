@@ -17,6 +17,7 @@ class GymsController < ApplicationController
 
   def create
     @gym = Gym.new(gym_params)
+    @gym.user = current_user
     if @gym.save
       redirect_to @gym
     else
@@ -34,7 +35,6 @@ class GymsController < ApplicationController
     else
       render :edit
     end
-    authorize @gym
   end
 
   def destroy
@@ -45,7 +45,7 @@ class GymsController < ApplicationController
   private
 
   def gym_params
-    params.require(:gym).permit(:name, :location, :category)
+    params.require(:gym).permit(:name, :location, :category, :photo)
   end
 
   def set_gym

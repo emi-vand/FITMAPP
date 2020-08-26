@@ -45,10 +45,10 @@ class GymClassesController < ApplicationController
   private
 
   def gym_class_params
-    params.require(:gym_class).permit(:name, :time)
+    params.require(:gym_class).permit(:name, :time, :photo)
   end
 
-  def set_class
+  def set_gym_class
     @gym_class = GymClass.find(params[:id])
     authorize @gym_class
   end

@@ -1,0 +1,11 @@
+<%= simple_form_for @gym do |f| %>
+<div class="row">
+  <div class="col-6"><%= f.input :name %></div>
+  <div class="col-6"><%= f.input :location %></div>
+</div>
+<div class="row">
+  <div class="col"><%= f.input :category %></div>
+</div>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
