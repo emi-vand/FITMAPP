@@ -3,31 +3,50 @@
     <% if @gym.photo.attached? %>
     <%= cl_image_tag @gym.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
     <% end %>
-    <!-- <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"   class="card-img-top" alt="..."> -->
-    <div class="rest-card-body">
-      <h5 class="rest-card-title"><%= @gym.name %></h5>
-      <p class="rest-card-text"><%= @gym.address %></p>
-      <p class="rest-card-text"><%= @gym.category %></p>
-      <p class="rest-card-text">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
-    <ul class="list-group list-group-flush">
-      <% @gym.gym_classes.each do |gymclass| %>
-        <li class="list-group-item"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
-            <% if @gym.user != current_user %>
-<div class="col-lg-6 ">
-  <div class="rental-form sticky bg-light shadow p-3" id="class_booking_form">
-    <%= simple_form_for [gymclass, ClassBooking.new] do |f| %>
-      <%= f.input :date, as: :date, html5: true, id:"date" %>
-      <%= f.button :submit, class: "btn btn-primary mb-4" %>
-    <% end %>
-  </div>
-</div>
-<% end %>
-</div>
-        
-        </li>
-      <% end %>
-    </ul>
-    </div>
+      <div class="rest-card-body">
+        <h5 class="rest-card-title"><%= @gym.name %></h5>
+        <p class="rest-card-text"><%= @gym.address %></p>
+        <p class="rest-card-text"><%= @gym.category %></p>
+        <p class="rest-card-text">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
+        <ul class="list-group list-group-flush">
+          <% @gym.gym_classes.each do |gymclass| %>
+            <li class="list-group-item"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
+              
+              <% if @gym.user != current_user %>
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= gymclass.id %> ">
+                <%= "Book Now" %>
+              </button>
+              <% end %>
+
+                <!-- Modal HTML -->
+                <div id="myModal<%= gymclass.id %>" class="modal fade">
+                  <div class="modal-dialog modal-confirm">
+                    <div class="modal-content">
+                      <div class="modal-header">                        		
+                        <h5 class="modal-title">Pick a Date for <%= gymclass.name %></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>	
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for [gymclass, ClassBooking.new] do |f| %>
+                          <%= f.input :date, as: :date, html5: true, id:"date" %>                        
+                      </div>
+                      <div class="modal-footer">
+                        <%= f.button :submit, "Make Booking", class: "btn btn-primary mb-4", id:"submit-button" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+
+
+      
+            </li>
+          <% end %>
+        </ul>
+      </div>  
     <div class="card-body">
       <%= link_to "Book #{@gym.name} Now", "...", class: "btn btn-primary btn-sm" %>
       <%= link_to "Back to all Gyms", gyms_path, class: "btn btn-secondary btn-sm"  %>
@@ -41,5 +60,3 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
-
