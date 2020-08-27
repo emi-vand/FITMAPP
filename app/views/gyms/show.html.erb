@@ -6,6 +6,9 @@
     <!-- <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"   class="card-img-top" alt="..."> -->
     <div class="rest-card-body">
       <h5 class="rest-card-title"><%= @gym.name %></h5>
+      <%=  link_to gym_fav_gym_path(@gym), method: :post do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
       <p class="rest-card-text"><%= @gym.address %></p>
       <p class="rest-card-text"><%= @gym.category %></p>
       <p class="rest-card-text">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>

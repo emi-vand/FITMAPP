@@ -57,6 +57,12 @@ class GymsController < ApplicationController
     redirect_to :index
   end
 
+  def favorite
+    @gym = Gym.find(params[:gym_id])
+    authorize @gym
+    current_user.favorite(@gym)
+  end
+
   private
 
   def gym_params

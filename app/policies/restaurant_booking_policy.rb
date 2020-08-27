@@ -1,4 +1,4 @@
-class RestaurantPolicy < ApplicationPolicy
+class RestaurantBookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,19 +6,17 @@ class RestaurantPolicy < ApplicationPolicy
   end
 
   def create?
-    user.owner
+    true
+    # user.owner
   end
 
   def update?
-    record.user == user
+    true
+    # record.user == user
   end
 
   def destroy?
-    record.user == user
-  end
-
-  def favorite?
     true
+    # record.user == user
   end
-
 end

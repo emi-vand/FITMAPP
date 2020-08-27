@@ -1,0 +1,8 @@
+<h1>My Booking</h1>
+<%= simple_form_for @restaurant_booking do |f| %>
+<div class="row">
+  <div class="col-6"><%= f.input :date %></div>
+  <div class="col-6"><%= f.input :time %></div>
+</div>
+<%= f.button :submit, "Update Booking", class: "btn btn-primary" %>
+<% end %>

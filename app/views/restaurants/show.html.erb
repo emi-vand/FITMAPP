@@ -5,6 +5,9 @@
     <% end %>
     <div class="rest-card-body">
       <h5 class="rest-card-title"><%= @restaurant.name %></h5>
+      <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
       <p class="rest-card-text"><%= @restaurant.address %></p>
       <p class="rest-card-text"><%= @restaurant.category %></p>
     <ul class="list-group list-group-flush">
@@ -14,7 +17,53 @@
     </ul>
     </div>
     <div class="card-body">
-      <p> Tags: <%= @restaurant.dietary_list %> </p>
+      
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#RestaurantBookingsModal">
+        <%= "Book #{@restaurant.name} Now" %>
+      </button>
+      <div class="modal fade" id="RestaurantBookingsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Book a Table</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for [@restaurant, @restaurant_booking] do |f| %>
+              <div class="row">
+                <div class="col-6"><%= f.input :date %></div>
+                <div class="col-6"><%= f.input :time %></div>
+              </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <%= f.button :submit, "Make Booking", { class: "trigger-btn", "data-toggle": "#myModal" } %>
+                </div>
+              
+              <div id="myModal" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <div class="icon-box">
+                            <i class="material-icons">&#xE876;</i>
+                          </div>
+                          <h4 class="modal-title w-100">Awesome!</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p class="text-center">Your booking has been confirmed. Check your email for details.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-success btn-block" data-dismiss="modal">Back to restaurants</button>
+                          <%= link_to "My Bookings", dashboard_path, class: "btn btn-primary" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+
+           <p> Tags: <%= @restaurant.dietary_list %> </p>
 
       <!-- Button trigger modal -->
       <% if @restaurant.user == current_user %>
@@ -29,7 +78,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalCenterTitle"> Update tags </h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -42,10 +91,14 @@
               <%= f.button :submit, 'Save', class: "btn btn-primary" %>
               <% end %>
             </div>
-          </div>
+           </div>
         </div>
       </div>
 
+          </div>
+        </div>
+      </div>
+      
       <%= link_to "Book #{@restaurant.name} Now", "...", class: "btn btn-primary btn-sm" %>
       <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
     </div>

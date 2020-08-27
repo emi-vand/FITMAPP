@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def home
   end
 
+  def dashboard
+  end
+
   def dietary_requirements
     if current_user.owner
       redirect_to :root

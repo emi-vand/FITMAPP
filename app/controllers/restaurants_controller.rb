@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
       infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: @restaurant })
 
     }]
+    @restaurant_booking = RestaurantBooking.new
   end
 
   def new
@@ -55,6 +56,12 @@ class RestaurantsController < ApplicationController
   def destroy
     @restaurant.destroy
     redirect_to :index
+  end
+
+  def favorite
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @restaurant
+    current_user.favorite(@restaurant)
   end
 
   private

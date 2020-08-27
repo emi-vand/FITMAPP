@@ -8,5 +8,7 @@ class Gym < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+
+  acts_as_favoritable
   acts_as_taggable_on :style
 end
