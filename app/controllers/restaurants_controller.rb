@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
       infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: @restaurant })
 
     }]
+    @restaurant_booking = RestaurantBooking.new
   end
 
   def new
@@ -57,10 +58,16 @@ class RestaurantsController < ApplicationController
     redirect_to :index
   end
 
+  def favorite
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @restaurant
+    current_user.favorite(@restaurant)
+  end
+
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :category, :photo)
+    params.require(:restaurant).permit(:name, :address, :category, :photo, :dietary_list)
   end
 
   def set_restaurant
