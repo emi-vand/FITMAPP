@@ -10,5 +10,6 @@ class Restaurant < ApplicationRecord
 
 
   acts_as_favoritable
+  acts_as_taggable_on :dietary
 
 end

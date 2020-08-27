@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get 'my_gyms', to: "pages#my_gyms"
   get 'dashboard', to: "pages#dashboard", as: :dashboard
   get 'favorite', to: "pages#favorite", as: :favorite
-  devise_for :users
+  get 'dietary_requirements', to: "pages#dietary_requirements"
+  post 'dietary_requirements', to: "pages#create_dietary"
+  devise_for :users, controllers: { registrations: "registrations" }
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :restaurants do
