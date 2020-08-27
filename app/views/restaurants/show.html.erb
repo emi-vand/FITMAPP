@@ -5,6 +5,9 @@
     <% end %>
     <div class="rest-card-body">
       <h5 class="rest-card-title"><%= @restaurant.name %></h5>
+      <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
       <p class="rest-card-text"><%= @restaurant.address %></p>
       <p class="rest-card-text"><%= @restaurant.category %></p>
     <ul class="list-group list-group-flush">
