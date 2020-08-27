@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   end
 
   resources :gyms do
-    resources :gym_classes do
-      resources :class_bookings, only: [:new, :create, :destroy, :show]
-    end
+    resources :gym_classes, only: [:new, :create]
   end
 
-
+  resources :gym_classes do
+    resources :class_bookings, only: [:new, :create, :destroy, :show]
+  end
 end

@@ -23,6 +23,7 @@ class GymsController < ApplicationController
       infoWindow: render_to_string(partial: "infowindow", locals: { gym: @gym }),
       image_url: helpers.asset_url('logofinal_colour_marker.png')
     }]
+    @class_booking = ClassBooking.new
   end
 
   def new
