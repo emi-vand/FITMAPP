@@ -18,17 +18,17 @@
         <fieldset class="form-group">
           <div class="row">
             <legend class="col-form-label pl-3">Account type: </legend>
-            <input type="hidden" name="user[owner][]" value="">
+            <input type="hidden" name="user[owner]" value="">
             <div class="col-lg-6">
-              <div class="form-check choice">
-                <input class="d-none" autocomplete="owner" autofocus="autofocus" type="checkbox" value="true" name="user[owner][]" id="user_owner_true">
-                <label class="form-check-label collection_check_boxes" for="user_owner_true">Business Owner</label>
+              <div>
+                <input class="radio-input" hidden autocomplete="owner" autofocus="autofocus" type="radio" value="true" name="user[owner]" id="user_owner_true">
+                <label class="radio-label" for="user_owner_true">Business Owner</label>
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="form-check choice">
-                <input class="d-none" autocomplete="owner" autofocus="autofocus" readonly="readonly" type="checkbox" value="false" name="user[owner][]" id="user_owner_false">
-                <label class="form-check-label collection_check_boxes" for="user_owner_false">Personal Use</label>
+              <div>
+                <input class="radio-input" hidden autocomplete="owner" autofocus="autofocus" readonly="readonly" type="radio" value="false" name="user[owner]" id="user_owner_false">
+                <label class="radio-label" for="user_owner_false">Personal Use</label>
               </div>
             </div>
           </div>
@@ -84,13 +84,3 @@
     <% end %>
   </div>
 </div>
-
-<!-- Javascript for buttons selection -->
-<script>
-  const inputs = document.querySelectorAll('.choice');
-  inputs.forEach((input) => {
-    input.addEventListener('click', (e) => {
-    e.currentTarget.classList.toggle('active');
-    });
-  });
-</script>
