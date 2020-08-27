@@ -1,7 +1,7 @@
 <h3>My Restaurant Bookings</h3>
 <% current_user.restaurant_bookings.each do |booking| %>
 <%= booking.restaurant.name %>
-
+<%= link_to "Edit", edit_restaurant_booking_path(booking)%>
 <% end %>
 
 <!-- <h3>My Gym Class Bookings</h3>

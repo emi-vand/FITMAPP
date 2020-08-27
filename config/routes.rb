@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :restaurant_bookings, only: [ :new, :create, :index]
   end
 
-  resources :restaurant_booking, only: [:update, :edit, :destroy, :show]
+  resources :restaurant_bookings, only: [:update, :edit, :destroy, :show]
 
   resources :gyms do
     resources :gym_classes do

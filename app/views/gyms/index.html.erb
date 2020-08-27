@@ -3,12 +3,14 @@
   <div class="row">
     <% @gyms.each do |gym| %>
     <div class="col-xs-12 col-md-6 col-lg-4 mb-3">
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-product rounded">
+         <% if gym.photo.attached? %>
+              <%= cl_image_tag gym.photo.key %>
+            <% end %>
           <div class="card-product-infos w-100">
             <%= link_to gym_path(gym) do %>
               <h2> <%= gym.name %> </h2>
-              <p> Category : <%= gym.category %> </p>
+              <p> <%= gym.category %> </p>
               <p class="text-right"> Distance </p>
               <p class="text-right"> Rating </p>
             <% end %>
@@ -23,5 +25,5 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  
+
 </div>

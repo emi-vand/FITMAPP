@@ -22,7 +22,7 @@ class RestaurantBookingsController < ApplicationController
     @restaurant_booking.user = @user
     @restaurant_booking.restaurant = @restaurant
     if @restaurant_booking.save
-      redirect_to dashboard_path
+
     else
       render "restaurants/show"
     end
@@ -31,7 +31,7 @@ class RestaurantBookingsController < ApplicationController
 
   def update
     if @restaurant_booking.update(restaurant_booking_params)
-      redirect_to @restaurant_booking
+      redirect_to dashboard_path
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class RestaurantBookingsController < ApplicationController
   end
 
   def set_restaurant_bookings
-    @restaurant_bookings = RestaurantBookings.find(params[:restaurant_booking_id])
-    authorize @restaurant_bookings
+    @restaurant_booking = RestaurantBooking.find(params[:id])
+    authorize @restaurant_booking
   end
 end
