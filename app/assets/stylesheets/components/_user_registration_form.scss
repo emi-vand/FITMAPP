@@ -1,26 +1,19 @@
 // Checkboxes design
-.choice {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 8px 0;
+.radio-input:checked + label {
+  background-color: #e4f2f7 !important;
+  color: #3C3744;
+  opacity: 1;
 }
 
-.choice {
+.radio-label {
   background: #b7b7b7;
   padding: 20px;
   border-radius: 5px;
   opacity: .4;
-  flex: 0 0 30%;
   text-align: center;
+  width: 100%;
   &:hover {
     opacity: 1;
-    cursor: pointer;
-  }
-  &.active {
-  background-color: #e4f2f7;
-  color: #3C3744;
-  opacity: 1;
   }
 }
 
@@ -49,5 +42,34 @@
   &:hover {
     text-decoration: none;
     color: #E4F2F7;
+  }
+}
+
+.dietary-registration-container {
+  background-color: #E4F2F7;
+  color: #EDEDED;
+  height: 100%;
+  .col-form-label {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    color: $blue;
+  }
+}
+
+.dietary-registration-container .form-check-label {
+  color: #EDEDED !important;
+}
+
+.dietary-registration-container .form-check-inline {
+  background-color: $blue;
+  opacity: .3;
+  width: 150px;
+  height: 75px;
+  margin: 2%;
+  text-align: center;
+  border-radius:5px;
+  &:hover {
+    opacity: 1;
   }
 }
