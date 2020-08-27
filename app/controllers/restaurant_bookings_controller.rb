@@ -40,7 +40,7 @@ class RestaurantBookingsController < ApplicationController
 
   def destroy
     @restaurant_booking.destroy
-    redirect_to :index
+    redirect_to dashboard_path
   end
 
   def edit
