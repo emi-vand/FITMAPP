@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
       infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: @restaurant })
 
     }]
+    @restaurant_booking = RestaurantBooking.new
   end
 
   def new

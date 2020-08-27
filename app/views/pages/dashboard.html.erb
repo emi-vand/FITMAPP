@@ -1,0 +1,10 @@
+<h3>My Restaurant Bookings</h3>
+<% current_user.restaurant_bookings.each do |booking| %>
+<%= booking.restaurant.name %>
+
+<% end %>
+
+<!-- <h3>My Gym Class Bookings</h3>
+<%# current_user.class_bookings.each do |booking| %>
+<%#= booking.gym_class.name %>
+<%# end %> -->

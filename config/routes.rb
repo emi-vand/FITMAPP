@@ -9,13 +9,17 @@ Rails.application.routes.draw do
   get 'restaurants/edit'
   get 'my_restaurants', to: "pages#my_restaurants"
   get 'my_gyms', to: "pages#my_gyms"
+  get 'dashboard', to: "pages#dashboard", as: :dashboard
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :restaurants do
     resources :restaurant_bookings, only: [:new, :create, :destroy, :show]
     resources :dishes
+    resources :restaurant_bookings, only: [ :new, :create, :index]
   end
+
+  resources :restaurant_booking, only: [:update, :edit, :destroy, :show]
 
   resources :gyms do
     resources :gym_classes do
