@@ -11,5 +11,5 @@ class Gym < ApplicationRecord
   acts_as_favoritable
   acts_as_taggable_on :styles
 
-  STYLE = ["Boxing", "Dance studio", "Yoga studio", "General"]
+  STYLE = ["Boxing", "Dance studio", "Yoga studio", "Pilates", "General"]
 end
