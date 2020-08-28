@@ -18,9 +18,12 @@
     </ul>
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#RestaurantBookingsModal">
-        <%= "Book #{@restaurant.name} Now" %>
-      </button>
+      <% if @restaurant.user != current_user %>
+        <button type="button" class="btn btn-primary bn-sm" data-toggle="modal" data-target="#RestaurantBookingsModal">
+          <%= "Book #{@restaurant.name} Now" %>
+        </button>
+      <% end %>
+
       <div class="modal fade" id="RestaurantBookingsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -42,12 +45,17 @@
                 </div>
               <% end %>
             </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Button trigger modal -->
       <% if @restaurant.user == current_user %>
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
           Add new tags
         </button>
       <% end %>
+
       <!-- Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -70,9 +78,7 @@
            </div>
         </div>
       </div>
-          </div>
-        </div>
-      </div>
+
       <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
     </div>
   </div>

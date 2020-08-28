@@ -27,7 +27,7 @@
                 <div id="myModal<%= gymclass.id %>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
-                      <div class="modal-header">                       		
+                      <div class="modal-header">
                         <h5 class="modal-title">Pick a Date for <%= gymclass.name %></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
@@ -35,7 +35,7 @@
                       </div>
                       <div class="modal-body">
                         <%= simple_form_for [gymclass, ClassBooking.new] do |f| %>
-                          <%= f.input :date, as: :date, html5: true, id:"date" %>                        
+                          <%= f.input :date, as: :date, html5: true, id:"date" %>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                           <%= f.button :submit, "Make Booking", class: "trigger-btn-gym"%>
