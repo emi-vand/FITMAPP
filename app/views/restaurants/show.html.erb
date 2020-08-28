@@ -10,6 +10,7 @@
       <% end %>
       <p class="rest-card-text"><%= @restaurant.address %></p>
       <p class="rest-card-text"><%= @restaurant.category %></p>
+      <p class="rest-card-text"><%= @restaurant.dietary_list %> </p>
     <ul class="list-group list-group-flush">
       <% @restaurant.dishes.each do |dish| %>
         <li class="list-group-item"><i class="fas fa-utensils"></i> - <strong> <%= dish.name %> </strong> - <%= dish.description %></li>
@@ -17,7 +18,7 @@
     </ul>
     </div>
     <div class="card-body">
-      
+
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#RestaurantBookingsModal">
         <%= "Book #{@restaurant.name} Now" %>
       </button>
@@ -40,30 +41,10 @@
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <%= f.button :submit, "Make Booking", { class: "trigger-btn", "data-toggle": "#myModal" } %>
                 </div>
-              
-              <div id="myModal" class="modal fade">
-                    <div class="modal-dialog modal-confirm">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <div class="icon-box">
-                            <i class="material-icons">&#xE876;</i>
-                          </div>
-                          <h4 class="modal-title w-100">Awesome!</h4>
-                        </div>
-                        <div class="modal-body">
-                          <p class="text-center">Your booking has been confirmed. Check your email for details.</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button class="btn btn-success btn-block" data-dismiss="modal">Back to restaurants</button>
-                          <%= link_to "My Bookings", dashboard_path, class: "btn btn-primary" %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
               <% end %>
             </div>
 
-           <p> Tags: <%= @restaurant.dietary_list %> </p>
+
 
       <!-- Button trigger modal -->
       <% if @restaurant.user == current_user %>
@@ -98,8 +79,7 @@
           </div>
         </div>
       </div>
-      
-      <%= link_to "Book #{@restaurant.name} Now", "...", class: "btn btn-primary btn-sm" %>
+
       <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
     </div>
   </div>
