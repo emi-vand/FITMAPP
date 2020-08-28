@@ -9,7 +9,7 @@ export const restaurantBookingModal = () => {
                         </div>
                         <div class="modal-footer">
                           <a class="btn btn-secondary btn-sm" href="/restaurants">Back to Restaurants</a>
-                          <a class="btn btn-primary btn-sm" href="/dashboard">My Bookings</a>
+                          <a class="btn btn-primary btn-sm" href="/user_dashboard">My Bookings</a>
                         </div>`);
     })
   }
