@@ -7,5 +7,7 @@
   <div class="col"><%= f.input :category %></div>
 </div>
   <%= f.input :photo, as: :file %>
+  <br>
   <%= f.submit class: "btn btn-primary"%>
+  <%= link_to "Back to my restaurants", my_restaurants_path, class: "btn btn-secondary" %>
 <% end %>
