@@ -11,5 +11,13 @@ class Restaurant < ApplicationRecord
   acts_as_favoritable
   acts_as_taggable_on :dietary
 
+  include PgSearch::Model
+    pg_search_scope :search_by_location,
+      against: [ :address],
+      using: {
+        tsearch: { prefix: true }
+      }
+
   DIETARY = ["Vegan", "Vegetarian", "Keto", "Paleo", "Pescaritan", "Gluten-free", "Lactose-free", "Dairy-free"]
+
 end

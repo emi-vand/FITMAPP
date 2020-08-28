@@ -1,13 +1,15 @@
 class RestaurantsController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :show]
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @restaurants = Restaurant.geocoded
-    @restaurants = policy_scope(Restaurant)
+    if params[:address].present?
+      @restaurants = policy_scope(Restaurant).search_by_location(params[:address])
+    else
+      @restaurants = policy_scope(Restaurant)
+    end
+    @restaurants = @restaurants.geocoded
 
-    authorize @restaurants
     @markers = @restaurants.map do |restaurant|
       {
         lat: restaurant.latitude,

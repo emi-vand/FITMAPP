@@ -11,10 +11,10 @@
 
         <!-- Search form -->
        <%= form_tag restaurants_path, class: "navbar-wagon-search rounded", method: :get do %>
-            <%= text_field_tag :name,
-            params[:make],
+            <%= text_field_tag :address,
+            params[:address],
             class: "navbar-wagon-search-input nav-rounded",
-            placeholder: "Search" %>
+            placeholder: "Search Location" %>
 
             <%= button_tag( :class => "btn navbar-wagon-search-btn d-flex") do%>
               <i class="fa fa-search"> </i>

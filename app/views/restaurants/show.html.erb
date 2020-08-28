@@ -10,6 +10,7 @@
       <% end %>
       <p class="rest-card-text"><%= @restaurant.address %></p>
       <p class="rest-card-text"><%= @restaurant.category %></p>
+      <p class="rest-card-text"><%= @restaurant.dietary_list %> </p>
     <ul class="list-group list-group-flush">
       <% @restaurant.dishes.each do |dish| %>
         <li class="list-group-item"><i class="fas fa-utensils"></i> - <strong> <%= dish.name %> </strong> - <%= dish.description %></li>
@@ -17,47 +18,9 @@
     </ul>
     </div>
     <div class="card-body">
-
-      <p> Tags: <%= @restaurant.dietary_list %> </p>
-
-      <!-- Button trigger modal -->
-      <% if @restaurant.user == current_user %>
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
-          Add new tags
-        </button>
-      <% end %>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle"> Update tags </h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                  <%= simple_form_for @restaurant, method: "PATCH" do |f| %>
-                  <%= f.input :dietary_list %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <%= f.button :submit, 'Save', class: "btn btn-primary" %>
-              <% end %>
-            </div>
-           </div>
-        </div>
-      </div>
-
-    <!-- Book now button  -->
-    <% if @restaurant.user != current_user %>
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#RestaurantBookingsModal">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#RestaurantBookingsModal">
         <%= "Book #{@restaurant.name} Now" %>
       </button>
-    <% end %>
-
-    <!-- Bookings modal -->
       <div class="modal fade" id="RestaurantBookingsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -66,7 +29,6 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-
             </div>
             <div class="modal-body">
               <%= simple_form_for [@restaurant, @restaurant_booking] do |f| %>
@@ -78,41 +40,46 @@
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <%= f.button :submit, "Make Booking", { class: "trigger-btn", "data-toggle": "#myModal" } %>
                 </div>
-
-              <div id="myModal" class="modal fade">
-                    <div class="modal-dialog modal-confirm">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <div class="icon-box">
-                            <i class="material-icons">&#xE876;</i>
-                          </div>
-                          <h4 class="modal-title w-100">Awesome!</h4>
-                        </div>
-                        <div class="modal-body">
-                          <p class="text-center">Your booking has been confirmed. Check your email for details.</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button class="btn btn-success btn-block" data-dismiss="modal">Back to restaurants</button>
-                          <%= link_to "My Bookings", dashboard_path, class: "btn btn-primary" %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
               <% end %>
             </div>
+      <!-- Button trigger modal -->
+      <% if @restaurant.user == current_user %>
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+          Add new tags
+        </button>
+      <% end %>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle"> Update tags </h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                  <%= simple_form_for @restaurant do |f| %>
+                  <%= f.input :dietary_list %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= f.button :submit, 'Save', class: "btn btn-primary" %>
+              <% end %>
+            </div>
+           </div>
+        </div>
+      </div>
           </div>
         </div>
       </div>
-
       <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
     </div>
   </div>
-
   <div id="map"
     class="container"
     style="width: 100%; height: 300px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-
 </div>
