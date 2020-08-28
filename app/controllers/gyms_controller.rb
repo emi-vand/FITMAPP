@@ -3,9 +3,8 @@ class GymsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :show]
 
   def index
-    @gyms = Gym.geocoded
     @gyms = policy_scope(Gym)
-    authorize @gyms
+    @gyms = Gym.geocoded
     @markers = @gyms.map do |gym|
       {
         lat: gym.latitude,

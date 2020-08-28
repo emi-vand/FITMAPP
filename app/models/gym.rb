@@ -1,4 +1,5 @@
 class Gym < ApplicationRecord
+
   belongs_to :user
   has_many :gym_classes
   has_many :class_bookings, through: :gym_classes
@@ -11,4 +12,6 @@ class Gym < ApplicationRecord
 
   acts_as_favoritable
   acts_as_taggable_on :style
+
+  scope :address, -> (address) { where("address ilike ?", "%#{address}%") }
 end
