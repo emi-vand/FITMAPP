@@ -21,7 +21,7 @@ class GymClassesController < ApplicationController
     @gym = Gym.find(params[:gym_id])
     @gym_class.gym = @gym
     if @gym_class.save
-      redirect_to gym_path(@gym_class)
+      redirect_to gym_path(@gym)
     else
       render :new
     end

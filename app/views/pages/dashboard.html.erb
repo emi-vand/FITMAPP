@@ -5,7 +5,9 @@
 <%= link_to "Destroy", restaurant_booking_path(booking), method: :delete %>
 <% end %>
 
-<!-- <h3>My Gym Class Bookings</h3>
-<%# current_user.class_bookings.each do |booking| %>
-<%#= booking.gym_class.name %>
-<%# end %> -->
+<h3>My Gym Class Bookings</h3>
+<% current_user.class_bookings.each do |booking| %>
+<%= booking.gym_class.name %>
+<%= link_to "Edit", edit_class_booking_path(booking)%>
+<%= link_to "Destroy", class_booking_path(booking), method: :delete %>
+<% end %>

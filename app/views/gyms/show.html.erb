@@ -15,54 +15,54 @@
         <ul class="list-group list-group-flush">
           <% @gym.gym_classes.each do |gymclass| %>
             <li class="list-group-item"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
-              
+            <!-- Book now -->
               <% if @gym.user != current_user %>
 
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= gymclass.id %> ">
-                <%= "Book Now" %>
+                <%= "Book #{gymclass.name} Now" %>
               </button>
               <% end %>
 
                 <!-- Modal HTML -->
-                <div id="myModal<%= gymclass.id %>" class="modal fade">
-                  <div class="modal-dialog modal-confirm">
+                <div id="myModal<%= gymclass.id %>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
                     <div class="modal-content">
-                      <div class="modal-header">                        		
+                      <div class="modal-header">                       		
                         <h5 class="modal-title">Pick a Date for <%= gymclass.name %></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
-                        </button>	
+                        </button>
                       </div>
                       <div class="modal-body">
                         <%= simple_form_for [gymclass, ClassBooking.new] do |f| %>
                           <%= f.input :date, as: :date, html5: true, id:"date" %>                        
-                      </div>
-                      <div class="modal-footer">
-                        <%= f.button :submit, "Make Booking", class: "btn btn-primary mb-4", id:"submit-button" %>
-                        <% end %>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                          <%= f.button :submit, "Make Booking", class: "trigger-btn-gym"%>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>  
+                </div>
 
-
-      
             </li>
           <% end %>
         </ul>
-      </div>  
+      </div>
 
     <div class="card-body">
+
       <p> Tags: <%= @gym.style_list %> </p>
 
-      <!-- Button trigger modal -->
+      <!-- Button trigger TAGS modal -->
       <% if @gym.user == current_user %>
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
           Add new tags
         </button>
       <% end %>
 
-      <!-- Modal -->
+      <!-- Tags Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -73,7 +73,7 @@
               </button>
             </div>
             <div class="modal-body">
-                  <%= simple_form_for @gym do |f| %>
+                  <%= simple_form_for @gym, method: "PATCH" do |f| %>
                   <%= f.input :style_list %>
             </div>
             <div class="modal-footer">
@@ -85,7 +85,6 @@
         </div>
       </div>
 
-      <%= link_to "Book #{@gym.name} Now", "...", class: "btn btn-primary btn-sm" %>
       <%= link_to "Back to all Gyms", gyms_path, class: "btn btn-secondary btn-sm"  %>
     </div>
   </div>

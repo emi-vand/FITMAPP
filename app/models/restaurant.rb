@@ -17,4 +17,7 @@ class Restaurant < ApplicationRecord
       using: {
         tsearch: { prefix: true }
       }
+
+  DIETARY = ["Vegan", "Vegetarian", "Keto", "Paleo", "Pescaritan", "Gluten-free", "Lactose-free", "Dairy-free"]
+
 end

@@ -9,12 +9,18 @@ class RestaurantsController < ApplicationController
       @restaurants = policy_scope(Restaurant)
     end
     @restaurants = @restaurants.geocoded
+
     @markers = @restaurants.map do |restaurant|
       {
         lat: restaurant.latitude,
         lng: restaurant.longitude,
         infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: restaurant })
       }
+    end
+
+    if params["search"]
+      @filter = params["search"]["dietary"].reject(&:empty?)
+      @restaurants = @filter.empty? ? @restaurants : @restaurants.tagged_with(@filter, any: true)
     end
   end
 
