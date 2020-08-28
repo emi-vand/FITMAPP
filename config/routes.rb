@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'my_restaurants', to: "pages#my_restaurants"
   get 'my_gyms', to: "pages#my_gyms"
   get 'user_dashboard', to: "pages#user_dashboard", as: :user_dashboard
+  get 'owner_dashboard', to: "pages#owner_dashboard", as: :ownerdashboard
   get 'favorite', to: "pages#favorite", as: :favorite
   get 'dietary_requirements', to: "pages#dietary_requirements"
   post 'dietary_requirements', to: "pages#create_dietary"

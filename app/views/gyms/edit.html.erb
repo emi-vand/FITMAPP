@@ -1,19 +1,8 @@
-<div class="new-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
-        <h1>Edit your Gym</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+<div class="container justify-content-center w-50 new-gym-container mt-5 mb-5 p-5 shadow">
+  <h1 class="p-4 text-center">Edit your Gym</h1>
 
-<%= render "form_gym", gym: @gym %>
+  <%= render "form_gym", gym: @gym %>
 
-        </div>
-      </div>
-      <div class="back-to-gyms">
-      <%= link_to "Back to my gyms", my_gyms_path, class: "btn btn-primary" %>
-    </div>
-  </div>
 </div>
+<br>
+<br>

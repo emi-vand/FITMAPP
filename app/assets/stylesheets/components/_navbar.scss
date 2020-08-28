@@ -22,8 +22,22 @@
         background: #91A3B0;
         color: #3C3744;
         box-shadow: 0px 3px 5px #3C3744;
-        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        padding: 0.25rem;
 
     }
 }
 
+li.nav-item {
+  padding: 0.5rem;
+}
+
+.dropdown-menu {
+  background-color: rgba(60, 55, 68, 0.7);
+  & a {
+  color: #e4f2f7;
+  &:hover {
+    background-color: transparent;
+    color: $blue;
+  }
+  }
+}
