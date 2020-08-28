@@ -30,6 +30,7 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 
 import { restaurantBookingModal } from '../plugins/modal_restaurant_booking';
+import { gymBookingModal } from "../plugins/modal_gym_booking";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
   restaurantBookingModal();
+  gymBookingModal();
 });
