@@ -14,6 +14,11 @@ class GymsController < ApplicationController
         image_url: helpers.asset_url('logofinal_colour_marker.png')
       }
     end
+
+    if params["search"]
+      @filter = params["search"]["styles"].reject(&:empty?)
+      @gyms = @filter.empty? ? @gyms : @gyms.tagged_with(@filter, any: true)
+    end
   end
 
   def show

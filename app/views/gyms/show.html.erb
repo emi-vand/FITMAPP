@@ -73,7 +73,7 @@
               </button>
             </div>
             <div class="modal-body">
-                  <%= simple_form_for @gym do |f| %>
+                  <%= simple_form_for @gym, method: "PATCH" do |f| %>
                   <%= f.input :style_list %>
             </div>
             <div class="modal-footer">

@@ -38,7 +38,7 @@
               </button>
             </div>
             <div class="modal-body">
-                  <%= simple_form_for @restaurant do |f| %>
+                  <%= simple_form_for @restaurant, method: "PATCH" do |f| %>
                   <%= f.input :dietary_list %>
             </div>
             <div class="modal-footer">
