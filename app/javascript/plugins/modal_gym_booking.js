@@ -8,7 +8,7 @@ export const gymBookingModal = () => {
                         </div>
                         <div class="modal-footer">
                           <a class="btn btn-secondary btn-sm" href="/gyms">Back to Gyms</a>
-                          <a class="btn btn-primary btn-sm" href="/dashboard">My Bookings</a>
+                          <a class="btn btn-primary btn-sm" href="/user_dashboard">My Bookings</a>
                         </div>`);
     })
   });

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'restaurants/edit'
   get 'my_restaurants', to: "pages#my_restaurants"
   get 'my_gyms', to: "pages#my_gyms"
-  get 'dashboard', to: "pages#dashboard", as: :dashboard
+  get 'user_dashboard', to: "pages#user_dashboard", as: :user_dashboard
   get 'favorite', to: "pages#favorite", as: :favorite
   get 'dietary_requirements', to: "pages#dietary_requirements"
   post 'dietary_requirements', to: "pages#create_dietary"

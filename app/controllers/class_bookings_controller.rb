@@ -7,7 +7,7 @@ class ClassBookingsController < ApplicationController
     @class_booking = ClassBooking.new
     authorize @class_booking
   end
-  
+
 
   def create
     @class_booking = ClassBooking.new(class_booking_params)
@@ -21,7 +21,7 @@ class ClassBookingsController < ApplicationController
 
   def update
     if @class_booking.update(class_booking_params)
-      redirect_to dashboard_path
+      redirect_to user_dashboard_path
     else
       render :edit
     end
@@ -30,7 +30,7 @@ class ClassBookingsController < ApplicationController
 
   def destroy
     @class_booking.destroy
-    redirect_to dashboard_path
+    redirect_to user_dashboard_path
   end
 
   def edit

@@ -31,7 +31,7 @@ class RestaurantBookingsController < ApplicationController
 
   def update
     if @restaurant_booking.update(restaurant_booking_params)
-      redirect_to dashboard_path
+      redirect_to user_dashboard_path
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class RestaurantBookingsController < ApplicationController
 
   def destroy
     @restaurant_booking.destroy
-    redirect_to dashboard_path
+    redirect_to user_dashboard_path
   end
 
   def edit

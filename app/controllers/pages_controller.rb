@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dashboard
+  def user_dashboard
   end
 
   def dietary_requirements
