@@ -14,7 +14,8 @@ class RestaurantsController < ApplicationController
       {
         lat: restaurant.latitude,
         lng: restaurant.longitude,
-        infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: restaurant })
+        infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: restaurant }),
+        image_url: helpers.asset_url('logofinal_colour_marker.png')
       }
     end
 
@@ -28,8 +29,8 @@ class RestaurantsController < ApplicationController
     @markers = [{
       lat: @restaurant.latitude,
       lng: @restaurant.longitude,
-      infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: @restaurant })
-
+      infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: @restaurant }),
+      image_url: helpers.asset_url('logofinal_colour_marker.png')
     }]
     @restaurant_booking = RestaurantBooking.new
   end
