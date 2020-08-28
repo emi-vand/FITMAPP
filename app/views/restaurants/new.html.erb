@@ -1,9 +1,11 @@
-<div class="container justify-content-center w-50">
-      <h1 class="pt-4 text-center">Add a new Restaurant</h1>
+<br>
 
-      <%= render "form_restaurant", restaurant: @restaurant %>
-  <br>
-  <div class="back-to-restaurants">
-    <%= link_to "Back to my restaurants", my_restaurants_path, class: "btn btn-primary" %>
-  </div>
+<div class="container justify-content-center w-50 new-restaurant-container mt-5 mb-4 p-5 shadow">
+  <h1 class="p-4 text-center">Add a Restaurant</h1>
+
+  <%= render "form_restaurant", restaurant: @restaurant %>
 </div>
+
+<br>
+<br>
+
