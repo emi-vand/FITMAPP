@@ -1,0 +1,26 @@
+.profile-page-top {
+  background-image: asset-url('profile-page.png');
+  width: 100vw;
+  height: 250px;
+  background-size: cover;
+  background-position: top;
+  border: 4px solid white;
+}
+.img-profile-avatar {
+  width: 120px;
+  position: relative;
+  top: -65px;
+  font-size: 100px;
+  border: 4px solid white;
+  border-radius: 65%;
+}
+.info-section {
+  position: relative;
+  top: -70px;
+  color: white;
+
+}
+
+.info-row {
+  margin-bottom: -23px;
+}

@@ -1,85 +1,118 @@
+  <div class="profile-page-top">
+  </div>
 <div class="container container-profile">
-  <div class="row pb-5">
+  <div class="row info-row">
     <div class="col-md-3 text-center">
       <% if current_user.photo.attached? %>
           <% card_image = current_user.photo.key %>
       <% else %>
-          <% card_image = "https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" %>
+        <img src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" alt="..." class="img-profile-avatar">
       <% end %>
       <div class="user-photo"><%= cl_image_tag card_image, class: 'avatar-profile'%></div>
     </div>
 
-    <div class="col-md-9 p-4 info-section">
+    <div class="col-md-9 info-section text-center">
       <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
-      <div class="profile-block contact-info">
-        <h6> <%= current_user.email %> </h6>
-      </div>
+      <h6> <%= current_user.email %> </h6>
+      <% current_user.dietary_requirements.each do |dr| %>
+        <%= dr %>
+        <% end %>
     </div>
   </div>
 
-  <div class="bookings row">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+    <ul class="nav nav-tabs w-100" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="restaurant-bookings-tab" data-toggle="tab" href="#restaurant_bookings" role="tab" aria-controls="restaurant_booking" aria-selected="false">Restaurant Bookings</a>
+        <a class="nav-link active" id="bookings-tab" data-toggle="tab" href="#bookings" role="tab" aria-controls="booking" aria-selected="false">Bookings</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="class-bookings-tab" data-toggle="tab" href="#class_bookings" role="tab" aria-controls="class_booking" aria-selected="false">Gym Class Bookings</a>
-      </li>
-    </ul>
-  </div>
-  <div class="bookings row">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link" id="restaurant-favorites" data-toggle="tab" href="#restaurant_favorites" role="tab" aria-controls="restaurant_favorite" aria-selected="false">Restaurant Favourites</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="gym-favorites" data-toggle="tab" href="#gym_favorites" role="tab" aria-controls="gym_favorite" aria-selected="false">Gym Favourites</a>
+        <a class="nav-link" id="favorites-tab" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorite" aria-selected="false">Favourites</a>
       </li>
     </ul>
-  </div>
+
 
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="restaurant_bookings" role="tabpanel" aria-labelledby="restaurant-bookings-tab">
-              <% current_user.restaurant_bookings.each do |booking| %>
-                <div class="card-product">
-                  <p> Restaurant: <%= booking.restaurant.name %> </p>
-                  <p> Date: <%= booking.date %> </p>
-                  <p> Time: <%= booking.time %> </p>
-                <div class="card-product-infos">
-                  <%= link_to "Edit", edit_restaurant_booking_path(booking)%>
-                  <%= link_to "Delete", restaurant_booking_path(booking), method: :delete %>
+      <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
+            <h5 class="text-left py-2">Restaurant Bookings</h5>
+              <div class="row">
+                <% current_user.restaurant_bookings.each do |booking| %>
+                 <div class="col-sm-12 col-md-6 col-lg-4 pb-1">
+                  <div class="card-product">
+                    <% if booking.restaurant.photo.attached? %>
+                      <%= cl_image_tag booking.restaurant.photo.key, height: 300, width: 400, crop: :fill %>
+                    <% end %>
+                  <div class="card-info d-flex">
+                    <p> <%= booking.restaurant.name %> </p>
+                    <p> <%= booking.date %> </p>
+                    <p> <%= booking.time.strftime("%k:%M")  %> </p>
+                  <div class="card-product-actions">
+                    <%= link_to "Edit", edit_restaurant_booking_path(booking)%>
+                    <%= link_to "Delete", restaurant_booking_path(booking), method: :delete %>
+                  </div>
                 </div>
-                </div>
-              <% end %>
+              </div>
+            </div>
+          <% end %>
       </div>
 
-  <div class="tab-pane fade" id="class_bookings" role="tabpanel" aria-labelledby="class-bookings-tab">
-          <% current_user.class_bookings.each do |booking| %>
-              <div class="card-product">
-                <p><%= booking.gym_class.gym.name %></p>
-                <p><%= booking.gym_class.name %></p>
-                <p><%= booking.date %></p>
-                <p><%= booking.gym_class.time %></p>
-              <div class="card-product-infos">
-            <%= link_to "Edit", edit_class_booking_path(booking)%>
-            <%= link_to "Delete", class_booking_path(booking), method: :delete %>
-          </div>
-          </div>
-        <% end %>
-  </div>
 
-  <div class="tab-pane fade" id="restaurant_favorites" role="tabpanel" aria-labelledby="restaurant-favorites-tab">
-    <% current_user.favorited_by_type("Restaurant").each do |fav| %>
+              <h5 class="text-left pt-5 pb-2">Gym Bookings</h5>
+               <div class="row">
+                <% current_user.class_bookings.each do |booking| %>
+                  <div class="col-sm-12 col-md-6 col-lg-4 pb-1">
+                  <div class="card-product">
+                    <% if booking.gym_class.photo.attached? %>
+                      <%= cl_image_tag booking.gym_class.photo.key, height: 300, width: 400, crop: :fill %>
+                    <% end %>
+                    <div class="card-info d-flex">
+                      <p><%= booking.gym_class.gym.name %></p>
+                      <p><%= booking.gym_class.name %></p>
+                      <p><%= booking.date %></p>
+                      <p><%= booking.gym_class.time.strftime("%k:%M")  %></p>
+                    <div class="card-product-actions">
+                    <%= link_to "Edit", edit_class_booking_path(booking)%>
+                    <%= link_to "Delete", class_booking_path(booking), method: :delete %>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <% end %>
+      </div>
+    </div>
+
+  <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="restaurant-favorites-tab">
+    <h5 class="text-left py-2">Restaurant Favourites</h5>
+    <div class="row">
+      <% current_user.favorited_by_type("Restaurant").each do |fav| %>
+       <div class="col-sm-12 col-md-6 col-lg-4 pb-1">
+        <div class="card-product">
+        <% if fav.photo.attached? %>
+          <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
         <%= fav.name %>
+
+      </div>
+
+     </div>
     <% end %>
   </div>
 
-  <div class="tab-pane fade" id="gym_favorites" role="tabpanel" aria-labelledby="gym-favorites-tab">
+
+  <h5 class="text-left pt-5 pb-2">Gym Favourites</h5>
+  <div class="row">
     <% current_user.favorited_by_type("Gym").each do |fav| %>
+    <div class="col-sm-12 col-md-6 col-lg-4 pb-1">
+    <div class="card-product">
+        <% if fav.photo.attached? %>
+          <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
         <%= fav.name %>
+    </div>
+  </div>
     <% end %>
   </div>
 </div>
-
+</div>
+</div>
 
 
