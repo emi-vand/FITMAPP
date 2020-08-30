@@ -1,21 +1,22 @@
 .footer {
   background-color: #EDEDED;
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px;
   color: rgba(0,0,0,0.3);
+  height: 5rem;
 }
 
 .footer-links {
   display: flex;
-  align-items: center;
+  align-items: top;
 }
 .footer-links a {
   color: black;
   opacity: 0.15;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 16px;
   padding: 0px 10px;
   &:hover {
     opacity: 1;
@@ -23,11 +24,13 @@
   }
 }
 
-@media(max-width: 992px) {
-  .footer {
-    flex-direction: column;
+.bottom-nav {
+  background-color: $blue;
+  height: 3rem;
+  a {
+    color: white;
   }
-  .footer-copyright {
-    text-align: center;
+  .nav-item {
+    font-size: 24px;
   }
 }

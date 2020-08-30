@@ -1,0 +1,15 @@
+<nav class="nav nav-pills nav-justified d-flex justify-content-around bottom-nav fixed-bottom pt-1">
+  <!-- <a class="nav-item nav-link" href="#" > Restaurants </a> -->
+  <%= link_to restaurants_path do %>
+    <i class="nav-item nav-link fas fa-utensils"></i>
+  <% end %>
+  <%= link_to gyms_path do %>
+    <i class="nav-item nav-link fas fa-dumbbell"></i>
+  <% end %>
+  <%= link_to root_path do %>
+    <i class="nav-item nav-link fas fa-newspaper"></i>
+  <% end %>
+  <%= link_to user_dashboard_path do %>
+    <i class="nav-item nav-link fas fa-user-circle"></i>
+  <% end %>
+</nav>
