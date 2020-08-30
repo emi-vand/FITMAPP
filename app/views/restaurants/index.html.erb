@@ -1,15 +1,21 @@
 <div class="container mt-5 mb-5 pb-4 shadow rounded new-restaurant-container">
   <h1 class="text-center pt-4"> Nearby Restaurants </h1>
-    <div class="row m-3 d-flex justify-content-around align-items-center">
-      <div class="col-10">
-        <%= simple_form_for :search, url: restaurants_path, method: "GET" do |f| %>
-          <%= f.input :dietary, label: "Dietary",  collection: Restaurant::DIETARY, as: :check_boxes, wrapper: :vertical_collection_inline %>
-      </div>
-      <div class="col-1">
-          <%= f.submit "Search", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </div>
+    <!-- Collapse button -->
+        <p class="text-center m-3">
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Filter
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+        <div class="card card-body filter-container mb-2 justify-content-center">
+            <%= simple_form_for :search, url: restaurants_path, method: "GET" do |f| %>
+            <%= f.input :dietary, disabled: true ,  collection: Restaurant::DIETARY, as: :check_boxes, wrapper: :vertical_collection_inline %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Search", class: "btn-secondary btn btn-sm" %>
+          <% end %>
+          </div>
+        </div>
+        </div>
 
   <div class="row">
     <% @restaurants.each do |restaurant| %>
