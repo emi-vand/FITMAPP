@@ -1,14 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top pt-1">
+<div class="navbar navbar-expand-xs navbar-light navbar-lewagon sticky-top pt-1">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo_colour_zoom.png" %>
     <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto navbar-links">
       <% if user_signed_in? %>
         <% if current_user&.owner? %>
@@ -28,22 +24,18 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item active">
-            <%= link_to "HOME", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "FOOD", restaurants_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "GYMS", gyms_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "My Profile", user_dashboard_path, class: "dropdown-item" %>
-              <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
+          <div class="search-navbar">
+            <%= form_tag restaurants_path, class: "navbar-wagon-search navbar-version rounded", method: :get do %>
+            <%= text_field_tag :address,
+                params[:address],
+                class: "navbar-wagon-search-input navbar-version nav-rounded",
+                placeholder: "Search Location" %>
+
+              <%= button_tag( :class => "btn navbar-wagon-search-btn navbar-version d-flex") do %>
+                <i class="fa fa-search"> </i>
+              <% end %>
+            <% end %>
+          </div>
           <% end %>
       <% else %>
         <button class="btn-login rounded">

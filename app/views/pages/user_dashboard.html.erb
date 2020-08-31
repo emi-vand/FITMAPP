@@ -1,4 +1,9 @@
   <div class="profile-page-top">
+    <div class="d-flex flex-row-reverse">
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
+      <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary btn-sm mr-2" %>
+
+    </div>
   </div>
 <div class="container container-profile">
   <div class="row info-row">
@@ -8,10 +13,10 @@
       <% else %>
         <img src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" alt="..." class="img-profile-avatar">
       <% end %>
-      <div class="user-photo"><%= cl_image_tag card_image, class: 'avatar-profile'%></div>
+      <div class="user-photo"><%= cl_image_tag card_image, class: 'img-profile-avatar'%></div>
     </div>
 
-    <div class="col-12 info-section text-center">
+    <div class="col-12 info-section text-center pt-5 pb-4">
       <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
       <h6> <%= current_user.email %> </h6>
       <% current_user.dietary_requirements.each do |dr| %>
@@ -36,55 +41,63 @@
             <h5 class="text-left py-2">Restaurant Bookings</h5>
               <div class="row">
                 <% current_user.restaurant_bookings.each do |booking| %>
-                 <div class="col-sm-12 col-md-6 col-lg-4 pb-1">
+                 <div class="col-12 pb-1">
                   <div class="card-product">
                     <% if booking.restaurant.photo.attached? %>
                       <%= cl_image_tag booking.restaurant.photo.key, height: 300, width: 400, crop: :fill %>
+                    <% else %>
+                      <div class="img-thumbnail w-25 h-100"></div>
                     <% end %>
-                  <div class="card-info d-flex">
+                  <div class="card-info d-flex justify-content-around p-3 w-50">
                     <p> <%= booking.restaurant.name %> </p>
-                    <p> <%= booking.date %> </p>
-                    <p> <%= booking.time.strftime("%k:%M")  %> </p>
-                  <div class="card-product-actions">
-                    <%= link_to "Edit", edit_restaurant_booking_path(booking)%>
-                    <%= link_to "Delete", restaurant_booking_path(booking), method: :delete %>
+                    <div>
+                      <p> Date: <%= booking.date %> <%= booking.time.strftime("%k:%M") %> </p>
+                    </div>
                   </div>
-                </div>
+                  <div class="card-product-actions">
+                    <p> <%= link_to "Edit", edit_restaurant_booking_path(booking)%> </p>
+                    <p> <%= link_to "Delete", restaurant_booking_path(booking), method: :delete %> </p>
+                  </div>
               </div>
             </div>
           <% end %>
       </div>
 
 
-              <h5 class="text-left pt-5 pb-2">Gym Bookings</h5>
-               <div class="row">
+            <h5 class="text-left pt-5 pb-2">Gym Bookings</h5>
+              <div class="row">
                 <% current_user.class_bookings.each do |booking| %>
-                  <div class="col-sm-12 col-md-6 col-lg-4 pb-1">
-                  <div class="card-product">
+                <div class="col-12 pb-1">
+                  <div class="card-product d-flex">
                     <% if booking.gym_class.photo.attached? %>
                       <%= cl_image_tag booking.gym_class.photo.key, height: 300, width: 400, crop: :fill %>
+                    <% else %>
+                      <div class="img-thumbnail w-25 h-100"></div>
                     <% end %>
-                    <div class="card-info d-flex">
-                      <p><%= booking.gym_class.gym.name %></p>
-                      <p><%= booking.gym_class.name %></p>
-                      <p><%= booking.date %></p>
-                      <p><%= booking.gym_class.time.strftime("%k:%M")  %></p>
-                    <div class="card-product-actions">
-                    <%= link_to "Edit", edit_class_booking_path(booking)%>
-                    <%= link_to "Delete", class_booking_path(booking), method: :delete %>
+                    <div class="card-info d-flex p-3 w-50">
+                      <div>
+                        <p><%= booking.gym_class.name %></p>
+                        <p><%= booking.gym_class.gym.name %></p>
+                      </div>
+                      <div>
+                        <p> Date: <%= booking.gym_class.time.strftime("%k:%M") %> <%= booking.date %></p>
+                      </div>
                     </div>
+                    <div class="card-product-actions">
+                      <p> <%= link_to "Edit", edit_class_booking_path(booking)%> </p>
+                      <p> <%= link_to "Delete", class_booking_path(booking), method: :delete %> </p>
+                    </div>
+                  </div>
                 </div>
-            </div>
-          </div>
-          <% end %>
-      </div>
+                <% end %>
+              </div>
     </div>
 
   <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="restaurant-favorites-tab">
     <h5 class="text-left py-2">Restaurant Favourites</h5>
     <div class="row">
       <% current_user.favorited_by_type("Restaurant").each do |fav| %>
-       <div class="col-sm-12 col-md-6 col-lg-4 pb-1">
+       <div class="col-12 pb-1">
         <div class="card-product">
         <% if fav.photo.attached? %>
           <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
@@ -101,7 +114,7 @@
   <h5 class="text-left pt-5 pb-2">Gym Favourites</h5>
   <div class="row">
     <% current_user.favorited_by_type("Gym").each do |fav| %>
-    <div class="col-sm-12 col-md-6 col-lg-4 pb-1">
+    <div class="col-12 pb-1">
     <div class="card-product">
         <% if fav.photo.attached? %>
           <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>

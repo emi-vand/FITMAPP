@@ -2,6 +2,22 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @restaurants = policy_scope(Restaurant).geocoded
+    @gyms = policy_scope(Gym).geocoded
+    @mixed = @gyms + @restaurants
+    @markers = @mixed.map do |mix|
+      {
+        lat: mix.latitude,
+        lng: mix.longitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { mix: mix }),
+        image_url:
+        if @gyms.include? mix
+          helpers.asset_url('logofinal_colour_marker.png')
+        else
+          helpers.asset_url('fork&knife3.png')
+        end
+      }
+    end
   end
 
   def user_dashboard
@@ -18,4 +34,5 @@ class PagesController < ApplicationController
     current_user.save!
     redirect_to :root
   end
+
 end
