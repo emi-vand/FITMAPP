@@ -8,8 +8,8 @@
           <%= image_tag "https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg", class: "avatar-chat" %>
       <% end %>
      </div>
-    <span class="pt-2 mb-2"><%= message.user.username %></span>
-    <small class="p-2 mt-1"><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+    <span class="username"><%= message.user.username %></span>
+    <small class="time"><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
   </i>
   <p class="content"><%= message.content %></p>
   </div>

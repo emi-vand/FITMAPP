@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 .chatroom {
   background: #8A9BA8;
   display: flex;
@@ -27,7 +29,11 @@
 
   .form-group {
     margin-bottom: 0;
+    border: 1px solid #3C3744
   }
+}
+.btn-message-page {
+  margin-left: 21px;
 }
 .btn-chat {
   position: absolute;
@@ -53,4 +59,16 @@
 }
 .arrow-chat :hover {
   background-color: white;
+}
+.list-group {
+  font-family: 'Bebas Neue', cursive;
+  font-style: bold;
+  font-size: 2rem;
+  box-shadow: 0px 3px 5px #3C3744;
+}
+.list-group-item {
+  box-shadow: 0px 2px 3px #3C3744;
+}
+.simple-form-messages {
+
 }
