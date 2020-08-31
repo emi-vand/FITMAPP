@@ -33,7 +33,8 @@ import { restaurantBookingModal } from '../plugins/modal_restaurant_booking';
 import { gymBookingModal } from "../plugins/modal_gym_booking";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initStarRatingRestaurant } from "../plugins/init_star_rating_restaurant";
-
+import { initGymAutocomplete } from "../plugins/init_autocomplete";
+import { initRestAutocomplete } from "../plugins/init_autocomplete";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -43,4 +44,6 @@ document.addEventListener('turbolinks:load', () => {
   gymBookingModal();
   initStarRating();
   initStarRatingRestaurant();
+  initGymAutocomplete();
+  initRestAutocomplete();
 });

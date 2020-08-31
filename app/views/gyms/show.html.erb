@@ -22,9 +22,6 @@
               <% else %>
               <%= image_tag "5star.png", alt: "alttext" %>
             <% end %>
-            <div class="counter">
-              <span><%= @gym_review_count %></span>
-            </div>
           </div>
           <br>
             <%= link_to gym_fav_gym_path(@gym), method: :post do %>
