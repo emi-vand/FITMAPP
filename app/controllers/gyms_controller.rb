@@ -29,6 +29,7 @@ class GymsController < ApplicationController
     }]
     @class_booking = ClassBooking.new
     @gym_review = GymReview.new
+    @gym_review_count = GymReview(@gym).count
   end
 
   def new
