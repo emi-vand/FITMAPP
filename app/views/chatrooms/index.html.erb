@@ -1,0 +1,8 @@
+<div class="container mt-3 mb-3">
+  <div class="list-group">
+      <% @chatrooms.each do |chatroom| %>
+        <%= link_to "#{chatroom.name}", chatroom_path(chatroom), class: "card mb-1 rounded list-group-item #{'active' if chatroom == @chatroom}" %>
+      <% end %>
+  </div>
+</div>
+

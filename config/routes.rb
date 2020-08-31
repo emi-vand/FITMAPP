@@ -37,4 +37,10 @@ Rails.application.routes.draw do
   resources :gym_classes do
     resources :class_bookings, only: [:new, :create, :destroy, :show]
   end
+
+  resources :chatrooms, only: :index
+
+  resources :chatrooms, only: :show do
+  resources :messages, only: :create
+end
 end
