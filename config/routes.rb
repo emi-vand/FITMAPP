@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     post 'favorite', to: 'restaurants#favorite', as: :fav_res
     resources :dishes
     resources :restaurant_bookings, only: [ :new, :create, :index, :destroy, :show]
+    resources :restaurant_reviews, only: :create
   end
 
   resources :restaurant_bookings, only: [:update, :edit, :destroy, :show]
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   resources :gyms do
     resources :gym_classes, only: [:new, :create]
     post 'favorite', to: 'gyms#favorite', as: :fav_gym
+    resources :gym_reviews, only: :create
   end
 
   resources :class_bookings, only: [:update, :edit, :destroy, :show]

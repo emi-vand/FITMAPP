@@ -5,6 +5,19 @@
     <% end %>
     <div class="rest-card-body">
       <h5 class="rest-card-title"><%= @restaurant.name %></h5>
+        <% if @restaurant.average_rating <= 0  %>
+              <%= image_tag "0star.png", alt: "alttext" %>
+              <% elsif @restaurant.average_rating <= 1 %>
+              <%= image_tag "1star.png", alt: "alttext" %>
+              <% elsif @restaurant.average_rating <= 2 %>
+              <%= image_tag "2star.png", alt: "alttext" %>
+              <% elsif @restaurant.average_rating <= 3 %>
+              <%= image_tag "3star.png", alt: "alttext" %>
+              <% elsif @restaurant.average_rating <= 4 %>
+              <%= image_tag "4star.png", alt: "alttext" %>
+              <% else %>
+              <%= image_tag "5star.png", alt: "alttext" %>
+            <% end %>
       <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
         <i class="fas fa-heart"></i>
       <% end %>
@@ -87,5 +100,39 @@
     style="width: 100%; height: 300px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+  <div>
+    <%= simple_form_for([ @restaurant, @restaurant_review ], remote: true) do |f| %>
+      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+      <%= f.input :content, as: :text %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+
+  <div id="restaurant_reviews">
+    <% if @restaurant.restaurant_reviews.blank? %>
+      Be the first to leave a review for <%= @restaurant.name %>
+    <% else %>
+      <% @restaurant.restaurant_reviews.reverse_order.each do |review| %>
+      <p id="review"> 
+        <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp 
+        <% if review.rating == 0 %>
+          <%= image_tag "0star.png", alt: "alttext" %>
+          <% elsif review.rating == 1 %>
+          <%= image_tag "1star.png", alt: "alttext" %>
+          <% elsif review.rating == 2 %>
+          <%= image_tag "2star.png", alt: "alttext" %>
+          <% elsif review.rating == 3 %>
+          <%= image_tag "3star.png", alt: "alttext" %>
+          <% elsif review.rating == 4 %>
+          <%= image_tag "4star.png", alt: "alttext" %>
+          <% else %>
+          <%= image_tag "5star.png", alt: "alttext" %>
+        <% end %>
+        :    &nbsp "<%= review.content %>"
+      </p>
+      <% end %>
+    <% end %>
   </div>
 </div>
