@@ -6,11 +6,28 @@
 
       <div class="rest-card-body">
         <h5 class="rest-card-title"><%= @gym.name %></h5>
-        <%=  link_to gym_fav_gym_path(@gym), method: :post do %>
-          <i class="fas fa-heart"></i>
-        <% end %>
-        <p class="rest-card-text"><%= @gym.address %></p>
-        <p class="rest-card-text"><%= @gym.category %></p>
+        <p><%= @gym.address %></p>
+        <p>Type: <%= @gym.category %></p>
+          <div>
+            <% if @gym.average_rating <= 0  %>
+              <%= image_tag "0star.png", alt: "alttext" %>
+              <% elsif @gym.average_rating <= 1 %>
+              <%= image_tag "1star.png", alt: "alttext" %>
+              <% elsif @gym.average_rating <= 2 %>
+              <%= image_tag "2star.png", alt: "alttext" %>
+              <% elsif @gym.average_rating <= 3 %>
+              <%= image_tag "3star.png", alt: "alttext" %>
+              <% elsif @gym.average_rating <= 4 %>
+              <%= image_tag "4star.png", alt: "alttext" %>
+              <% else %>
+              <%= image_tag "5star.png", alt: "alttext" %>
+            <% end %>
+          </div>
+          <br>
+            <%= link_to gym_fav_gym_path(@gym), method: :post do %>
+              <i class="far fa-heart"></i><i class="fas fa-heart"></i>
+            <% end %>
+
         <p class="rest-card-text">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
         <ul class="list-group list-group-flush">
           <% @gym.gym_classes.each do |gymclass| %>
@@ -102,30 +119,31 @@
       <%= f.input :content, as: :text %>
       <%= f.button :submit %>
     <% end %>
-    <div id="gym_reviews">
-      <% if @gym.gym_reviews.blank? %>
-        Be the first to leave a review for <%= @gym.name %>
-      <% else %>
-        <% @gym.gym_reviews.reverse_order.each do |review| %>
-        <p id="review"> 
-          <%= review.created_at.strftime("%d %b %y") %>
-          <% if review.rating == 0 %>
-            <%= image_tag "0star.png", alt: "alttext" %>
-            <% elsif review.rating == 1 %>
-            <%= image_tag "1star.png", alt: "alttext" %>
-            <% elsif review.rating == 2 %>
-            <%= image_tag "2star.png", alt: "alttext" %>
-            <% elsif review.rating == 3 %>
-            <%= image_tag "3star.png", alt: "alttext" %>
-            <% elsif review.rating == 4 %>
-            <%= image_tag "4star.png", alt: "alttext" %>
-            <% else %>
-            <%= image_tag "5star.png", alt: "alttext" %>
-          <% end %>
-         - <%= review.content %>
-        </p>
+  </div>
+
+  <div id="gym_reviews">
+    <% if @gym.gym_reviews.blank? %>
+      Be the first to leave a review for <%= @gym.name %>
+    <% else %>
+      <% @gym.gym_reviews.reverse_order.each do |review| %>
+      <p id="review"> 
+        <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp 
+        <% if review.rating == 0 %>
+          <%= image_tag "0star.png", alt: "alttext" %>
+          <% elsif review.rating == 1 %>
+          <%= image_tag "1star.png", alt: "alttext" %>
+          <% elsif review.rating == 2 %>
+          <%= image_tag "2star.png", alt: "alttext" %>
+          <% elsif review.rating == 3 %>
+          <%= image_tag "3star.png", alt: "alttext" %>
+          <% elsif review.rating == 4 %>
+          <%= image_tag "4star.png", alt: "alttext" %>
+          <% else %>
+          <%= image_tag "5star.png", alt: "alttext" %>
         <% end %>
+        :    &nbsp "<%= review.content %>"
+      </p>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

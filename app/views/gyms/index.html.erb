@@ -29,7 +29,21 @@
               <h2> <%= gym.name %> </h2>
               <p> <%= gym.category %> </p>
               <p class="text-right"> Distance </p>
-              <p class="text-right"> Rating </p>
+              <p class="text-right stars"> Rating: 
+                <% if gym.average_rating <= 0  %>
+                  <%= image_tag "0star.png", alt: "alttext" %>
+                  <% elsif gym.average_rating <= 1 %>
+                  <%= image_tag "1star.png", alt: "alttext" %>
+                  <% elsif gym.average_rating <= 2 %>
+                  <%= image_tag "2star.png", alt: "alttext" %>
+                  <% elsif gym.average_rating <= 3 %>
+                  <%= image_tag "3star.png", alt: "alttext" %>
+                  <% elsif gym.average_rating <= 4 %>
+                  <%= image_tag "4star.png", alt: "alttext" %>
+                  <% else %>
+                  <%= image_tag "5star.png", alt: "alttext" %>
+                <% end %>
+              </p>
             <% end %>
           </div>
       </div>

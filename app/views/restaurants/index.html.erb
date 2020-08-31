@@ -21,7 +21,6 @@
     <% @restaurants.each do |restaurant| %>
       <div class="col-xs-12 col-md-6 col-lg-4 mb-3">
         <%= link_to restaurant_path(restaurant) do %>
-          <%# <div class="card-product" data-toggle="modal" data-target="#exampleModal"> %>
           <div class="card-product rounded">
             <% if restaurant.photo.attached? %>
               <%= cl_image_tag restaurant.photo.key %>
@@ -30,7 +29,22 @@
               <h2><%= restaurant.name %> </h2>
               <p><%= restaurant.category %></p>
               <p class="text-right">Distance</p>
-              <p class="text-right">Rating</p>
+              <p class="text-right">Rating: </p>
+              <div class="stars">
+                <% if restaurant.average_rating <= 0  %>
+                  <%= image_tag "0star.png", alt: "0 stars", size: "80x15" %>
+                  <% elsif restaurant.average_rating <= 1 %>
+                  <%= image_tag "1star.png", alt: "1 stars", size: "80x15" %>
+                  <% elsif restaurant.average_rating <= 2 %>
+                  <%= image_tag "2star.png", alt: "2 stars", size: "80x15" %>
+                  <% elsif restaurant.average_rating <= 3 %>
+                  <%= image_tag "3star.png", alt: "3 stars", size: "80x15" %>
+                  <% elsif restaurant.average_rating <= 4 %>
+                  <%= image_tag "4star.png", alt: "4 stars", size: "80x15" %>
+                  <% else %>
+                  <%= image_tag "5star.png", alt: "5 stars", size: "80x15" %>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>

@@ -1,7 +1,8 @@
 class Restaurant < ApplicationRecord
   belongs_to :user
-  has_many :dishes
-  has_many :restaurant_bookings
+  has_many :dishes, dependent: :destroy
+  has_many :restaurant_bookings, dependent: :destroy
+  has_many :restaurant_reviews, dependent: :destroy
 
   has_one_attached :photo
 
@@ -19,5 +20,15 @@ class Restaurant < ApplicationRecord
       }
 
   DIETARY = ["Vegan", "Vegetarian", "Keto", "Paleo", "Pescaritan", "Gluten-free", "Lactose-free", "Dairy-free"]
+
+  def average_rating
+    return 0 if self.restaurant_reviews.length == 0
+    review_sum = 0
+    review_count = self.restaurant_reviews.length
+    self.restaurant_reviews.each do |review|
+      review_sum += review.rating
+     end
+      return (review_sum / review_count)
+  end
 
 end
