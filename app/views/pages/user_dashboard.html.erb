@@ -2,7 +2,7 @@
   </div>
 <div class="container container-profile">
   <div class="row info-row">
-    <div class="col-md-3 text-center">
+    <div class="col-12 text-center">
       <% if current_user.photo.attached? %>
           <% card_image = current_user.photo.key %>
       <% else %>
@@ -11,7 +11,7 @@
       <div class="user-photo"><%= cl_image_tag card_image, class: 'avatar-profile'%></div>
     </div>
 
-    <div class="col-md-9 info-section text-center">
+    <div class="col-12 info-section text-center">
       <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
       <h6> <%= current_user.email %> </h6>
       <% current_user.dietary_requirements.each do |dr| %>
