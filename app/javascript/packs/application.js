@@ -31,6 +31,8 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 import { restaurantBookingModal } from '../plugins/modal_restaurant_booking';
 import { gymBookingModal } from "../plugins/modal_gym_booking";
+import { initStarRating } from "../plugins/init_star_rating";
+import { initStarRatingRestaurant } from "../plugins/init_star_rating_restaurant";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -39,4 +41,6 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   restaurantBookingModal();
   gymBookingModal();
+  initStarRating();
+  initStarRatingRestaurant();
 });

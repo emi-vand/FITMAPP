@@ -33,6 +33,7 @@ class RestaurantsController < ApplicationController
       image_url: helpers.asset_url('logofinal_colour_marker.png')
     }]
     @restaurant_booking = RestaurantBooking.new
+    @restaurant_review = RestaurantReview.new
   end
 
   def new
