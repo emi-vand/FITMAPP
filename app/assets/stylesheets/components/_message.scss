@@ -8,3 +8,14 @@
     color: $gray-500;
   }
 }
+.avatar-chat {
+  height: 30px;
+  border-radius: 50%;
+}
+.message {
+  background-color: white;
+  border-radius: 10px;
+}
+.message p {
+  padding-right: 3px;
+}

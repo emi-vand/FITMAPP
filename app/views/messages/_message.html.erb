@@ -1,7 +1,17 @@
 <div class="message-container" id="message-<%= message.id %>">
-  <i class="author">
-    <span><%= message.user.username %></span>
-    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+  <div class="message">
+  <i class="author d-flex position-relative space-between justify-content border-bottom">
+     <div class="avatar-chat p-2 mb-2">
+      <% if @current_user.photo.attached? %>
+          <%= cl_image_tag @current_user.photo.key, class: "avatar-chat" %>
+      <% else %>
+          <%= image_tag "https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg", class: "avatar-chat" %>
+      <% end %>
+     </div>
+    <span class="pt-2 mb-2"><%= message.user.username %></span>
+    <small class="p-2 mt-1"><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
   </i>
-  <p><%= message.content %></p>
+  <p class="content"><%= message.content %></p>
+  </div>
 </div>
+
