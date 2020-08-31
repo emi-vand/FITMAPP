@@ -2,6 +2,7 @@
   <div class="message">
   <i class="author d-flex position-relative space-between justify-content border-bottom">
      <div class="avatar-chat p-2 mb-2">
+
       <% if @current_user.photo.attached? %>
           <%= cl_image_tag @current_user.photo.key, class: "avatar-chat" %>
       <% else %>
@@ -14,4 +15,3 @@
   <p class="content"><%= message.content %></p>
   </div>
 </div>
-

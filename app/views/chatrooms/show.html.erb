@@ -5,7 +5,7 @@
   <%= link_to "Chatboard", chatrooms_path, class: "btn btn-secondary btn-chat", style: "width: 100px"%>
   </div>
   <div class="info-messages">
-    <h1 style="color:white"><%= @chatroom.name %></h1>
+    <h1 style="color:white "><%= @chatroom.name %></h1>
   </div>
   <div>
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
@@ -20,4 +20,7 @@
     </div>
     </div>
   </div>
+
+
+
 
