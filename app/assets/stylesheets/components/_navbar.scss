@@ -27,9 +27,11 @@
     }
 }
 
-li.nav-item {
-  padding: 0.5rem;
+a.nav-link {
+  color: rgba(60, 55, 68, 1);
+  font-size: 12px;
 }
+
 
 .dropdown-menu {
   background-color: rgba(60, 55, 68, 0.7);

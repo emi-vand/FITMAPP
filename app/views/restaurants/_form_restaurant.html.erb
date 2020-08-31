@@ -8,6 +8,8 @@
 </div>
   <%= f.input :photo, as: :file %>
   <br>
-  <%= f.submit class: "btn btn-primary"%>
-  <%= link_to "Back to my restaurants", my_restaurants_path, class: "btn btn-secondary" %>
+  <div class="d-flex justify-content-center">
+    <%= link_to "Back", my_restaurants_path, class: "btn btn-secondary mr-2" %>
+    <%= f.submit class: "btn btn-primary"%>
+</div>
 <% end %>

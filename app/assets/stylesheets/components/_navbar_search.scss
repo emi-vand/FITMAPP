@@ -16,6 +16,12 @@
     &::placeholder {
       color: $blue;
     }
+    &:focus {
+      background-color: #E4F2F7;
+      &::placeholder{
+        color: $blue;
+      }
+    }
   }
   &:hover {
     opacity: 1;

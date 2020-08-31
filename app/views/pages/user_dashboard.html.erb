@@ -101,8 +101,10 @@
         <div class="card-product">
         <% if fav.photo.attached? %>
           <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <div class="img-thumbnail w-25 h-100"></div>
         <% end %>
-        <%= fav.name %>
+        <p class="p-3"> <%= fav.name %> </p>
 
       </div>
 
@@ -118,8 +120,10 @@
     <div class="card-product">
         <% if fav.photo.attached? %>
           <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <div class="img-thumbnail w-25 h-100"></div>
         <% end %>
-        <%= fav.name %>
+        <p class="p-3"> <%= fav.name %> </p>
     </div>
   </div>
     <% end %>
