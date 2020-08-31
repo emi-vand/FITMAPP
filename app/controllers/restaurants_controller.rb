@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
         lat: restaurant.latitude,
         lng: restaurant.longitude,
         infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: restaurant }),
-        image_url: helpers.asset_url('logofinal_colour_marker.png')
+        image_url: helpers.asset_url('fork&knife3.png')
       }
     end
 
@@ -30,7 +30,7 @@ class RestaurantsController < ApplicationController
       lat: @restaurant.latitude,
       lng: @restaurant.longitude,
       infoWindow: render_to_string(partial: "infowindow", locals: { restaurant: @restaurant }),
-      image_url: helpers.asset_url('logofinal_colour_marker.png')
+      image_url: helpers.asset_url('fork&knife3.png')
     }]
     @restaurant_booking = RestaurantBooking.new
     @restaurant_review = RestaurantReview.new
@@ -48,7 +48,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.user = current_user
     if @restaurant.save
-      redirect_to my_restaurants_path
+      redirect_to ownerdashboard_path
     else
       render :new
     end

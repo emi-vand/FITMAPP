@@ -11,6 +11,18 @@
   padding: 0 10px;
   position: relative;
   opacity: 0.6;
+  .navbar-version{
+    color: $blue;
+    &::placeholder {
+      color: $blue;
+    }
+    &:focus {
+      background-color: #E4F2F7;
+      &::placeholder{
+        color: $blue;
+      }
+    }
+  }
   &:hover {
     opacity: 1;
   }

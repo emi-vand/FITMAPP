@@ -24,12 +24,26 @@
       <p class="rest-card-text"><%= @restaurant.address %></p>
       <p class="rest-card-text"><%= @restaurant.category %></p>
       <p class="rest-card-text"><%= @restaurant.dietary_list %> </p>
-    <ul class="list-group list-group-flush">
+
+      <div class="container">
+        <div class="row">
       <% @restaurant.dishes.each do |dish| %>
-        <li class="list-group-item"><i class="fas fa-utensils"></i> - <strong> <%= dish.name %> </strong> - <%= dish.description %></li>
-      <% end %>
-    </ul>
+        <div class="col-6 col-md-4 card-container">
+          <div class="card-flip shadow">
+            <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= cl_image_path dish.photo.key, height: 250, crop: :fill; %>)">
+              <h5 class="text-center text-light"> <%= dish.name %> </h5>
+            </div>
+            <div class="back p-4">
+              <h5> <%= dish.name %> </h5>
+              <p> <%= dish.description %> </p>
+            </div>
+          </div>
+           </div>
+        <% end %>
+        </div>
+        </div>
     </div>
+
     <div class="card-body">
       <% if @restaurant.user != current_user %>
         <button type="button" class="btn btn-primary bn-sm" data-toggle="modal" data-target="#RestaurantBookingsModal">

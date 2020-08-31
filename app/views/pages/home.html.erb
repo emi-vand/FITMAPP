@@ -26,20 +26,51 @@
   <div id="banner" class="logo_banner">
     <%= image_tag "logofinal_white.png", class: "logo_white" %>
     <div class="home-button">
+      <% if current_user == nil %>
       <%= link_to "Join Now", restaurants_path, class: "btn-home btn btn-primary btn-lg" %>
+      <% end %>
     </div>
   </div>
 
 </div>
 
-<div class="container col">
-  <div class="card-explore row">
+<div class="container col border border-light rounded">
+  <div class="card-explore row border border-light rounded">
     <h3> HEALTHY NEAR YOU </h3>
     <h1> London </h1>
  <!--    <h3> Healthy Made Simple </h3> -->
-    <%= link_to "Explore", restaurants_path, class: "btn-home btn btn-primary btn-lg" %>
+   <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg btn-home" data-toggle="modal" data-target="#exampleModalCenter">
+      Explore
+    </button>
   </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0 p-0 pr-2">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <%= link_to "Food", restaurants_path, class: "btn btn-primary"  %>
+        <%= link_to "Gyms", gyms_path, class: "btn btn-secondary" %>
+      </div>
+      <div class="modal-body">
+        <div id="map"
+          style="width: 100%; height: 400px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="cards">
 
@@ -56,4 +87,7 @@
     </div>
 </div>
 
-
+<script>
+  document.querySelector('body').classList.add("bg-light")
+  document.querySelector('.search-navbar').classList.add("d-none")
+</script>

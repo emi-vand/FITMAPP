@@ -1,4 +1,6 @@
 <div class="container">
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
+
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Resturants</a>
@@ -13,19 +15,19 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="restaurant-tab">
       <div class="container">
-        <h1>My restaurants</h1>
+        <h3 class="text-left text-light">My restaurants</h3>
         <div class="row">
           <% current_user.restaurants.each do |restaurant|%>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="card">
+            <div class="col-12 col-md-6 pb-2">
+              <div class="card shadow border-0">
                 <% if restaurant.photo.attached? %>
                   <%= cl_image_tag restaurant.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
                 <% end %>
-                <div class="card-title">
+                <div class="card-title p-3">
                   <%= restaurant.name %>
-                  <%= link_to "View restaurant", restaurant_path(restaurant) %>
-                  <%= link_to "Edit restaurant", edit_restaurant_path(restaurant) %>
-                  <%= link_to "Add dishes", new_restaurant_dish_path(restaurant) %>
+                  <%= link_to "View ", restaurant_path(restaurant) %> |
+                  <%= link_to "Edit ", edit_restaurant_path(restaurant) %>
+                  <p> <%= link_to "Add dishes", new_restaurant_dish_path(restaurant) %> </p>
                 </div>
               </div>
             </div>
@@ -35,19 +37,19 @@
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="gym-tab">
       <div class="container">
-        <h1>My gyms</h1>
+        <h3 class="text-left text-light">My gyms</h3>
         <div class="row">
           <% current_user.gyms.each do |gym|%>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="card">
+            <div class="col-12 col-md-6 pb-2">
+              <div class="card shadow border-0">
                 <% if gym.photo.attached? %>
                   <%= cl_image_tag gym.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
                 <% end %>
-                <div class="card-title">
+                <div class="card-title p-3">
                   <%= gym.name %>
-                  <%= link_to "View gym", gym_path(gym) %>
-                  <%= link_to "Edit gym", edit_gym_path(gym) %>
-                  <%= link_to "Add classes", new_gym_gym_class_path(gym) %>
+                  <%= link_to "View", gym_path(gym) %> |
+                  <%= link_to "Edit", edit_gym_path(gym) %>
+                  <p> <%= link_to "Add classes", new_gym_gym_class_path(gym) %> </p>
                 </div>
               </div>
             </div>
@@ -59,37 +61,37 @@
 
       <div class="container">
         <div class="row">
-          
+
             <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6"><h3>Gym Class Bookings</h3>
+            <div class="col-sm-12 col-md-6 col-lg-6"><h3 class="text-left text-light">Gym Class Bookings</h3>
               <ul class="list-group">
                 <% current_user.gyms.each do |gym|%>
-                  <% gym.gym_classes.each do |gClass| %>             
+                  <% gym.gym_classes.each do |gClass| %>
                     <% gClass.class_bookings.each do |booking| %>
-                      <li class="list-group-item"> 
-                        <%= booking.date.to_formatted_s(:rfc822) %> - 
-                        <%= booking.gym_class.name %> - 
+                      <li class="list-group-item">
+                        <%= booking.date.to_formatted_s(:rfc822) %> -
+                        <%= booking.gym_class.name %> -
                         <%= booking.user.first_name %> <%= booking.user.last_name %>
-                      </li>                 
+                      </li>
                     <% end %>
                   <% end %>
                 <% end %>
               </ul>
             </div>
-          
-            <div class="col-sm-12 col-md-6 col-lg-6"><h3>Restaurant Bookings</h3>
+
+            <div class="col-sm-12 col-md-6 col-lg-6"><h3 class="text-left text-light">Restaurant Bookings</h3>
               <ul class="list-group">
                 <% current_user.restaurants.each do |restaurant|%>
-                  <% restaurant.restaurant_bookings.each do |booking| %>  
+                  <% restaurant.restaurant_bookings.each do |booking| %>
                     <li class="list-group-item">
-                      <%= booking.date.to_formatted_s(:rfc822) %> - <%= booking.time.strftime("%k:%M") %> - 
-                      <%= booking.restaurant.name %> - 
+                      <%= booking.date.to_formatted_s(:rfc822) %> - <%= booking.time.strftime("%k:%M") %> -
+                      <%= booking.restaurant.name %> -
                       <%= booking.user.first_name %> <%= booking.user.last_name %>
                     </li>
                   <% end %>
                 <% end %>
               </ul>
-            </div>  
+            </div>
             </div>
         </div>
       </div>
@@ -99,6 +101,6 @@
 
 
 
-              
+
 
 

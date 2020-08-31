@@ -40,7 +40,7 @@ class GymsController < ApplicationController
     @gym = Gym.new(gym_params)
     @gym.user = current_user
     if @gym.save
-      redirect_to my_gyms_path
+      redirect_to ownerdashboard_path
     else
       render :new
     end
