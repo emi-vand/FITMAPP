@@ -28,6 +28,8 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'pg_search', '~> 2.3.0'
 
+gem 'gemoji'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -1,0 +1,56 @@
+.chatroom {
+  background: #8A9BA8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 1px solid $gray-200;
+  max-width: 100%;
+
+  h1 {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid $gray-200;
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+}
+
+#messages {
+  padding: 0 1rem;
+  padding-top: 1rem;
+  overflow: scroll;
+  max-height: calc(100vh - 70px - 65px - 71px);
+}
+
+#new_message {
+  padding: 1rem;
+  border-top: 1px solid $gray-200;
+
+  .form-group {
+    margin-bottom: 0;
+  }
+}
+.btn-chat {
+  position: absolute;
+  padding-left: 15px;
+  margin: 5px;
+  font-size: 12px;
+  padding-right: 1px;
+  background-color: #EDEDED;
+  margin-left: -14px;
+  margin-top: 10px;
+  border: none;
+  font-style: bold;
+  color: #4599E5;
+
+}
+.arrow-chat {
+  position: relative;
+  z-index: 1;
+  color: #4599E5;
+  left: 8px;
+  top: 12px;
+  font-size: 14px;
+}
+.arrow-chat :hover {
+  background-color: white;
+}

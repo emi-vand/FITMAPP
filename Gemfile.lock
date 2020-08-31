@@ -110,6 +110,7 @@ GEM
     ffi (1.13.1)
     font-awesome-sass (5.13.0)
       sassc (>= 1.11)
+    gemoji (3.0.1)
     geocoder (1.6.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -291,6 +292,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass
+  gemoji
   geocoder
   jbuilder (~> 2.7)
   listen (~> 3.2)

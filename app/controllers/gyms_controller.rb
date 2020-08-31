@@ -28,6 +28,7 @@ class GymsController < ApplicationController
       image_url: helpers.asset_url('logofinal_colour_marker.png')
     }]
     @class_booking = ClassBooking.new
+    @gym_review = GymReview.new
   end
 
   def new
