@@ -34,7 +34,8 @@ import { gymBookingModal } from "../plugins/modal_gym_booking";
 import { initChatroomCable } from "../channels/chatroom_channel";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initStarRatingRestaurant } from "../plugins/init_star_rating_restaurant";
-
+import { initGymAutocomplete } from "../plugins/init_autocomplete";
+import { initRestAutocomplete } from "../plugins/init_autocomplete";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -46,4 +47,6 @@ document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   initStarRating();
   initStarRatingRestaurant();
+  initGymAutocomplete();
+  initRestAutocomplete();
 });
