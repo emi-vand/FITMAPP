@@ -35,7 +35,7 @@
             <!-- Book now -->
               <% if @gym.user != current_user %>
 
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<%= gymclass.id %> ">
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<%= gymclass.id %> ">
                 <%= "Book #{gymclass.name} Now" %>
               </button>
               <% end %>
@@ -126,8 +126,8 @@
       Be the first to leave a review for <%= @gym.name %>
     <% else %>
       <% @gym.gym_reviews.reverse_order.each do |review| %>
-      <p id="review"> 
-        <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp 
+      <p id="review">
+        <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp
         <% if review.rating == 0 %>
           <%= image_tag "0star.png", alt: "alttext" %>
           <% elsif review.rating == 1 %>
