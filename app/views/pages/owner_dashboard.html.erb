@@ -1,5 +1,26 @@
-<div class="container">
-  <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
+ <div class="profile-page-top">
+    <div class="d-flex flex-row-reverse">
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
+      <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary btn-sm mr-2" %>
+
+    </div>
+  </div>
+<div class="container container-profile">
+  <div class="row info-row">
+    <div class="col-12 text-center">
+      <% if current_user.photo.attached? %>
+          <% card_image = current_user.photo.key %>
+          <div class="user-photo"><%= cl_image_tag card_image, class: 'img-profile-avatar'%></div>
+      <% else %>
+        <img src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" alt="..." class="img-profile-avatar">
+      <% end %>
+    </div>
+
+    <div class="col-12 info-section text-center pt-5 pb-4">
+      <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
+      <h6> <%= current_user.email %> </h6>
+    </div>
+  </div>
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -15,7 +36,7 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="restaurant-tab">
       <div class="container">
-        <h3 class="text-left text-light">My restaurants</h3>
+        <h5 class="text-left text-light pt-3">My restaurants</h5>
         <div class="row">
           <% current_user.restaurants.each do |restaurant|%>
             <div class="col-12 col-md-6 pb-2">
@@ -37,7 +58,7 @@
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="gym-tab">
       <div class="container">
-        <h3 class="text-left text-light">My gyms</h3>
+        <h5 class="text-left text-light pt-3">My gyms</h5>
         <div class="row">
           <% current_user.gyms.each do |gym|%>
             <div class="col-12 col-md-6 pb-2">
@@ -60,10 +81,10 @@
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="bookings-tab">
 
       <div class="container">
-        <div class="row">
 
-            <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6"><h3 class="text-left text-light">Gym Class Bookings</h3>
+
+            <div class="row mb-3">
+            <div class="col-12 col-md-6"><h5 class="text-center text-light pt-3">Gym Class Bookings</h5>
               <ul class="list-group">
                 <% current_user.gyms.each do |gym|%>
                   <% gym.gym_classes.each do |gClass| %>
@@ -79,7 +100,7 @@
               </ul>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-6"><h3 class="text-left text-light">Restaurant Bookings</h3>
+            <div class="col-12 col-md-6"><h5 class="text-center text-light pt-3">Restaurant Bookings</h5>
               <ul class="list-group">
                 <% current_user.restaurants.each do |restaurant|%>
                   <% restaurant.restaurant_bookings.each do |booking| %>
@@ -93,7 +114,7 @@
               </ul>
             </div>
             </div>
-        </div>
+
       </div>
     </div>
   </div>

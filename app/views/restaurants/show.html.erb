@@ -28,11 +28,17 @@
       <div class="container">
         <div class="row">
       <% @restaurant.dishes.each do |dish| %>
-        <div class="col-6 col-md-4 card-container">
+        <div class="col-6 col-md-4 mb-4 card-container">
           <div class="card-flip shadow">
+            <% if dish.photo.attached?  %>
             <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= cl_image_path dish.photo.key, height: 250, crop: :fill; %>)">
-              <h5 class="text-center text-light"> <%= dish.name %> </h5>
+              <h5 class="text-center text-white"> <%= dish.name %> </h5>
             </div>
+            <% else %>
+            <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))">
+              <h5 class="text-center text-white"> <%= dish.name %> </h5>
+            </div>
+            <% end %>
             <div class="back p-4">
               <h5> <%= dish.name %> </h5>
               <p> <%= dish.description %> </p>
@@ -46,7 +52,7 @@
 
     <div class="card-body">
       <% if @restaurant.user != current_user %>
-        <button type="button" class="btn btn-primary bn-sm" data-toggle="modal" data-target="#RestaurantBookingsModal">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#RestaurantBookingsModal">
           <%= "Book #{@restaurant.name} Now" %>
         </button>
       <% end %>
@@ -129,8 +135,8 @@
       Be the first to leave a review for <%= @restaurant.name %>
     <% else %>
       <% @restaurant.restaurant_reviews.reverse_order.each do |review| %>
-      <p id="review"> 
-        <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp 
+      <p id="review">
+        <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp
         <% if review.rating == 0 %>
           <%= image_tag "0star.png", alt: "alttext" %>
           <% elsif review.rating == 1 %>
