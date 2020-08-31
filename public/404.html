@@ -4,64 +4,212 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    body {
+  background-color: #fcf8f3;
+}
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  color: #3C3744;
+  font-weight: 700;
+  text-align: center;
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  color: #3C3744;
+  font-weight: 500;
+  text-align: center;
+}
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+p {
+  text-align: center;
+}
+a {
+  font-family: 'Arial';
+  text-transform: uppercase;
+  color: #3C3744;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: 3px;
+  background: #4598e54f;
+  color: #ffffff;
+  transition: 1s;
+}
+a:hover {
+  background: #4599E5;
+}
+
+.outer-wrapper {
+  padding-top: 10%;
+}
+
+.outer-wrapper .inner {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  white-space: nowrap;
+}
+
+.four-wrapper {
+  position: relative;
+  width: 200px;
+  height: 260px;
+  margin: 12px;
+}
+.four-wrapper .leg-1 {
+  background: linear-gradient(to right, #4599E5 0%, #4599E5 20%, #4599E5 50%, #4599E5 100%);
+  width: 210px;
+  height: 65px;
+  overflow: hidden;
+  position: absolute;
+  top: 44px;
+  left: 0;
+  border-radius: 35px;
+  transform-origin: 50% 100%;
+  transform: rotate(-50deg);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+}
+.four-wrapper .leg-2 {
+  background: linear-gradient(to right, #4599E5 0%, #4599E5 20%, #4599E5 50%, #4599E5 100%);
+  width: 100%;
+  height: 65px;
+  overflow: hidden;
+  position: absolute;
+  top: 113px;
+  left: 0;
+  border-radius: 35px;
+  z-index: 1;
+}
+.four-wrapper .leg-2::before, .four-wrapper .leg-2::after {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.four-wrapper .leg-2::before {
+  width: 30px;
+  height: 80px;
+  transform: rotate(50deg);
+  left: 50px;
+  top: -15px;
+}
+.four-wrapper .leg-2::after {
+  width: 30px;
+  height: 100%;
+  transform: skew(-15deg);
+  left: 88px;
+  top: 0;
+}
+.four-wrapper .leg-3 {
+  background: linear-gradient(to top, #4599E5 0%, #4599E5 20%, #4599E5 50%, #4599E5 100%);
+  width: 65px;
+  height: 235px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 95px;
+  border-radius: 35px;
+  box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+.four-wrapper .leg-3::before, .four-wrapper .leg-3::after {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.four-wrapper .leg-3::before {
+  width: 30px;
+  height: 100%;
+  transform: rotate(25deg);
+}
+.four-wrapper .leg-3::after {
+  top: -30px;
+  width: 25px;
+  height: 100%;
+  transform: rotate(50deg);
+}
+
+.zero-wrapper {
+  background: linear-gradient(45deg, #4599E5 0%, #4599E5 20%, #4599E5 50%, #4599E5 100%);
+  position: relative;
+  width: 235px;
+  height: 235px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2) inset;
+  margin: 12px;
+}
+.zero-wrapper::before, .zero-wrapper::after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+.zero-wrapper::before {
+  top: 40%;
+  left: 33px;
+  width: 104px;
+  height: 60%;
+  transform: rotate(35deg);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.zero-wrapper::after {
+  top: -60px;
+  left: -5px;
+  width: 60%;
+  height: 110%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+}
+.zero-wrapper .zero-wrapper__middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 104px;
+  height: 104px;
+  background-color: #fcf8f3;
+  border-radius: 50%;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
   </style>
 </head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <body>
+    <div class="outer-wrapper">
+      <div class="inner">
+        <div class="four-wrapper">
+          <div class="leg-1"></div>
+          <div class="leg-2"></div>
+          <div class="leg-3"></div>
+        </div>
+    
+        <div class="zero-wrapper">
+          <div class="zero-wrapper__middle"></div>
+        </div>
+    
+        <div class="four-wrapper">
+          <div class="leg-1"></div>
+          <div class="leg-2"></div>
+          <div class="leg-3"></div>
+        </div>
+      </div>
+      
+      <h1>Page not found</h1>
+      <h3>No healthiness to be found here</h3>
+      <br>
+      <br>
+      <p><a href="/">Head Home</a></p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+  </body>
 </html>
