@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_154820) do
+ActiveRecord::Schema.define(version: 2020_08_30_214848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(version: 2020_08_27_154820) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["gym_id"], name: "index_gym_classes_on_gym_id"
+  end
+
+  create_table "gym_reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "gym_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gym_id"], name: "index_gym_reviews_on_gym_id"
   end
 
   create_table "gyms", force: :cascade do |t|
@@ -165,6 +174,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_154820) do
   add_foreign_key "class_bookings", "users"
   add_foreign_key "dishes", "restaurants"
   add_foreign_key "gym_classes", "gyms"
+  add_foreign_key "gym_reviews", "gyms"
   add_foreign_key "gyms", "users"
   add_foreign_key "restaurant_bookings", "restaurants"
   add_foreign_key "restaurant_bookings", "users"
