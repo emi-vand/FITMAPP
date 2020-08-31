@@ -2,6 +2,7 @@
   span {
     font-style: normal;
     font-weight: bold;
+    padding-bottom: 5px;
   }
 
   small {
@@ -9,13 +10,32 @@
   }
 }
 .avatar-chat {
-  height: 30px;
+  height: 6vh;
+  width: 6vh;
   border-radius: 50%;
+  object-fit: cover;
 }
 .message {
   background-color: white;
   border-radius: 10px;
+  box-shadow: 0px 1.5px 2px #3C3744;
 }
 .message p {
   padding-right: 3px;
+}
+.content {
+  padding-left: 46px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+.username {
+  padding-top: 16px;
+  padding-left: 18px;
+}
+.time {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+i {
+  padding-bottom: 6px;
 }
