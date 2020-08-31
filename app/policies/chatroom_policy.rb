@@ -6,6 +6,6 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    user
+    true
   end
 end
