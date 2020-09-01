@@ -75,8 +75,8 @@
             <div class="modal-body">
               <%= simple_form_for [@restaurant, @restaurant_booking] do |f| %>
               <div class="row">
-                <div class="col-6"><%= f.input :date %></div>
-                <div class="col-6"><%= f.input :time %></div>
+                <div class="col-6"><%= f.input :date, html5: true %></div>
+                <div class="col-6"><%= f.input :time, html5: true %></div>
               </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
