@@ -6,8 +6,8 @@
     </div>
   </div>
 <div class="container container-profile">
-  <div class="row info-row">
-    <div class="col-12 text-center">
+  <div class="row info-row justify-content-center">
+    <div class="col-12 col-md-6 text-center">
       <% if current_user.photo.attached? %>
           <% card_image = current_user.photo.key %>
           <div class="user-photo"><%= cl_image_tag card_image, class: 'img-profile-avatar'%></div>
@@ -39,14 +39,14 @@
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
             <h5 class="text-left py-2">Restaurant Bookings</h5>
-              <div class="row">
+              <div class="row justify-content-center">
                 <% current_user.restaurant_bookings.each do |booking| %>
-                 <div class="col-12 pb-1">
+                 <div class="col-12 col-md-6 pb-1">
                   <div class="card-product">
                     <% if booking.restaurant.photo.attached? %>
                       <%= cl_image_tag booking.restaurant.photo.key, height: 300, width: 400, crop: :fill %>
                     <% else %>
-                      <div class="img-thumbnail w-25 h-100"></div>
+                      <img style="background-color: #EDEDED">
                     <% end %>
                   <div class="card-info d-flex justify-content-around p-3 w-50">
                     <p> <%= booking.restaurant.name %> </p>
@@ -65,14 +65,14 @@
 
 
             <h5 class="text-left pt-5 pb-2">Gym Bookings</h5>
-              <div class="row">
+              <div class="row justify-content-center">
                 <% current_user.class_bookings.each do |booking| %>
-                <div class="col-12 pb-1">
+                <div class="col-12 col-md-6 pb-1">
                   <div class="card-product d-flex">
                     <% if booking.gym_class.photo.attached? %>
                       <%= cl_image_tag booking.gym_class.photo.key, height: 300, width: 400, crop: :fill %>
                     <% else %>
-                      <div class="img-thumbnail w-25 h-100"></div>
+                      <img style="background-color: #EDEDED">
                     <% end %>
                     <div class="card-info d-flex p-3 w-50">
                       <div>
@@ -95,14 +95,14 @@
 
   <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="restaurant-favorites-tab">
     <h5 class="text-left py-2">Restaurant Favourites</h5>
-    <div class="row">
+    <div class="row justify-content-center">
       <% current_user.favorited_by_type("Restaurant").each do |fav| %>
-       <div class="col-12 pb-1">
+       <div class="col-12 col-md-6 pb-1">
         <div class="card-product">
         <% if fav.photo.attached? %>
           <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
         <% else %>
-          <div class="img-thumbnail w-25 h-100"></div>
+          <img style="background-color: #EDEDED">
         <% end %>
         <p class="p-3"> <%= fav.name %> </p>
 
@@ -114,14 +114,14 @@
 
 
   <h5 class="text-left pt-5 pb-2">Gym Favourites</h5>
-  <div class="row">
+  <div class="row justify-content-center">
     <% current_user.favorited_by_type("Gym").each do |fav| %>
-    <div class="col-12 pb-1">
+    <div class="col-12 col-md-6 pb-1">
     <div class="card-product">
         <% if fav.photo.attached? %>
           <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
         <% else %>
-          <div class="img-thumbnail w-25 h-100"></div>
+          <img style="background-color: #EDEDED">
         <% end %>
         <p class="p-3"> <%= fav.name %> </p>
     </div>

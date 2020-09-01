@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-5 pb-4 shadow rounded new-restaurant-container">
+<div class="container mt-5 mb-5 pb-4 shadow rounded new-gym-container">
   <h1 class="text-center pt-4"> Nearby Restaurants </h1>
     <!-- Collapse button -->
         <p class="text-center m-3">
@@ -76,7 +76,7 @@
   </div>
 
   <div id="map"
-    style="width: 100%; height: 600px;"
+    style="width: 100%; height: 500px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>

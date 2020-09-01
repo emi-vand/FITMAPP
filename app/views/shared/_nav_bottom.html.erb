@@ -1,6 +1,6 @@
+<% if user_signed_in? %>
 <nav class="nav nav-pills nav-justified d-flex justify-content-around bottom-nav fixed-bottom pt-1">
   <!-- <a class="nav-item nav-link" href="#" > Restaurants </a> -->
-  <% if user_signed_in? %>
     <%= link_to restaurants_path do %>
       <i class="nav-item nav-link fas fa-utensils"></i>
     <% end %>
@@ -19,5 +19,5 @@
         <i class="nav-item nav-link fas fa-user-circle"></i>
       <% end %>
     <% end %>
-  <% end %>
 </nav>
+<% end %>
