@@ -1,11 +1,18 @@
 <div class="container mt-3">
-  <div class="rest-card">
+  <div class="rest-card bg-light rounded">
     <% if @restaurant.photo.attached? %>
-    <%= cl_image_tag @restaurant.photo.key, class: "card-img-top", alt: "..."%>
+      <%= cl_image_tag @restaurant.photo.key, class: "card-img-top rounded-top" %>
     <% end %>
-    <div class="rest-card-body">
-      <h5 class="rest-card-title"><%= @restaurant.name %></h5>
-        <% if @restaurant.average_rating <= 0  %>
+
+    <div class="rest-card-body d-flex flex-column justify-content-center ">
+      <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
+        <i class="fas fa-heart fav-heart"></i>
+      <% end %>
+
+      <h5 class="rest-card-title text-center"><%= @restaurant.name %></h5>
+        <p class="text-center total_reviews">
+          <%= link_to restaurant_path(@restaurant, anchor: "review") do  %>
+              <% if @restaurant.average_rating <= 0  %>
               <%= image_tag "0star.png", alt: "alttext" %>
               <% elsif @restaurant.average_rating <= 1 %>
               <%= image_tag "1star.png", alt: "alttext" %>
@@ -18,35 +25,36 @@
               <% else %>
               <%= image_tag "5star.png", alt: "alttext" %>
             <% end %>
-      <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
-        <i class="fas fa-heart"></i>
-      <% end %>
-      <p class="rest-card-text"><%= @restaurant.address %></p>
-      <p class="rest-card-text"><%= @restaurant.category %></p>
-      <p class="rest-card-text"><%= @restaurant.dietary_list %> </p>
+            (<%= @restaurant.restaurant_reviews.count %>)
+            <% end %> </p>
+      <p class="rest-card-text text-center m-0"><%= @restaurant.address %></p>
+      <p class="rest-card-text text-center"><%= @restaurant.category %></p>
+      <span class="badge badge-primary dietary-show"><%= @restaurant.dietary_list %> </span>
+    </div>
+
 
       <div class="container">
         <div class="row">
-      <% @restaurant.dishes.each do |dish| %>
-        <div class="col-6 col-md-4 mb-4 card-container">
-          <div class="card-flip shadow">
-            <% if dish.photo.attached?  %>
-            <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= cl_image_path dish.photo.key, height: 250, crop: :fill; %>)">
-              <h5 class="text-center text-white"> <%= dish.name %> </h5>
-            </div>
-            <% else %>
-            <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))">
-              <h5 class="text-center text-white"> <%= dish.name %> </h5>
-            </div>
-            <% end %>
-            <div class="back p-4">
-              <h5> <%= dish.name %> </h5>
-              <p> <%= dish.description %> </p>
-            </div>
-          </div>
-           </div>
-        <% end %>
+          <% @restaurant.dishes.each do |dish| %>
+            <div class="col-6 col-md-4 mb-4 card-container">
+              <div class="card-flip shadow">
+              <% if dish.photo.attached?  %>
+                <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path dish.photo.key %>)">
+                  <h5 class="text-center text-white"> <%= dish.name %> </h5>
+                </div>
+              <% else %>
+                <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))">
+                  <h5 class="text-center text-white"> <%= dish.name %> </h5>
+                </div>
+              <% end %>
+              <div class="back p-4">
+                <h6 class="pb-1 text-center"> <%= dish.name %> </h6>
+                <p> <%= dish.description %> </p>
+              </div>
         </div>
+      </div>
+      <% end %>
+
         </div>
     </div>
 
@@ -69,8 +77,8 @@
             <div class="modal-body">
               <%= simple_form_for [@restaurant, @restaurant_booking] do |f| %>
               <div class="row">
-                <div class="col-6"><%= f.input :date %></div>
-                <div class="col-6"><%= f.input :time %></div>
+                <div class="col-6"><%= f.input :date, html5: true %></div>
+                <div class="col-6"><%= f.input :time, html5: true %></div>
               </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -112,47 +120,54 @@
         </div>
       </div>
 
-      <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
+      <%= link_to "Back", restaurants_path, class: "btn btn-secondary btn-sm"  %>
     </div>
-  </div>
-  <div id="map"
-    class="container"
-    style="width: 100%; height: 300px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+    <div id="map"
+      class="container"
+      style="width: 100%; height: 300px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 
-  <div>
-    <%= simple_form_for([ @restaurant, @restaurant_review ], remote: true) do |f| %>
-      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-      <%= f.input :content, as: :text %>
-      <%= f.button :submit %>
-    <% end %>
-  </div>
-
-  <div id="restaurant_reviews">
-    <% if @restaurant.restaurant_reviews.blank? %>
-      Be the first to leave a review for <%= @restaurant.name %>
-    <% else %>
-      <% @restaurant.restaurant_reviews.reverse_order.each do |review| %>
-      <p id="review">
-        <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp
-        <% if review.rating == 0 %>
-          <%= image_tag "0star.png", alt: "alttext" %>
-          <% elsif review.rating == 1 %>
-          <%= image_tag "1star.png", alt: "alttext" %>
-          <% elsif review.rating == 2 %>
-          <%= image_tag "2star.png", alt: "alttext" %>
-          <% elsif review.rating == 3 %>
-          <%= image_tag "3star.png", alt: "alttext" %>
-          <% elsif review.rating == 4 %>
-          <%= image_tag "4star.png", alt: "alttext" %>
-          <% else %>
-          <%= image_tag "5star.png", alt: "alttext" %>
+    <div class="review_section">
+      <div id="review_form">
+        <%= simple_form_for([ @restaurant, @restaurant_review ], remote: true) do |f| %>
+          <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+          <%= f.input :content, as: :text %>
+          <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
-        :    &nbsp "<%= review.content %>"
-      </p>
-      <% end %>
-    <% end %>
+      </div>
+
+      <div id="restaurant_reviews">
+        <% if @restaurant.restaurant_reviews.blank? %>
+          Be the first to leave a review for <%= @restaurant.name %>
+        <% else %>
+          <% @restaurant.restaurant_reviews.reverse_order.each do |review| %>
+          <div id="review">
+            <div class="rating">
+              <%= review.created_at.strftime("%d %b %y") %>
+              <% if review.rating == 0 %>
+                <%= image_tag "0star.png", alt: "alttext" %>
+                <% elsif review.rating == 1 %>
+                <%= image_tag "1star.png", alt: "alttext" %>
+                <% elsif review.rating == 2 %>
+                <%= image_tag "2star.png", alt: "alttext" %>
+                <% elsif review.rating == 3 %>
+                <%= image_tag "3star.png", alt: "alttext" %>
+                <% elsif review.rating == 4 %>
+                <%= image_tag "4star.png", alt: "alttext" %>
+                <% else %>
+                <%= image_tag "5star.png", alt: "alttext" %>
+              <% end %>
+            </div>
+            <div class="content">
+              '<%= review.content %>'
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
   </div>
 </div>

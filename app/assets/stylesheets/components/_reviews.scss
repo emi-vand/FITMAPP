@@ -1,0 +1,88 @@
+.review_section {
+  display: flex;
+  padding: 8px;
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+}
+
+#review_form {
+  padding: 8px;
+  width: 33%;
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+  }
+}
+
+#gym_reviews {
+  width: 66%;
+  height: 300px;
+  padding: 8px;
+  overflow-x: hidden; 
+  overflow-y: auto; 
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+  }
+}
+
+#restaurant_reviews {
+  width: 66%;
+  height: 300px;
+  padding: 8px;
+  overflow-x: hidden; 
+  overflow-y: auto; 
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+  }
+}
+
+#review {
+  display: flex;
+  border-bottom: 1px dashed #91A3B0;
+  padding: 4px;
+}
+
+#review .content {
+  text-align: left;
+  padding: 0;
+  @media only screen and (max-width: 800px) {
+    width: 75%;
+  }
+}
+
+.rating {
+  margin-right: 8px;
+  @media only screen and (max-width: 800px) {
+    width: 25%;
+  }
+}
+
+
+.total_reviews a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+// scrollbar
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4599E5;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3C3744;
+}

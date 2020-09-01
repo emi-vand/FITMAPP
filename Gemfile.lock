@@ -288,6 +288,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  carrierwave (~> 2.0)
   cloudinary (~> 1.12.0)
   devise
   dotenv-rails

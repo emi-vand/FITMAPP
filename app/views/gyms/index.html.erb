@@ -29,7 +29,7 @@
               <h2> <%= gym.name %> </h2>
               <p> <%= gym.category %> </p>
               <p class="text-right"> Distance </p>
-              <p class="text-right stars"> Rating: 
+              <p class="text-right stars"> Rating:
                 <% if gym.average_rating <= 0  %>
                   <%= image_tag "0star.png", alt: "alttext" %>
                   <% elsif gym.average_rating <= 1 %>
@@ -52,7 +52,7 @@
   </div>
 
   <div id="map"
-     style="width: 100%; height: 600px;"
+     style="width: 100%; height: 500px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
