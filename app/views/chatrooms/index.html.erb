@@ -1,7 +1,7 @@
 
-  <div class="list-group m-3">
+  <div class="list-group list-group-chatroom m-3">
       <% @chatrooms.each do |chatroom| %>
-        <%= link_to "#{chatroom.name}", chatroom_path(chatroom), class: "card m-2 rounded list-group-item #{'active' if chatroom == @chatroom}" %>
+        <%= link_to "#{chatroom.name}", chatroom_path(chatroom), class: "card m-2 rounded list-group-item list-group-item-chatroom #{'active' if chatroom == @chatroom}" %>
       <% end %>
   </div>
 

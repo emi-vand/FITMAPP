@@ -1,11 +1,16 @@
 <div class="container mt-3">
-  <div class="rest-card">
+  <div class="rest-card bg-light">
     <% if @restaurant.photo.attached? %>
-    <%= cl_image_tag @restaurant.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @restaurant.photo.key, class: "card-img-top" %>
     <% end %>
-    <div class="rest-card-body">
-      <h5 class="rest-card-title"><%= @restaurant.name %></h5>
-        <% if @restaurant.average_rating <= 0  %>
+
+    <div class="rest-card-body d-flex flex-column justify-content-center ">
+      <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
+        <i class="fas fa-heart fav-heart d-flex flex-row-reverse"></i>
+      <% end %>
+
+      <h5 class="rest-card-title text-center"><%= @restaurant.name %></h5>
+        <p class="text-center"> <% if @restaurant.average_rating <= 0  %>
               <%= image_tag "0star.png", alt: "alttext" %>
               <% elsif @restaurant.average_rating <= 1 %>
               <%= image_tag "1star.png", alt: "alttext" %>
@@ -17,36 +22,34 @@
               <%= image_tag "4star.png", alt: "alttext" %>
               <% else %>
               <%= image_tag "5star.png", alt: "alttext" %>
-            <% end %>
-      <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
-        <i class="fas fa-heart"></i>
-      <% end %>
-      <p class="rest-card-text"><%= @restaurant.address %></p>
-      <p class="rest-card-text"><%= @restaurant.category %></p>
-      <p class="rest-card-text"><%= @restaurant.dietary_list %> </p>
+            <% end %> </p>
+      <p class="rest-card-text text-center m-0"><%= @restaurant.address %></p>
+      <p class="rest-card-text text-center"><%= @restaurant.category %></p>
+      <span class="badge badge-primary dietary-show"><%= @restaurant.dietary_list %> </span>
+    </div>
 
       <div class="container">
         <div class="row">
-      <% @restaurant.dishes.each do |dish| %>
-        <div class="col-6 col-md-4 mb-4 card-container">
-          <div class="card-flip shadow">
-            <% if dish.photo.attached?  %>
-            <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= cl_image_path dish.photo.key, height: 250, crop: :fill; %>)">
-              <h5 class="text-center text-white"> <%= dish.name %> </h5>
-            </div>
-            <% else %>
-            <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))">
-              <h5 class="text-center text-white"> <%= dish.name %> </h5>
-            </div>
-            <% end %>
-            <div class="back p-4">
-              <h5> <%= dish.name %> </h5>
-              <p> <%= dish.description %> </p>
-            </div>
-          </div>
-           </div>
-        <% end %>
+          <% @restaurant.dishes.each do |dish| %>
+            <div class="col-6 col-md-4 mb-4 card-container">
+              <div class="card-flip shadow">
+              <% if dish.photo.attached?  %>
+                <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path dish.photo.key %>)">
+                  <h5 class="text-center text-white"> <%= dish.name %> </h5>
+                </div>
+              <% else %>
+                <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))">
+                  <h5 class="text-center text-white"> <%= dish.name %> </h5>
+                </div>
+              <% end %>
+              <div class="back p-4">
+                <h6 class="pb-1 text-center"> <%= dish.name %> </h6>
+                <p> <%= dish.description %> </p>
+              </div>
         </div>
+      </div>
+      <% end %>
+
         </div>
     </div>
 
@@ -112,7 +115,7 @@
         </div>
       </div>
 
-      <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary btn-sm"  %>
+      <%= link_to "Back", restaurants_path, class: "btn btn-secondary btn-sm"  %>
     </div>
   </div>
   <div id="map"

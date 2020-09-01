@@ -33,7 +33,7 @@ class GymClassesController < ApplicationController
 
   def update
     if @gym_class.update(gym_class_params)
-      redirect_to @gym_class
+      redirect_to @gym_class.gym
     else
       render :edit
     end
