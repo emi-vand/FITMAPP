@@ -18,8 +18,8 @@
   width: 66%;
   height: 300px;
   padding: 8px;
-  overflow-x: hidden; 
-  overflow-y: auto; 
+  overflow-x: hidden;
+  overflow-y: auto;
   @media only screen and (max-width: 800px) {
     width: 100%;
   }
@@ -29,8 +29,8 @@
   width: 66%;
   height: 300px;
   padding: 8px;
-  overflow-x: hidden; 
-  overflow-y: auto; 
+  overflow-x: hidden;
+  overflow-y: auto;
   @media only screen and (max-width: 800px) {
     width: 100%;
   }
@@ -78,4 +78,12 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #3C3744;
+}
+
+
+//
+
+img.star-rating {
+  height: 10px;
+  width: 56px;
 }

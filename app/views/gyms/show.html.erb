@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container my-3">
   <div class="rest-card bg-light">
     <% if @gym.photo.attached? %>
       <%= cl_image_tag @gym.photo.key, class: "card-img-top" %>
@@ -117,7 +117,7 @@
     </div>
 
     <div class="review_section">
-      
+
         <div id="review_form">
           <%= simple_form_for([ @gym, @gym_review ], remote: true) do |f| %>
             <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
@@ -148,7 +148,7 @@
                 <% end %>
                 <br>
                 <%= review.created_at.strftime("%b %y") %>
-              </div>   
+              </div>
               <div class="content">
                 '<%= review.content %>'
               </div>
@@ -156,7 +156,7 @@
             <% end %>
           <% end %>
         </div>
-      
+
     </div>
   </div>
 </div>

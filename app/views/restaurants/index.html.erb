@@ -7,7 +7,7 @@
           </a>
         </p>
         <div class="collapse" id="collapseExample">
-        <div class="card card-body filter-container mb-2 justify-content-center">
+        <div class="card card-body filter-container mb-2 p-2 justify-content-center text-center">
             <%= simple_form_for :search, url: restaurants_path, method: "GET" do |f| %>
             <%= f.input :dietary, disabled: true ,  collection: Restaurant::DIETARY, as: :check_boxes, wrapper: :vertical_collection_inline %>
           <div class="d-flex justify-content-center">
@@ -29,22 +29,21 @@
               <h2><%= restaurant.name %> </h2>
               <p><%= restaurant.category %></p>
               <p class="text-right">Distance</p>
-              <p class="text-right">Rating: </p>
-              <div class="stars">
+              <p class="text-right">
                 <% if restaurant.average_rating <= 0  %>
-                  <%= image_tag "0star.png", alt: "0 stars", size: "80x15" %>
+                  <%= image_tag "0star.png", alt: "0 stars", class: "star-rating" %>
                   <% elsif restaurant.average_rating <= 1 %>
-                  <%= image_tag "1star.png", alt: "1 stars", size: "80x15" %>
+                  <%= image_tag "1star.png", alt: "1 stars", class: "star-rating" %>
                   <% elsif restaurant.average_rating <= 2 %>
-                  <%= image_tag "2star.png", alt: "2 stars", size: "80x15" %>
+                  <%= image_tag "2star.png", alt: "2 stars", class: "star-rating" %>
                   <% elsif restaurant.average_rating <= 3 %>
-                  <%= image_tag "3star.png", alt: "3 stars", size: "80x15" %>
+                  <%= image_tag "3star.png", alt: "3 stars", class: "star-rating" %>
                   <% elsif restaurant.average_rating <= 4 %>
-                  <%= image_tag "4star.png", alt: "4 stars", size: "80x15" %>
+                  <%= image_tag "4star.png", alt: "4 stars", class: "star-rating" %>
                   <% else %>
-                  <%= image_tag "5star.png", alt: "5 stars", size: "80x15" %>
+                  <%= image_tag "5star.png", alt: "5 stars", class: "star-rating" %>
                 <% end %>
-              </div>
+              </p>
             </div>
           </div>
         <% end %>
@@ -76,7 +75,7 @@
   </div>
 
   <div id="map"
-    style="width: 100%; height: 500px;"
+    style="width: 100%; height: 400px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
