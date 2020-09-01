@@ -1,5 +1,6 @@
-<div class="container mt-3">
+<div class="container my-3">
   <div class="rest-card bg-light rounded">
+
     <% if @restaurant.photo.attached? %>
       <%= cl_image_tag @restaurant.photo.key, class: "card-img-top rounded-top" %>
     <% end %>
