@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="rest-card">
     <% if @restaurant.photo.attached? %>
-    <%= cl_image_tag @restaurant.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+    <%= cl_image_tag @restaurant.photo.key, class: "card-img-top", alt: "..."%>
     <% end %>
     <div class="rest-card-body">
       <h5 class="rest-card-title"><%= @restaurant.name %></h5>

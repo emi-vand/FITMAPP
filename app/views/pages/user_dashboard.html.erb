@@ -20,7 +20,7 @@
       <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
       <h6> <%= current_user.email %> </h6>
       <% current_user.dietary_requirements.each do |dr| %>
-        <%= dr %>
+      <span class="badge badge-primary"><%= dr %></span>
         <% end %>
     </div>
   </div>
@@ -44,7 +44,7 @@
                  <div class="col-12 pb-1">
                   <div class="card-product">
                     <% if booking.restaurant.photo.attached? %>
-                      <%= cl_image_tag booking.restaurant.photo.key, height: 300, width: 400, crop: :fill %>
+                      <%= cl_image_tag booking.restaurant.photo.key %>
                     <% else %>
                       <div class="img-thumbnail w-25 h-100"></div>
                     <% end %>
@@ -70,7 +70,7 @@
                 <div class="col-12 pb-1">
                   <div class="card-product d-flex">
                     <% if booking.gym_class.photo.attached? %>
-                      <%= cl_image_tag booking.gym_class.photo.key, height: 300, width: 400, crop: :fill %>
+                      <%= cl_image_tag booking.gym_class.photo.key %>
                     <% else %>
                       <div class="img-thumbnail w-25 h-100"></div>
                     <% end %>
@@ -100,7 +100,7 @@
        <div class="col-12 pb-1">
         <div class="card-product">
         <% if fav.photo.attached? %>
-          <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag fav.photo.key %>
         <% else %>
           <div class="img-thumbnail w-25 h-100"></div>
         <% end %>
@@ -119,7 +119,7 @@
     <div class="col-12 pb-1">
     <div class="card-product">
         <% if fav.photo.attached? %>
-          <%= cl_image_tag fav.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag fav.photo.key %>
         <% else %>
           <div class="img-thumbnail w-25 h-100"></div>
         <% end %>
