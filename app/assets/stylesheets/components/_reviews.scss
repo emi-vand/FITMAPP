@@ -38,18 +38,25 @@
 
 #review {
   display: flex;
-  border-bottom: 1px dashed white;
+  border-bottom: 1px dashed #91A3B0;
   padding: 4px;
 }
 
 #review .content {
   text-align: left;
   padding: 0;
+  @media only screen and (max-width: 800px) {
+    width: 75%;
+  }
 }
 
 .rating {
   margin-right: 8px;
+  @media only screen and (max-width: 800px) {
+    width: 25%;
+  }
 }
+
 
 .total_reviews a {
   text-decoration: none;

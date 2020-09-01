@@ -1,7 +1,7 @@
 <div class="container mt-3">
-  <div class="rest-card bg-light">
+  <div class="rest-card bg-light rounded">
     <% if @gym.photo.attached? %>
-      <%= cl_image_tag @gym.photo.key, class: "card-img-top" %>
+      <%= cl_image_tag @gym.photo.key, class: "card-img-top rounded-top" %>
     <% end %>
 
 
@@ -34,7 +34,7 @@
           <p class="rest-card-text text-center">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
           <span class="badge badge-primary dietary-show mb-3"><%= @gym.style_list %> </span>
 
-          <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush rounded">
             <% @gym.gym_classes.each do |gymclass| %>
               <li class="list-group-item bg-info"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
               <!-- Book now -->
