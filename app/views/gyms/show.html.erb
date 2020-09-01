@@ -1,14 +1,17 @@
 <div class="container mt-3">
-  <div class="rest-card">
+  <div class="rest-card bg-light">
     <% if @gym.photo.attached? %>
-    <%= cl_image_tag @gym.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @gym.photo.key, class: "card-img-top" %>
     <% end %>
 
-      <div class="rest-card-body">
-        <h5 class="rest-card-title"><%= @gym.name %></h5>
-        <p><%= @gym.address %></p>
-        <p>Type: <%= @gym.category %></p>
-          <div class="total_reviews">
+
+    <div class="rest-card-body d-flex flex-column justify-content-center">
+      <%= link_to gym_fav_gym_path(@gym), method: :post do %>
+        <i class="fas fa-heart fav-heart d-flex flex-row-reverse"></i>
+      <% end %>
+
+        <h5 class="rest-card-title text-center"><%= @gym.name %></h5>
+          <p class="text-center total_reviews">
             <%= link_to gym_path(@gym, anchor: "review") do  %>
               <% if @gym.average_rating <= 0  %>
                 <%= image_tag "0star.png", alt: "alttext" %>
@@ -22,26 +25,26 @@
                 <%= image_tag "4star.png", alt: "alttext" %>
                 <% else %>
                 <%= image_tag "5star.png", alt: "alttext" %>
-              <% end %>
-              (<%= @gym.gym_reviews.count %>)
+             <% end %>
+            (<%= @gym.gym_reviews.count %>)
             <% end %>
-          </div>
-          <br>
-            <%= link_to gym_fav_gym_path(@gym), method: :post do %>
-              <i class="far fa-heart"></i><i class="fas fa-heart"></i>
-            <% end %>
+          </p>
+          <p class="rest-card-text text-center m-0"><%= @gym.address %></p>
+          <p class="rest-card-text text-center">Type: <%= @gym.category %></p>
+          <p class="rest-card-text text-center">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
+          <span class="badge badge-primary dietary-show mb-3"><%= @gym.style_list %> </span>
 
-        <p class="rest-card-text">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
-        <ul class="list-group list-group-flush">
-          <% @gym.gym_classes.each do |gymclass| %>
-            <li class="list-group-item"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
-            <!-- Book now -->
-              <% if @gym.user != current_user %>
-
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<%= gymclass.id %> ">
-                <%= "Book #{gymclass.name} Now" %>
-              </button>
-              <% end %>
+          <ul class="list-group list-group-flush">
+            <% @gym.gym_classes.each do |gymclass| %>
+              <li class="list-group-item bg-info"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
+              <!-- Book now -->
+                <% if @gym.user != current_user %>
+                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<%= gymclass.id %> ">
+                  <%= "Book #{gymclass.name} Now" %>
+                  </button>
+                <% else %>
+                  <%= link_to "Edit", edit_gym_class_path(gymclass) %>
+                <% end %>
 
                 <!-- Modal HTML -->
                 <div id="myModal<%= gymclass.id %>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,8 +75,6 @@
       </div>
 
     <div class="card-body">
-
-      <p> Tags: <%= @gym.style_list %> </p>
 
       <!-- Button trigger TAGS modal -->
       <% if @gym.user == current_user %>

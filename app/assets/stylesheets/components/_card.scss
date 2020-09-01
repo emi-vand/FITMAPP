@@ -36,8 +36,11 @@
   padding: 16px;
 }
 
-.card-product-actions a {
-  color: $secondary;
+.card-product-actions {
+  font-size: 12px !important;
+  a {
+    color: $secondary !important;
+  }
 }
 
 
@@ -57,7 +60,17 @@
   padding: 16px;
 }
 
-// card flip
+.fav-heart {
+  position: relative;
+  font-size: 18px;
+  top: -15px;
+  margin-bottom: -30px;
+}
+
+.dietary-show {
+  margin: auto;
+}
+// card flip effect for the menu
 
 .card-container {
     display: grid;
@@ -66,7 +79,7 @@
 
 .card-flip, .card-container {
     transform-style: preserve-3d;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .card-flip div {
@@ -87,7 +100,7 @@
     grid-template: 1fr / 1fr;
     grid-template-areas: "frontAndBack";
     transform-style: preserve-3d;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .front {
