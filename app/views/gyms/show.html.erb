@@ -8,19 +8,22 @@
         <h5 class="rest-card-title"><%= @gym.name %></h5>
         <p><%= @gym.address %></p>
         <p>Type: <%= @gym.category %></p>
-          <div>
-            <% if @gym.average_rating <= 0  %>
-              <%= image_tag "0star.png", alt: "alttext" %>
-              <% elsif @gym.average_rating <= 1 %>
-              <%= image_tag "1star.png", alt: "alttext" %>
-              <% elsif @gym.average_rating <= 2 %>
-              <%= image_tag "2star.png", alt: "alttext" %>
-              <% elsif @gym.average_rating <= 3 %>
-              <%= image_tag "3star.png", alt: "alttext" %>
-              <% elsif @gym.average_rating <= 4 %>
-              <%= image_tag "4star.png", alt: "alttext" %>
-              <% else %>
-              <%= image_tag "5star.png", alt: "alttext" %>
+          <div class="total_reviews">
+            <%= link_to gym_path(@gym, anchor: "review") do  %>
+              <% if @gym.average_rating <= 0  %>
+                <%= image_tag "0star.png", alt: "alttext" %>
+                <% elsif @gym.average_rating <= 1 %>
+                <%= image_tag "1star.png", alt: "alttext" %>
+                <% elsif @gym.average_rating <= 2 %>
+                <%= image_tag "2star.png", alt: "alttext" %>
+                <% elsif @gym.average_rating <= 3 %>
+                <%= image_tag "3star.png", alt: "alttext" %>
+                <% elsif @gym.average_rating <= 4 %>
+                <%= image_tag "4star.png", alt: "alttext" %>
+                <% else %>
+                <%= image_tag "5star.png", alt: "alttext" %>
+              <% end %>
+              (<%= @gym.gym_reviews.count %>)
             <% end %>
           </div>
           <br>
@@ -104,46 +107,55 @@
 
       <%= link_to "Back to all Gyms", gyms_path, class: "btn btn-secondary btn-sm"  %>
     </div>
-  </div>
 
-  <div id="map"
-    class="container"
-    style="width: 100%; height: 300px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+    <div id="map"
+      class="container"
+      style="width: 100%; height: 300px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 
-  <div>
-    <%= simple_form_for([ @gym, @gym_review ], remote: true) do |f| %>
-      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-      <%= f.input :content, as: :text %>
-      <%= f.button :submit %>
-    <% end %>
-  </div>
+    <div class="review_section">
+      
+        <div id="review_form">
+          <%= simple_form_for([ @gym, @gym_review ], remote: true) do |f| %>
+            <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+            <%= f.input :content, as: :text %>
+            <%= f.button :submit, class: "btn btn-primary" %>
+          <% end %>
+        </div>
 
-  <div id="gym_reviews">
-    <% if @gym.gym_reviews.blank? %>
-      Be the first to leave a review for <%= @gym.name %>
-    <% else %>
-      <% @gym.gym_reviews.reverse_order.each do |review| %>
-      <p id="review">
-        <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp
-        <% if review.rating == 0 %>
-          <%= image_tag "0star.png", alt: "alttext" %>
-          <% elsif review.rating == 1 %>
-          <%= image_tag "1star.png", alt: "alttext" %>
-          <% elsif review.rating == 2 %>
-          <%= image_tag "2star.png", alt: "alttext" %>
-          <% elsif review.rating == 3 %>
-          <%= image_tag "3star.png", alt: "alttext" %>
-          <% elsif review.rating == 4 %>
-          <%= image_tag "4star.png", alt: "alttext" %>
+        <div id="gym_reviews">
+          <% if @gym.gym_reviews.blank? %>
+            Be the first to leave a review for <%= @gym.name %>
           <% else %>
-          <%= image_tag "5star.png", alt: "alttext" %>
-        <% end %>
-        :    &nbsp "<%= review.content %>"
-      </p>
-      <% end %>
-    <% end %>
+            <% @gym.gym_reviews.reverse_order.each do |review| %>
+            <div id="review">
+              <div class="rating">
+                <% if review.rating == 0 %>
+                  <%= image_tag "0star.png", alt: "alttext" %>
+                  <% elsif review.rating == 1 %>
+                  <%= image_tag "1star.png", alt: "alttext" %>
+                  <% elsif review.rating == 2 %>
+                  <%= image_tag "2star.png", alt: "alttext" %>
+                  <% elsif review.rating == 3 %>
+                  <%= image_tag "3star.png", alt: "alttext" %>
+                  <% elsif review.rating == 4 %>
+                  <%= image_tag "4star.png", alt: "alttext" %>
+                  <% else %>
+                  <%= image_tag "5star.png", alt: "alttext" %>
+                <% end %>
+                <br>
+                <%= review.created_at.strftime("%b %y") %>
+              </div>   
+              <div class="content">
+                '<%= review.content %>'
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      
+    </div>
   </div>
 </div>
