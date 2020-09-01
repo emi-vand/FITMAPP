@@ -1,3 +1,4 @@
+
 <div class="profile-page-top">
   <div class="d-flex flex-row-reverse">
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
@@ -96,14 +97,16 @@
         <div class="row justify-content-center">
           <% current_user.favorited_by_type("Restaurant").each do |fav| %>
             <div class="col-12 col-md-6 pb-1">
-              <div class="card-product">
-                <% if fav.photo.attached? %>
-                  <%= cl_image_tag fav.photo.key %>
-                <% else %>
-                  <img style="background-color: #EDEDED">
-                <% end %>
-                <p class="p-3"> <%= fav.name %> </p>
-              </div>
+              <%= link_to restaurant_path(fav) do %>
+                <div class="card-product">
+                  <% if fav.photo.attached? %>
+                    <%= cl_image_tag fav.photo.key %>
+                  <% else %>
+                    <img style="background-color: #EDEDED">
+                  <% end %>
+                  <p class="p-3"> <%= fav.name %> </p>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -113,19 +116,21 @@
         <div class="row justify-content-center">
           <% current_user.favorited_by_type("Gym").each do |fav| %>
             <div class="col-12 col-md-6 pb-1">
-              <div class="card-product">
-                <% if fav.photo.attached? %>
-                  <%= cl_image_tag fav.photo.key %>
-                <% else %>
-                  <img style="background-color: #EDEDED">
-                <% end %>
-                <p class="p-3"> <%= fav.name %> </p>
-              </div>
+              <%= link_to gym_path(fav) do %>
+                <div class="card-product">
+                  <% if fav.photo.attached? %>
+                    <%= cl_image_tag fav.photo.key %>
+                  <% else %>
+                    <img style="background-color: #EDEDED">
+                  <% end %>
+                  <p class="p-3"> <%= fav.name %> </p>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
       </div>
     </div>
 </div>
-
+</div>
 
