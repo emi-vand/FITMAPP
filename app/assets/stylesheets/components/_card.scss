@@ -58,13 +58,13 @@
 
 .rest-card-body {
   padding: 16px;
+  position: relative;
 }
 
 .fav-heart {
-  position: relative;
-  font-size: 18px;
-  top: -15px;
-  margin-bottom: -30px;
+  position: absolute;
+  font-size: 32px;
+  right: 18px;
 }
 
 .dietary-show {

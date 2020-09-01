@@ -1,10 +1,10 @@
-  <div class="profile-page-top">
-    <div class="d-flex flex-row-reverse">
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
-      <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary btn-sm mr-2" %>
-
-    </div>
+<div class="profile-page-top">
+  <div class="d-flex flex-row-reverse">
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
+    <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary btn-sm mr-2" %>
   </div>
+</div>
+
 <div class="container container-profile">
   <div class="row info-row justify-content-center">
     <div class="col-12 col-md-6 text-center">
@@ -21,7 +21,7 @@
       <h6> <%= current_user.email %> </h6>
       <% current_user.dietary_requirements.each do |dr| %>
         <%= dr %>
-        <% end %>
+      <% end %>
     </div>
   </div>
 
@@ -38,17 +38,17 @@
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
-            <h5 class="text-left py-2">Restaurant Bookings</h5>
-              <div class="row justify-content-center">
-                <% current_user.restaurant_bookings.order(date: :asc).each do |booking| %>
-                <% if booking.date > Time.now %>
-                 <div class="col-12 col-md-6 pb-1">
-                  <div class="card-product">
-                    <% if booking.restaurant.photo.attached? %>
-                      <%= cl_image_tag booking.restaurant.photo.key %>
-                    <% else %>
-                      <img style="background-color: #EDEDED">
-                    <% end %>
+        <h5 class="text-left py-2">Restaurant Bookings</h5>
+        <div class="row justify-content-center">
+          <% current_user.restaurant_bookings.order(date: :asc).each do |booking| %>
+            <% if booking.date > Time.now %>
+              <div class="col-12 col-md-6 pb-1">
+                <div class="card-product">
+                  <% if booking.restaurant.photo.attached? %>
+                    <%= cl_image_tag booking.restaurant.photo.key %>
+                  <% else %>
+                    <img style="background-color: #EDEDED">
+                  <% end %>
                   <div class="card-info p-2">
                     <span class="badge badge-primary"> <%= booking.date.strftime("%A") %> - <strong> <%= booking.restaurant.name %> </strong> </span>
                     <div>
@@ -58,76 +58,74 @@
                   </div>
                 </div>
               </div>
-              <% end %>
-              <% end %>
-              </div>
+            <% end %>
+          <% end %>          
+        </div>
 
 
-            <h5 class="text-left pt-5 pb-2">Gym Bookings</h5>
-              <div class="row justify-content-center">
-                <% current_user.class_bookings.each do |booking| %>
-                <% if booking.date > Time.now %>
-                <div class="col-12 col-md-6 pb-1">
-                  <div class="card-product">
-                    <% if booking.gym_class.photo.attached? %>
-                      <%= cl_image_tag booking.gym_class.photo.key %>
-                    <% else %>
-                      <img style="background-color: #EDEDED">
-                    <% end %>
-                    <div class="card-info p-2">
-                      <div>
-                        <span class="badge badge-primary"> <%= booking.date.strftime("%A") %> - <strong> <%= booking.gym_class.name %> </strong></span>
-                        <p><%= booking.date.strftime("%e %b") %> <%= booking.gym_class.time.strftime("%k:%M") %> </p>
-                      </div>
-                      <div>
-                        <p><%= booking.gym_class.gym.name %></p>
-                        <p> <%= link_to "Edit", edit_class_booking_path(booking)%> | <%= link_to "Delete", class_booking_path(booking), method: :delete %> </p>
-                      </div>
+        <h5 class="text-left pt-5 pb-2">Gym Bookings</h5>
+        <div class="row justify-content-center">
+          <% current_user.class_bookings.each do |booking| %>
+            <% if booking.date > Time.now %>
+              <div class="col-12 col-md-6 pb-1">
+                <div class="card-product">
+                  <% if booking.gym_class.photo.attached? %>
+                    <%= cl_image_tag booking.gym_class.photo.key %>
+                  <% else %>
+                    <img style="background-color: #EDEDED">
+                  <% end %>
+                  <div class="card-info p-2">
+                    <span class="badge badge-primary"> <%= booking.date.strftime("%A") %> - <strong> <%= booking.gym_class.name %> </strong> </span>
+                    <div>
+                      <p><%= booking.date.strftime("%e %b") %> <%= booking.gym_class.time.strftime("%k:%M") %> </p>
+                    </div>
+                    <div>
+                      <p><%= booking.gym_class.gym.name %></p>
+                      <p> <%= link_to "Edit", edit_class_booking_path(booking)%> | <%= link_to "Delete", class_booking_path(booking), method: :delete %> </p>
                     </div>
                   </div>
                 </div>
-                <% end %>
-                <% end %>
               </div>
-    </div>
-
-  <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="restaurant-favorites-tab">
-    <h5 class="text-left py-2">Restaurant Favourites</h5>
-    <div class="row justify-content-center">
-      <% current_user.favorited_by_type("Restaurant").each do |fav| %>
-       <div class="col-12 col-md-6 pb-1">
-        <div class="card-product">
-        <% if fav.photo.attached? %>
-          <%= cl_image_tag fav.photo.key %>
-        <% else %>
-          <img style="background-color: #EDEDED">
-        <% end %>
-        <p class="p-3"> <%= fav.name %> </p>
-
+            <% end %>
+          <% end %>
+        </div>              
       </div>
 
-     </div>
-    <% end %>
-  </div>
+      <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="restaurant-favorites-tab">
+        <h5 class="text-left py-2">Restaurant Favourites</h5>
+        <div class="row justify-content-center">
+          <% current_user.favorited_by_type("Restaurant").each do |fav| %>
+            <div class="col-12 col-md-6 pb-1">
+              <div class="card-product">
+                <% if fav.photo.attached? %>
+                  <%= cl_image_tag fav.photo.key %>
+                <% else %>
+                  <img style="background-color: #EDEDED">
+                <% end %>
+                <p class="p-3"> <%= fav.name %> </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
 
 
-  <h5 class="text-left pt-5 pb-2">Gym Favourites</h5>
-  <div class="row justify-content-center">
-    <% current_user.favorited_by_type("Gym").each do |fav| %>
-    <div class="col-12 col-md-6 pb-1">
-    <div class="card-product">
-        <% if fav.photo.attached? %>
-          <%= cl_image_tag fav.photo.key %>
-        <% else %>
-          <img style="background-color: #EDEDED">
-        <% end %>
-        <p class="p-3"> <%= fav.name %> </p>
+        <h5 class="text-left pt-5 pb-2">Gym Favourites</h5>
+        <div class="row justify-content-center">
+          <% current_user.favorited_by_type("Gym").each do |fav| %>
+            <div class="col-12 col-md-6 pb-1">
+              <div class="card-product">
+                <% if fav.photo.attached? %>
+                  <%= cl_image_tag fav.photo.key %>
+                <% else %>
+                  <img style="background-color: #EDEDED">
+                <% end %>
+                <p class="p-3"> <%= fav.name %> </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-    <% end %>
-  </div>
-</div>
-</div>
 </div>
 
 
