@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :class_bookings
-  has_many :restaurant_bookings
+  has_many :class_bookings, dependent: :destroy
+  has_many :restaurant_bookings, dependent: :destroy
 
   has_many :gyms
   has_many :restaurants

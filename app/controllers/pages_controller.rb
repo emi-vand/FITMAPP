@@ -14,7 +14,7 @@ class PagesController < ApplicationController
         if @gyms.include? mix
           helpers.asset_url('logofinal_colour_marker.png')
         else
-          helpers.asset_url('fork&knife3.png')
+          helpers.asset_url('fork&knife_colour.png')
         end
       }
     end
