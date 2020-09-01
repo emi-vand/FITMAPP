@@ -1,2 +1,4 @@
 <h4> <%= mix.name %> </h4>
 <p> <%= mix.address %> </p>
+<%= link_to "Directions", "https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=[mix.latitude],[mix.longitude]", class: "btn btn-primary", target: :_blank %>
+

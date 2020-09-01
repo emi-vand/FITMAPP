@@ -1,0 +1,18 @@
+{
+  "background_color": "white",
+  "description": "Find the best healthy restaurants and gyms near you, wherevery you are!",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/images/fav_marker_1.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {},
+    {}
+  ],
+  "name": "FITMAPP",
+  "short_name": "FITMAPP",
+  "start_url": "/"
+}
+

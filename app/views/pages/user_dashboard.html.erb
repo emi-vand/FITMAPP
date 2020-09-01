@@ -20,8 +20,8 @@
       <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
       <h6> <%= current_user.email %> </h6>
       <% current_user.dietary_requirements.each do |dr| %>
-        <%= dr %>
-      <% end %>
+      <span class="badge badge-primary"><%= dr %></span>
+        <% end %>
     </div>
   </div>
 

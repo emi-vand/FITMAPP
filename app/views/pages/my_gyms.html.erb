@@ -5,7 +5,7 @@
       <div class="col-sm-12 col-md-6 col-lg-4">
         <div class="card">
           <% if gym.photo.attached? %>
-            <%= cl_image_tag gym.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag gym.photo.key, class: "card-img-top", alt: "..." %>
           <% end %>
           <div class="card-title">
             <%= gym.name %>
