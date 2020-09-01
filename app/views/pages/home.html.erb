@@ -27,7 +27,7 @@
     <%= image_tag "logofinal_white.png", class: "logo_white" %>
     <div class="home-button">
       <% if current_user == nil %>
-      <%= link_to "Join Now", restaurants_path, class: "btn-home btn btn-primary btn-lg" %>
+      <%= link_to "Join Now", new_user_registration_path, class: "btn-home btn btn-primary btn-lg" %>
       <% end %>
     </div>
   </div>

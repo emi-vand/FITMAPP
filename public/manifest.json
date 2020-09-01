@@ -4,14 +4,15 @@
   "display": "fullscreen",
   "icons": [
     {
-      "src": "<%= image_path 'icons/android-icon-192x192.png' %>",
-      "sizes": "192x192",
+      "src": "/images/fav_marker_1.png",
+      "sizes": "180x180",
       "type": "image/png"
     },
     {},
     {}
   ],
-  "name": "FITMAPP - Healthy Made Simple",
+  "name": "FITMAPP",
   "short_name": "FITMAPP",
   "start_url": "/"
 }
+
