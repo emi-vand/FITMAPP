@@ -1,12 +1,13 @@
 <div class="container my-3">
-  <div class="rest-card bg-light">
+  <div class="rest-card bg-light rounded">
+
     <% if @restaurant.photo.attached? %>
-      <%= cl_image_tag @restaurant.photo.key, class: "card-img-top" %>
+      <%= cl_image_tag @restaurant.photo.key, class: "card-img-top rounded-top" %>
     <% end %>
 
     <div class="rest-card-body d-flex flex-column justify-content-center ">
       <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
-        <i class="fas fa-heart fav-heart d-flex flex-row-reverse"></i>
+        <i class="fas fa-heart fav-heart"></i>
       <% end %>
 
       <h5 class="rest-card-title text-center"><%= @restaurant.name %></h5>
@@ -145,7 +146,7 @@
           <% @restaurant.restaurant_reviews.reverse_order.each do |review| %>
           <div id="review">
             <div class="rating">
-              <%= review.created_at.strftime("%d %b %y") %> &nbsp &nbsp
+              <%= review.created_at.strftime("%d %b %y") %>
               <% if review.rating == 0 %>
                 <%= image_tag "0star.png", alt: "alttext" %>
                 <% elsif review.rating == 1 %>
