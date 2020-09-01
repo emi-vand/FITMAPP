@@ -36,8 +36,11 @@
   padding: 16px;
 }
 
-.card-product-actions a {
-  color: $secondary;
+.card-product-actions {
+  font-size: 12px !important;
+  a {
+    color: $secondary !important;
+  }
 }
 
 

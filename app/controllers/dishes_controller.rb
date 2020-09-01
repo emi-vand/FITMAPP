@@ -32,7 +32,7 @@ class DishesController < ApplicationController
 
   def update
     if @dish.update(dish_params)
-      redirect_to @dish
+      redirect_to @restaurant
     else
       render :edit
     end

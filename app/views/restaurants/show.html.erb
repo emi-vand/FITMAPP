@@ -1,9 +1,7 @@
 <div class="container mt-3">
   <div class="rest-card bg-light">
     <% if @restaurant.photo.attached? %>
-      <%= cl_image_tag @restaurant.photo.key, class: "card-img-top", alt: "..." %>
-    <% else %>
-      <img class="card-img-top">
+      <%= cl_image_tag @restaurant.photo.key, class: "card-img-top" %>
     <% end %>
 
     <div class="rest-card-body d-flex flex-column justify-content-center ">
@@ -12,7 +10,7 @@
       <% end %>
 
       <h5 class="rest-card-title text-center"><%= @restaurant.name %></h5>
-        <p class="text-center stars-blue"> <% if @restaurant.average_rating <= 0  %>
+        <p class="text-center"> <% if @restaurant.average_rating <= 0  %>
               <%= image_tag "0star.png", alt: "alttext" %>
               <% elsif @restaurant.average_rating <= 1 %>
               <%= image_tag "1star.png", alt: "alttext" %>

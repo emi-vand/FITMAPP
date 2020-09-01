@@ -1,8 +1,8 @@
 <%= simple_form_for [@restaurant, @dish] do |f| %>
-<div class="row">
-  <div class="col-6"><%= f.input :name %></div>
-  <div class="col-6"><%= f.input :description %></div>
-</div>
+  <%= f.input :name %>
+  <%= f.input :description %>
+
   <%= f.input :photo, as: :file %>
-  <%= f.submit class: "btn btn-primary"%>
+  <%= link_to "Back", ownerdashboard_path, class: "btn btn-secondary btn-sm" %>
+  <%= f.submit class: "btn btn-primary btn-sm"%>
 <% end %>

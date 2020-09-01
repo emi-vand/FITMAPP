@@ -12,13 +12,14 @@
           <% card_image = current_user.photo.key %>
           <div class="user-photo"><%= cl_image_tag card_image, class: 'img-profile-avatar'%></div>
       <% else %>
-        <img src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" alt="..." class="img-profile-avatar">
+        <img src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" class="img-profile-avatar">
       <% end %>
     </div>
 
     <div class="col-12 info-section text-center pt-5 pb-4">
       <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
       <h6> <%= current_user.email %> </h6>
+      <span class="badge badge-primary"> Business account </span>
     </div>
   </div>
 
@@ -42,7 +43,7 @@
             <div class="col-12 col-md-6 pb-2">
               <div class="card shadow border-0">
                 <% if restaurant.photo.attached? %>
-                  <%= cl_image_tag restaurant.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+                  <%= cl_image_tag restaurant.photo.key, class: "card-img-top" %>
                 <% end %>
                 <div class="card-title p-3">
                   <%= restaurant.name %>
@@ -64,7 +65,7 @@
             <div class="col-12 col-md-6 pb-2">
               <div class="card shadow border-0">
                 <% if gym.photo.attached? %>
-                  <%= cl_image_tag gym.photo.key, class: "card-img-top", alt: "...", height: 300, width: 400, crop: :fill %>
+                  <%= cl_image_tag gym.photo.key, class: "card-img-top" %>
                 <% end %>
                 <div class="card-title p-3">
                   <%= gym.name %>
