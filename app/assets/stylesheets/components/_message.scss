@@ -19,12 +19,15 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 0px 1.5px 2px #3C3744;
+  width: fit-content;
+  padding-right: 10px;
+  padding-left: 7px;
 }
 .message p {
   padding-right: 3px;
 }
 .content {
-  padding-left: 46px;
+  padding-left: 14px;
   padding-bottom: 4px;
   padding-top: 4px;
 }
@@ -36,6 +39,12 @@
   padding-top: 20px;
   padding-left: 10px;
 }
-i {
+.author {
   padding-bottom: 6px;
+}
+.right {
+  margin: 0 0 0 auto;
+  padding-right: 0px;
+  padding-left: 0px;
+
 }

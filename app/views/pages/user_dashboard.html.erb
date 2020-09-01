@@ -1,10 +1,9 @@
-
 <div class="profile-page-top">
   <div class="d-flex flex-row-reverse">
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
     <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary btn-sm mr-2" %>
   </div>
-</div>
+
 
 <div class="container container-profile">
   <div class="row info-row justify-content-center">
@@ -21,8 +20,8 @@
       <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
       <h6> <%= current_user.email %> </h6>
       <% current_user.dietary_requirements.each do |dr| %>
-        <%= dr %>
-      <% end %>
+      <span class="badge badge-primary"><%= dr %></span>
+        <% end %>
     </div>
   </div>
 

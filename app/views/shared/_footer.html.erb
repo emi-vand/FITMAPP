@@ -1,3 +1,4 @@
+<% if user_signed_in? == false %>
 <div class="footer">
   <div class="footer-links d-none">
     <a href="https://www.instagram.com/fitmapp/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -8,3 +9,7 @@
     © fitmapp
   </div>
 </div>
+<% else %>
+<div class="footer bg-transparent">
+</div>
+<% end %>

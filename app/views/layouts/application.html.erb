@@ -4,6 +4,34 @@
     <title>FITMAPP - Healthy made simple</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <meta name="description" content="<%= "Find the best healthy restaurants and gyms near you, wherever you are!" %>" />
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= "FITMAPP - Healthy Made Simple" %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= "www.fitmapp.co.uk" %>" />
+    <meta property="og:image" content="<%= "meta-tag.jpg" %>" />
+    <meta property="og:description" content="<%= "Find the best healthy restaurants and gyms near you, wherever you are!" %>" />
+    <meta property="og:site_name" content="<%= "FITMAPP" %>" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="<%= "fitmapp" %>"/>
+    <meta name="twitter:title" content="<%= "FITMAPP - Healthy Made Simple" %>"/>
+    <meta name="twitter:description" content="<%= "Find the best healthy restaurants and gyms near you, wherever you are!" %>"/>
+    <meta name="twitter:creator" content="<%= "fitmapp" %>"/>
+    <meta name="twitter:image:src" content="<%= "meta-tag.jpg" %>"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable"  content="yes">
+
+    <link rel="manifest" href="manifest.json" >
+
+    <%= render 'shared/ios_pwa_links' %>
+
+    <%= favicon_link_tag "fav_marker_copy.png"%>
+
     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5ZlEJuWZRAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5ZlECOWYRNrlmURyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOWZRIDlmUT/5ZlE9uWZRCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOWZRCDlmUT25ZlE/+WZRP/lmUTE5ZhEAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADlmUSm5ZlE/+WZRP/lmUT/5ZlE/+WZRGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADlmUQw5ZlE/OWZRP/lmUT/5ZlE/+WZRP/lmUTu5ZlEEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5ZlEquWZRP/lmUT/5ZlE/+WZRP/lmUT/5ZlE/+WZRIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5JlEIOWZRPrlmUT/5ZlE/+WZRP/lmUT/5ZlE/+WZRP/lmUT05ZlEFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOWZRHrlmUT/5ZlE/+WYQ7DlmUQ65ZhDNuWZRK7lmUT/5ZlE/+WZRHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADlmUS+5ZlE/+SYQ+rkmEOW5JhDKuSYQzDkmEOo5JhD7uWZRP/lmUTCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5JlEzuWZRP/kmEP25ZlE/+SYQ+bkmEPe5ZlE/+SYRPblmUT/5ZlE2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOWZRL7lmUT/5JlE7OSYRIrkmUQu5JlEGuSZRH7kmEPk5ZlE/+WYRMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADlmURq5ZlE/+WZRP/lmUSm5ZlEKuWZRCblmUSe5ZlE/+WZRP/lmURqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5ZlEBuWZRMTlmUT/5ZlE/+WZRP/lmUT/5ZlE/+WZRP/lmUTE5ZlEBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADlmUQQ5ZlEpuWZRPzlmUT/5ZlE/+WZRPzlmUSk5ZlEDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADlmUQi5JlEVOWZRFTlmUQeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP7/AAD8fwAA/D8AAPg/AAD4HwAA8A8AAPAPAADxjwAA4YcAAOAHAADhxwAA8Y8AAPAPAAD4HwAA//8AAA==" rel="icon" type="image/x-icon" />    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>

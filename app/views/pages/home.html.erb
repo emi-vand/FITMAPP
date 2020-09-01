@@ -27,7 +27,7 @@
     <%= image_tag "logofinal_white.png", class: "logo_white" %>
     <div class="home-button">
       <% if current_user == nil %>
-      <%= link_to "Join Now", restaurants_path, class: "btn-home btn btn-primary btn-lg" %>
+      <%= link_to "Join Now", new_user_registration_path, class: "btn-home btn btn-primary btn-lg" %>
       <% end %>
     </div>
   </div>
@@ -62,7 +62,7 @@
       </div>
       <div class="modal-body">
         <div id="map"
-          style="width: 100%; height: 400px;"
+          style="width: 100%; height: 500px;"
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
