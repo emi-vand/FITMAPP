@@ -17,7 +17,7 @@ class ClassBookingsController < ApplicationController
     @class_booking.gym_class = GymClass.find(params[:gym_class_id])
     @class_booking.save
     authorize @class_booking
-    sleep(5)
+    sleep(30)
     redirect_to gym_path(@gym_class)
   end
 

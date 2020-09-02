@@ -5,5 +5,5 @@
     <%= link_to mix.name, gym_path(mix)%>
   <% end %> </h5>
   <p class="map-card-address"> <%= mix.address %> </p>
-  <%= link_to "Directions", "https://www.google.com/maps/dir/?api=1&travelmode=walking&layer=traffic&destination=#{mix.latitude},#{mix.longitude}", class: "btn-small btn-primary p-2 rounded map-card-btn"", target: :_blank %>
+  <%= link_to "Directions", "https://www.google.com/maps/dir/?api=1&travelmode=walking&layer=traffic&destination=#{mix.latitude},#{mix.longitude}", class: "btn-small btn-primary p-2 rounded map-card-btn", target: :_blank %>
 </div>
