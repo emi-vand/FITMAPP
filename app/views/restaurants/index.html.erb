@@ -26,7 +26,11 @@
               <%= cl_image_tag restaurant.photo.key %>
             <% end %>
             <div class="card-product-infos w-100">
-              <h2><%= restaurant.name %> </h2>
+              <h2><%= restaurant.name %> 
+                <% if restaurant.favorited_by?(current_user) %>
+                  <i class="fas fa-heart fav-heart-index"></i>
+                <% end %>
+              </h2>
               <p><%= restaurant.category %></p>
               <p class="text-right">Distance</p>
               <p class="text-right">

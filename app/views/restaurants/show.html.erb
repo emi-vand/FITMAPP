@@ -6,10 +6,17 @@
     <% end %>
 
     <div class="rest-card-body d-flex flex-column justify-content-center ">
-      <%=  link_to restaurant_fav_res_path(@restaurant), method: :post do %>
-        <i class="fas fa-heart fav-heart"></i>
-      <% end %>
-
+      <span class="text right">
+        <% if @restaurant.favorited_by?(current_user) %>
+          <%= link_to restaurant_unfav_res_path(@restaurant), method: :post, remote: true do  %>
+            <i class="fas fa-heart fav-heart"></i>
+          <% end %>
+        <% else %>
+          <%=  link_to restaurant_fav_res_path(@restaurant), method: :post, remote: true do %>
+            <i class="far fa-heart fav-heart"></i>
+          <% end %>
+        <% end %>
+      </span>
       <h5 class="rest-card-title text-center"><%= @restaurant.name %></h5>
         <p class="text-center total_reviews">
           <%= link_to restaurant_path(@restaurant, anchor: "review") do  %>
@@ -62,12 +69,12 @@
     <div class="card-body">
       <% if @restaurant.user != current_user %>
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#RestaurantBookingsModal">
-          <%= "Book #{@restaurant.name} Now" %>
+          <%= "Book" %>
         </button>
       <% end %>
 
       <div class="modal fade" id="RestaurantBookingsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Book a Table</h5>
@@ -122,6 +129,7 @@
       </div>
 
       <%= link_to "Back", restaurants_path, class: "btn btn-secondary btn-sm"  %>
+      <%= link_to "Get Directions", "https://www.google.com/maps/dir/?api=1&travelmode=walking&layer=traffic&destination=#{@restaurant.latitude},#{@restaurant.longitude}", class: "btn btn-primary", target: :_blank, class: "btn btn-primary btn-sm" %>
     </div>
     <div id="map"
       class="container"

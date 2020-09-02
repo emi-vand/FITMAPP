@@ -21,4 +21,8 @@ class RestaurantPolicy < ApplicationPolicy
     true
   end
 
+  def unfavorite?
+    true
+  end
+
 end
