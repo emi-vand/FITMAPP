@@ -1,9 +1,9 @@
 <div class="profile-page-top">
   <div class="d-flex flex-row-reverse pt-1 pr-1">
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
-    <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary btn-sm mr-2" %>
   </div>
 </div>
+
 
 <div class="container container-profile">
   <div class="row info-row justify-content-center">
@@ -11,12 +11,15 @@
       <% if current_user.photo.attached? %>
           <% card_image = current_user.photo.key %>
           <div class="user-photo"><%= cl_image_tag card_image, class: 'img-profile-avatar'%></div>
+          <%= link_to edit_user_registration_path do %>
+            <i class="fas fa-pencil-alt edit-icon"></i>
+          <% end %>
       <% else %>
         <img src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" alt="..." class="img-profile-avatar">
       <% end %>
     </div>
 
-    <div class="col-12 info-section text-center pt-5 pb-4">
+    <div class="col-12 info-section text-center pt-4 pb-4">
       <h3><%= current_user.first_name %> <%=current_user.last_name %></h3>
       <h6> <%= current_user.email %> </h6>
       <% current_user.dietary_requirements.each do |dr| %>
