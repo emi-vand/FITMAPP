@@ -4,7 +4,18 @@
 
 .mapboxgl-popup-content {
   text-align: center;
-  color: #3C3744;
+  color:#3B3643;
+  background-color:#EDEDED !important;
+  border-radius: 5px;
+  border: white solid 9px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5) !important;
+}
+.map-card {
+  background-color: #EDEDED;
+  color: #3B3643;
+}
+.map-card-name a {
+  color: #3B3643;
 }
 
 .mapboxgl-canvas {

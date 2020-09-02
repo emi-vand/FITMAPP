@@ -22,7 +22,7 @@ class RestaurantBookingsController < ApplicationController
     @restaurant_booking.user = @user
     @restaurant_booking.restaurant = @restaurant
     if @restaurant_booking.save
-      sleep(5)
+      sleep(30)
       redirect_to restaurant_path(@restaurant)
     else
       render "restaurants/show"
