@@ -5,7 +5,6 @@
       <%= cl_image_tag @gym.photo.key, class: "card-img-top rounded-top" %>
     <% end %>
 
-
     <div class="rest-card-body d-flex flex-column justify-content-center">
       <span class="text-right">
         <% if @gym.favorited_by?(current_user) %>
@@ -43,10 +42,13 @@
           <span class="badge badge-primary dietary-show mb-3"><%= @gym.style_list %> </span>
 
           <ul class="list-group list-group-flush rounded">
-            <% @gym.gym_classes.each do |gymclass| %>
-              <li class="list-group-item bg-info"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
+            <% @gym.gym_classes.each do |gymclass| %>              
+              <li class="list-group-item bg-info">
+                <span class="classes-list">
+                <span class="class-details">
+                  <i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
+                </span>              
               <!-- Book now -->
-
                 <span class="book-buttons">
                   <% if @gym.user != current_user %>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<%= gymclass.id %> ">
@@ -55,6 +57,7 @@
                   <% else %>
                     <%= link_to "Edit", edit_gym_class_path(gymclass) %>
                   <% end %>
+                </span>
                 </span>
 
                 <!-- Modal HTML -->
@@ -79,10 +82,9 @@
                     </div>
                   </div>
                 </div>
-
-            </li>
-          <% end %>
-        </ul>
+              </li>
+            <% end %>
+          </ul>
       </div>
 
     <div class="card-body">
@@ -134,7 +136,7 @@
           <%= simple_form_for([ @gym, @gym_review ], remote: true) do |f| %>
             <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
             <%= f.input :content, as: :text %>
-            <%= f.button :submit, class: "btn btn-primary" %>
+            <%= f.button :submit, "Post Review", class: "btn btn-primary" %>
           <% end %>
         </div>
 

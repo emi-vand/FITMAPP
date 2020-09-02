@@ -11,6 +11,7 @@
   padding: 0 10px;
   position: relative;
   opacity: 0.6;
+  align-items: center;
   .navbar-version{
     color: $blue;
     &::placeholder {
@@ -32,6 +33,7 @@
   color: #E6E6E6;
   border: none;
   background: transparent;
+  padding: 6px 12px 6px 0;
   &:hover {
     color: #E6E6E6;
   }
@@ -45,7 +47,7 @@
   color: #E6E6E6;
   border: none;
   background-color: transparent;
-  padding: 0 10px;
+  padding-left: 12px;
   font-size: 14px;
   outline: none;
   &::placeholder {
