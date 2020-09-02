@@ -50,11 +50,11 @@
               <div class="card-flip shadow">
               <% if dish.photo.attached?  %>
                 <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path dish.photo.key %>)">
-                  <h5 class="text-center text-white"> <%= dish.name %> </h5>
+                  <h5 class="text-center text-white m-2"><%= dish.name %>    </h5> 
                 </div>
               <% else %>
                 <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))">
-                  <h5 class="text-center text-white"> <%= dish.name %> </h5>
+                  <h5 class="text-center text-white m-2"> <%= dish.name %> </h5>
                 </div>
               <% end %>
               <div class="back p-4">
@@ -148,7 +148,7 @@
         <%= simple_form_for([ @restaurant, @restaurant_review ], remote: true) do |f| %>
           <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
           <%= f.input :content, as: :text %>
-          <%= f.button :submit, class: "btn btn-primary" %>
+          <%= f.button :submit, "Post Review", class: "btn btn-primary" %>
         <% end %>
       </div>
 
@@ -159,7 +159,6 @@
           <% @restaurant.restaurant_reviews.reverse_order.each do |review| %>
           <div id="review">
             <div class="rating">
-              <%= review.created_at.strftime("%d %b %y") %>
               <% if review.rating == 0 %>
                 <%= image_tag "0star.png", alt: "alttext" %>
                 <% elsif review.rating == 1 %>
@@ -173,6 +172,8 @@
                 <% else %>
                 <%= image_tag "5star.png", alt: "alttext" %>
               <% end %>
+              <br>
+              <%= review.created_at.strftime("%b %y") %>
             </div>
             <div class="content">
               '<%= review.content %>'
