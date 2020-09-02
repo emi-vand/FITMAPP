@@ -1,9 +1,4 @@
-<h4> <%= link_to mix.name, mix_path %> </h4>
-<% if mix.name == restaurant.name  %>
-<%= link_to restaurant_path %>
-<% else %>
-<%= link_to gym_path %>
-<% end %>
+ <%= mix.name %>
 <p> <%= mix.address %> </p>
 <%= link_to "Directions", "https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=[mix.latitude],[mix.longitude]", class: "btn btn-primary", target: :_blank %>
 
