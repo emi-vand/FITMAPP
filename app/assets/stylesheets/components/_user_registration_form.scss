@@ -50,6 +50,7 @@
   color: #EDEDED;
   height: 100%;
   .col-form-label {
+    display: initial;
     margin-bottom: 16px;
     font-size: 20px;
     font-weight: bold;
@@ -58,18 +59,25 @@
 }
 
 .dietary-registration-container .form-check-label {
-  color: #EDEDED !important;
+  color: $blue !important;
+  padding: 1px;
 }
 
 .dietary-registration-container .form-check-inline {
-  background-color: $blue;
-  opacity: .3;
+  background-color: rgba(68, 153, 229, 0.4);
+  border: 1px solid $blue;
+  box-shadow: 0 0 10px rgba(68, 153, 229, 0.3);
   width: 150px;
   height: 75px;
   margin: 2%;
+  padding-right: 2%;
+  padding-left: 2%;
   text-align: center;
   border-radius:5px;
-  &:hover {
-    opacity: 1;
+}
+
+@media(min-width:650) {
+  .dietary-registration-container {
+    width: 50%;
   }
 }
