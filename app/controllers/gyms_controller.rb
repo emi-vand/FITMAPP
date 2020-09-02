@@ -67,6 +67,14 @@ class GymsController < ApplicationController
     @gym = Gym.find(params[:gym_id])
     authorize @gym
     current_user.favorite(@gym)
+    redirect_to gym_path(@gym)
+  end
+
+  def unfavorite
+    @gym = Gym.find(params[:gym_id])
+    authorize @gym
+    current_user.unfavorite(@gym)
+    redirect_to gym_path(@gym)
   end
 
   private

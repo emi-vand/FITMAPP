@@ -1,5 +1,6 @@
 <div class="map-card">
   <h3 class="map-card-name"> <%= link_to gym.name, gym_path(gym) %> </h3>
   <p class="map-card-address"> <%= gym.address %> </p>
-  <%= link_to "Directions", "https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=[gym.latitude],[gym.longitude]", class: "btn btn-primary", target: :_blank %>
+  <%= link_to "Directions", "https://www.google.com/maps/dir/?api=1&travelmode=walking&layer=traffic&destination=#{gym.latitude},#{gym.longitude}", class: "btn btn-primary", target: :_blank %>
 </div>
+

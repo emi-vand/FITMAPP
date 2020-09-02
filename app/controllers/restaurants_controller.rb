@@ -75,6 +75,13 @@ class RestaurantsController < ApplicationController
     redirect_to restaurant_path(@restaurant)
   end
 
+  def unfavorite
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @restaurant
+    current_user.unfavorite(@restaurant)
+    redirect_to restaurant_path(@restaurant)
+  end
+
   private
 
   def restaurant_params
