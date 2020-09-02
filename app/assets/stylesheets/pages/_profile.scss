@@ -53,6 +53,34 @@
   color: white;
 }
 
+#bookings-tab {
+  font-family: 'Montserrat', 'sans-serif';
+  font-size: 16px;
+}
+
+#favorites-tab {
+  font-family: 'Montserrat', 'sans-serif';
+  font-size: 16px;
+}
+
+#home-tab {
+  font-family: 'Montserrat', 'sans-serif';
+  font-size: 16px;
+  padding: 8px 8px;
+}
+
+#profile-tab {
+  font-family: 'Montserrat', 'sans-serif';
+  font-size: 16px;
+  padding: 8px 8px;
+}
+
+#contact-tab {
+  font-family: 'Montserrat', 'sans-serif';
+  font-size: 16px;
+  padding: 8px 8px;
+}
+
 .edit-dietary-text .form-check-label {
   color: $light-blue !important;
 }
@@ -61,3 +89,4 @@
   border-color: $blue !important;
   box-shadow: 0 0 0 0.2rem rgba(68, 153, 229, 0.25)
 }
+
