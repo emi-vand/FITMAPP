@@ -1,4 +1,5 @@
-<h2> <%= link_to restaurant.name, restaurant_path(restaurant)%> </h2>
-<p> <%= restaurant.address %> </p>
-<%= link_to "Directions", "https://www.google.com/maps/dir/?api=1&travelmode=walking&layer=traffic&destination=#{restaurant.latitude},#{restaurant.longitude}", class: "btn btn-primary", target: :_blank%>
-
+<div class="map-card">
+  <h5 class="map-card-name"> <%= link_to restaurant.name, restaurant_path(restaurant)%> </h5>
+  <p class="map-card-address"> <%= restaurant.address %> </p>
+  <%= link_to "Directions", "https://www.google.com/maps/dir/?api=1&travelmode=walking&layer=traffic&destination=#{restaurant.latitude},#{restaurant.longitude}", class: "btn-small btn-primary p-2 rounded map-card-btn", target: :_blank%>
+</div>
