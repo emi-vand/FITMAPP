@@ -9,7 +9,7 @@
         <div class="collapse" id="collapseExample">
         <div class="card card-body filter-container mb-2 p-2 justify-content-center text-center">
             <%= simple_form_for :search, url: restaurants_path, method: "GET" do |f| %>
-            <%= f.input :dietary, disabled: true ,  collection: Restaurant::DIETARY, as: :check_boxes, wrapper: :vertical_collection_inline %>
+            <%= f.input :dietary, collection: Restaurant::DIETARY, as: :check_boxes, wrapper: :vertical_collection_inline %>
           <div class="d-flex justify-content-center">
             <%= f.submit "Search", class: "btn-secondary btn btn-sm" %>
           <% end %>

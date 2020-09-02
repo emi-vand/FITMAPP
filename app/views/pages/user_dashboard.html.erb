@@ -1,9 +1,9 @@
 <div class="profile-page-top">
-  <div class="d-flex flex-row-reverse">
+  <div class="d-flex flex-row-reverse pt-1 pr-1">
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
     <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-primary btn-sm mr-2" %>
   </div>
-
+</div>
 
 <div class="container container-profile">
   <div class="row info-row justify-content-center">
@@ -59,7 +59,7 @@
                 </div>
               </div>
             <% end %>
-          <% end %>          
+          <% end %>
         </div>
 
 
@@ -88,7 +88,7 @@
               </div>
             <% end %>
           <% end %>
-        </div>              
+        </div>
       </div>
 
       <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="restaurant-favorites-tab">

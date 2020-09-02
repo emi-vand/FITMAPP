@@ -4,8 +4,18 @@
   height: 250px;
   background-size: cover;
   background-position: top;
-  
+  border-bottom: 4px solid white;
 }
+
+@media(min-width:650px) {
+  .profile-page-top {
+    background-image: asset-url('profile-page-2.png');
+    height: 380px;
+    background-position: top;
+    background-size: cover;
+  }
+}
+
 .img-profile-avatar {
   width: 120px;
   height:120px;

@@ -5,7 +5,13 @@
   justify-content: center;
   padding: 5px;
   color: rgba(0,0,0,0.3);
-  height: 4.5rem;
+  height: 3rem;
+}
+
+@media(min-width: 650px) {
+  .footer-visitor {
+    height: 4.5rem;
+  }
 }
 
 .footer-links {
