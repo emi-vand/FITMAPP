@@ -17,13 +17,10 @@
     cursor: pointer;
     transition: all 0.5s;
     border: 0;
-
     &:hover {
         background: #91A3B0;
         color: #3C3744;
-        box-shadow: 0px 3px 5px #3C3744;
-        padding: 0.25rem;
-
+        box-shadow: 0px 2px 3px #3C3744;
     }
 }
 

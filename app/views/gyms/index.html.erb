@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-5 pb-4 shadow rounded new-gym-container">
+<div class="container pb-4 shadow rounded new-gym-container">
   <h1 class="text-center pt-4"> Nearby Gyms </h1>
     <!-- Collapse button -->
         <p class="text-center m-3">
@@ -26,8 +26,8 @@
             <% end %>
           <div class="card-product-infos w-100">
             <%= link_to gym_path(gym) do %>
-              <h2> 
-                <%= gym.name %> 
+              <h2>
+                <%= gym.name %>
                    <% if gym.favorited_by?(current_user) %>
                     <i class="fas fa-heart fav-heart-index"></i>
                   <% end %>
