@@ -8,15 +8,17 @@ class ClassBookingsController < ApplicationController
     authorize @class_booking
   end
 
-
   def create
     @class_booking = ClassBooking.new(class_booking_params)
+    @gym_class = GymClass.find(params[:gym_class_id])
     @user = current_user
     @gym = GymClass.find(params[:gym_class_id]).gym
     @class_booking.user = @user
     @class_booking.gym_class = GymClass.find(params[:gym_class_id])
     @class_booking.save
     authorize @class_booking
+    sleep(5)
+    redirect_to gym_path(@gym_class)
   end
 
   def update
@@ -35,7 +37,6 @@ class ClassBookingsController < ApplicationController
 
   def edit
   end
-
 
   private
 

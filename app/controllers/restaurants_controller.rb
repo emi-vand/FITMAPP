@@ -65,13 +65,14 @@ class RestaurantsController < ApplicationController
 
   def destroy
     @restaurant.destroy
-    redirect_to :index
+    redirect_to restaurants_path
   end
 
   def favorite
     @restaurant = Restaurant.find(params[:restaurant_id])
     authorize @restaurant
     current_user.favorite(@restaurant)
+    redirect_to restaurant_path(@restaurant)
   end
 
   private
