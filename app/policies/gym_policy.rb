@@ -20,4 +20,9 @@ class GymPolicy < ApplicationPolicy
   def favorite?
     true
   end
+
+  def unfavorite?
+    true
+  end
+
 end

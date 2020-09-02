@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :restaurants do
     post 'favorite', to: 'restaurants#favorite', as: :fav_res
+    post 'unfavorite', to: 'restaurants#unfavorite', as: :unfav_res
     resources :dishes
     resources :restaurant_bookings, only: [ :new, :create, :index, :destroy, :show]
     resources :restaurant_reviews, only: :create
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   resources :gyms do
     resources :gym_classes, only: [:new, :create]
     post 'favorite', to: 'gyms#favorite', as: :fav_gym
+    post 'unfavorite', to: 'gyms#unfavorite', as: :unfav_gym
     resources :gym_reviews, only: :create
   end
 
