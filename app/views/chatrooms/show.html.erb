@@ -1,11 +1,11 @@
 
 <div class="chatroom ">
   <div class="btn-message-page">
-  <i class="fas fa-arrow-left arrow-chat"></i>
-  <%= link_to "Chatboard", chatrooms_path, class: "btn btn-secondary btn-chat", style: "width: 100px"%>
+    <i class="fas fa-arrow-left arrow-chat"></i>
+    <%= link_to "Chatboard", chatrooms_path, class: "btn btn-secondary btn-chat", style: "width: 100px"%>
   </div>
   <div class="info-messages">
-    <h1 style="color:white"><%= @chatroom.name %></h1>
+    <h4 style="color:white"><%= @chatroom.name %></h4>
   </div>
   <div>
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">

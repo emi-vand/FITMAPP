@@ -46,6 +46,7 @@
             <% @gym.gym_classes.each do |gymclass| %>
               <li class="list-group-item bg-info"><i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
               <!-- Book now -->
+
                 <span class="book-buttons">
                   <% if @gym.user != current_user %>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<%= gymclass.id %> ">
@@ -55,6 +56,7 @@
                     <%= link_to "Edit", edit_gym_class_path(gymclass) %>
                   <% end %>
                 </span>
+
                 <!-- Modal HTML -->
                 <div id="myModal<%= gymclass.id %>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">

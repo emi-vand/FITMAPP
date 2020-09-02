@@ -94,7 +94,7 @@
     transform: rotateY(-180deg);
 }
 
-.card-container:active .card-flip {
+.card-container:hover .card-flip {
     transform: rotateY(180deg);
 }
 
@@ -103,7 +103,7 @@
     grid-template: 1fr / 1fr;
     grid-template-areas: "frontAndBack";
     transform-style: preserve-3d;
-    transition: all 0.2s ease;
+    transition: all 0.4s ease;
 }
 
 .front {
