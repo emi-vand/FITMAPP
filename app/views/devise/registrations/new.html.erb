@@ -1,5 +1,4 @@
 <!-- Page container -->
-<br>
 <div class="container shadow d-flex mt-5 mb-5 registration-container w-75 pl-0">
 
 <!-- Image column on left - hidden when xs -->
@@ -9,7 +8,7 @@
 
 <!-- Form column on right -->
   <div class="col-lg-6 col-xs-12 p-4">
-    <h2 class="text-center">Sign up</h2>
+    <h2 class="text-center pb-3">Sign up</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -79,7 +78,7 @@
         </div>
       </div>
 
-      <div class="form-actions d-flex justify-content-center">
+      <div class="form-actions d-flex justify-content-center pb-1">
         <%= f.button :submit, "Sign up", class: "btn btn-primary btn-lg" %>
       </div>
     <% end %>

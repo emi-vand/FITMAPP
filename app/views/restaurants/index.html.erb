@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-5 pb-4 shadow rounded new-gym-container">
+<div class="container pb-4 shadow rounded new-gym-container">
   <h1 class="text-center pt-4"> Nearby Restaurants </h1>
     <!-- Collapse button -->
         <p class="text-center m-3">
@@ -26,7 +26,7 @@
               <%= cl_image_tag restaurant.photo.key %>
             <% end %>
             <div class="card-product-infos w-100">
-              <h2><%= restaurant.name %> 
+              <h2><%= restaurant.name %>
                 <% if restaurant.favorited_by?(current_user) %>
                   <i class="fas fa-heart fav-heart-index"></i>
                 <% end %>

@@ -30,6 +30,18 @@
   height: 100%;
 }
 
+@media(max-width: 360px) {
+  .registration-container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+  }
+  .sign-in-container {
+    padding-top: 2.55rem !important;
+    padding-bottom: 2.55rem !important;
+  }
+}
+
 .signin-img {
   background-image: linear-gradient(rgba(60,55,68,0.3), rgba(60,55,68,0.3)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1694&q=80');
   background-size: cover;
@@ -45,6 +57,7 @@
   }
 }
 
+//redirect page when signing-up for personal account
 .dietary-registration-container {
   background-color: #E4F2F7;
   color: #EDEDED;
@@ -67,17 +80,24 @@
   background-color: rgba(68, 153, 229, 0.4);
   border: 1px solid $blue;
   box-shadow: 0 0 10px rgba(68, 153, 229, 0.3);
-  width: 150px;
+  width: 120px;
   height: 75px;
   margin: 2%;
-  padding-right: 2%;
-  padding-left: 2%;
+  padding-right: 1%;
+  padding-left: 1%;
   text-align: center;
   border-radius:5px;
 }
 
-@media(min-width:650) {
+@media(min-width: 650px) {
   .dietary-registration-container {
     width: 50%;
+  }
+}
+@media(max-width: 360px) {
+  .dietary-registration-container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 3.7rem !important;
   }
 }
