@@ -40,12 +40,11 @@
           </p>
           <p class="rest-card-text text-center m-0"><%= @gym.address %></p>
           <p class="rest-card-text text-center">Type: <%= @gym.category %></p>
-          <p class="rest-card-text text-center">Owner: <%= @gym.user.first_name %> <%= @gym.user.last_name %></p>
           <span class="badge badge-primary dietary-show mb-3"><%= @gym.style_list %> </span>
 
           <ul class="list-group list-group-flush rounded">
             <% @gym.gym_classes.each do |gymclass| %>              
-              <li class="list-group-item bg-info">
+              <li class="list-group-item gym-classes">
                 <span class="classes-list">
                 <span class="class-details">
                   <i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
