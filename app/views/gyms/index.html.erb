@@ -28,9 +28,11 @@
             <%= link_to gym_path(gym) do %>
               <h2>
                 <%= gym.name %>
+                <% if user_signed_in? %>
                    <% if gym.favorited_by?(current_user) %>
                     <i class="fas fa-heart fav-heart-index"></i>
                   <% end %>
+                <% end %>
               </h2>
               <p> <%= gym.category %> </p>
               <p class="text-right"> Distance </p>

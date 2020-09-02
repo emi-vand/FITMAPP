@@ -5,6 +5,12 @@
 body {
   background-color: #91A3B0;
 }
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
 .logo_white {
   height: 300px;
 }

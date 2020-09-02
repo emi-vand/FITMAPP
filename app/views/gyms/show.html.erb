@@ -7,17 +7,19 @@
 
 
     <div class="rest-card-body d-flex flex-column justify-content-center">
-      <span class="text-right">
-        <% if @gym.favorited_by?(current_user) %>
-          <%= link_to gym_unfav_gym_path(@gym), method: :post, remote: true do  %>
-            <i class="fas fa-heart fav-heart"></i>
+      <% if user_signed_in? %>
+        <span class="text-right">
+          <% if @gym.favorited_by?(current_user) %>
+            <%= link_to gym_unfav_gym_path(@gym), method: :post, remote: true do  %>
+              <i class="fas fa-heart fav-heart"></i>
+            <% end %>
+          <% else %>
+            <%=  link_to gym_fav_gym_path(@gym), method: :post, remote: true do %>
+              <i class="far fa-heart fav-heart"></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%=  link_to gym_fav_gym_path(@gym), method: :post, remote: true do %>
-            <i class="far fa-heart fav-heart"></i>
-          <% end %>
-        <% end %>
-      </span>
+        </span>
+      <% end %>
         <h5 class="rest-card-title text-center"><%= @gym.name %></h5>
           <p class="text-center total_reviews">
             <%= link_to gym_path(@gym, anchor: "review") do  %>
@@ -117,8 +119,10 @@
         </div>
       </div>
 
+      <% if !current_user.owner %>
+        <%= link_to "Get Directions", "https://www.google.com/maps/dir/?api=1&travelmode=walking&layer=traffic&destination=#{@gym.latitude},#{@gym.longitude}", class: "btn btn-primary", target: :_blank, class: "btn btn-primary btn-sm" %>
+      <% end %>
       <%= link_to "Back", gyms_path, class: "btn btn-secondary btn-sm"  %>
-      <%= link_to "Get Directions", "https://www.google.com/maps/dir/?api=1&travelmode=walking&layer=traffic&destination=#{@gym.latitude},#{@gym.longitude}", class: "btn btn-primary", target: :_blank, class: "btn btn-primary btn-sm" %>
     </div>
 
     <div id="map"

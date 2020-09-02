@@ -27,8 +27,10 @@
             <% end %>
             <div class="card-product-infos w-100">
               <h2><%= restaurant.name %>
-                <% if restaurant.favorited_by?(current_user) %>
-                  <i class="fas fa-heart fav-heart-index"></i>
+                <% if user_signed_in? %>
+                  <% if restaurant.favorited_by?(current_user) %>
+                    <i class="fas fa-heart fav-heart-index"></i>
+                  <% end %>
                 <% end %>
               </h2>
               <p><%= restaurant.category %></p>
