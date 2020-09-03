@@ -101,7 +101,7 @@
                   <% gym.gym_classes.each do |gClass| %>
                     <% gClass.class_bookings.each do |booking| %>
                       <li class="list-group-item">
-                        <%= booking.date.strftime("%e %b") %> -
+                        <%= booking.date.strftime("%e %b") %> - <%= booking.gym_class.time.strftime("%H:%M") %> - 
                         <%= booking.gym_class.name %>
                         <br>
                         <%= booking.user.first_name %> <%= booking.user.last_name %>
