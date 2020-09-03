@@ -50,7 +50,7 @@
               <div class="card-flip shadow">
               <% if dish.photo.attached?  %>
                 <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path dish.photo.key %>)">
-                  <h5 class="text-center text-white m-2"><%= dish.name %>    </h5> 
+                  <h5 class="text-center text-white m-2"><%= dish.name %>    </h5>
                 </div>
               <% else %>
                 <div class="front", style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))">
@@ -77,9 +77,9 @@
 
       <div class="modal fade" id="RestaurantBookingsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
+          <div class="modal-content bg-light">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Book a Table</h5>
+              <h5 class="modal-title" id="exampleModalLabel"><strong>Book a Table</strong></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

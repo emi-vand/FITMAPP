@@ -43,12 +43,12 @@
           <span class="badge badge-primary dietary-show mb-3"><%= @gym.style_list %> </span>
 
           <ul class="list-group list-group-flush rounded">
-            <% @gym.gym_classes.each do |gymclass| %>              
+            <% @gym.gym_classes.each do |gymclass| %>
               <li class="list-group-item gym-classes">
                 <span class="classes-list">
                 <span class="class-details">
                   <i class="fas fa-dumbbell"></i> - <strong> <%= gymclass.name %> </strong>- <%= gymclass.time.strftime("%k:%M") %>
-                </span>              
+                </span>
               <!-- Book now -->
                 <span class="book-buttons">
                   <% if @gym.user != current_user %>
@@ -64,9 +64,9 @@
                 <!-- Modal HTML -->
                 <div id="myModal<%= gymclass.id %>" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content bg-light">
                       <div class="modal-header">
-                        <h5 class="modal-title">Pick a Date for <%= gymclass.name %></h5>
+                        <h5 class="modal-title"><strong>Pick a Date</strong></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
