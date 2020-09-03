@@ -19,7 +19,7 @@ class Restaurant < ApplicationRecord
         tsearch: { prefix: true }
       }
 
-  DIETARY = ["Vegan", "Vegetarian", "Keto", "Paleo", "Pescatarian", "Gluten-free", "Lactose-free", "Dairy-free"]
+  DIETARY = ["Vegan", "Vegetarian", "Keto", "Paleo", "Pescatarian", "Gluten free", "Lactose-free", "Dairy-free"]
 
   def average_rating
     return 0 if self.restaurant_reviews.length == 0

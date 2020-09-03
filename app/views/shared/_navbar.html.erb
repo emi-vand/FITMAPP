@@ -8,12 +8,12 @@
       <% if user_signed_in? %>
         <% if current_user&.owner? %>
           <div class="d-flex">
-            <%= link_to "NEW RESTAURANT", new_restaurant_path, class: "nav-link" %>
-            <%= link_to "NEW GYM", new_gym_path, class: "nav-link" %>
+            <%= link_to "NEW RESTAURANT", new_restaurant_path, class: "nav-link px-2" %>
+            <%= link_to "NEW GYM", new_gym_path, class: "nav-link px-0" %>
           </div>
         <% else %>
           <div class="search-navbar">
-            <%= form_tag restaurants_path, class: "navbar-wagon-search navbar-version rounded", method: :get do %>
+            <%= form_tag restaurants_path, class: "navbar-wagon-search navbar-version rounded p-0", method: :get do %>
             <%= text_field_tag :address,
                 params[:address],
                 class: "navbar-wagon-search-input navbar-version nav-rounded",

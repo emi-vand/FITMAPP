@@ -6,7 +6,7 @@
     <% end %>
 
     <div class="rest-card-body d-flex flex-column justify-content-center">
-      <% if user_signed_in? %>
+      <% if user_signed_in? && !current_user.owner %>
         <span class="text-right">
           <% if @gym.favorited_by?(current_user) %>
             <%= link_to gym_unfav_gym_path(@gym), method: :post, remote: true do  %>
@@ -167,7 +167,7 @@
                   <%= image_tag "5star.png", alt: "alttext" %>
                 <% end %>
                 <br>
-                <%= review.created_at.strftime("%b %y") %>
+                <%= review.created_at.strftime("%b %Y") %>
               </div>
               <div class="content">
                 '<%= review.content %>'
