@@ -15,7 +15,10 @@
             <i class="fas fa-pencil-alt edit-icon"></i>
           <% end %>
       <% else %>
-        <img src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" alt="..." class="img-profile-avatar">
+        <img src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg" alt="..." class="img-profile-avatar-nophoto">
+        <%= link_to edit_user_registration_path do %>
+          <i class="fas fa-pencil-alt edit-icon-nophoto"></i>
+        <% end %>
       <% end %>
     </div>
 

@@ -26,6 +26,17 @@
   border-radius: 50%;
 }
 
+.img-profile-avatar-nophoto {
+  width: 120px;
+  height:120px;
+  object-fit: cover;
+  position: relative;
+  top: -65px;
+  right: -17px;
+  border: 4px solid white;
+  border-radius: 50%;
+}
+
 .edit-icon{
   position: relative;
   top: -180px;
@@ -37,6 +48,19 @@
     color: $blue;
   }
 }
+
+.edit-icon-nophoto{
+  position: relative;
+  top: -105px;
+  right: 20px;
+  font-size: 22px;
+  color: white;
+  text-shadow: 1px 1px 1px $blue;
+  &:hover {
+    color: $blue;
+  }
+}
+
 .info-section {
   position: relative;
   top: -70px;
