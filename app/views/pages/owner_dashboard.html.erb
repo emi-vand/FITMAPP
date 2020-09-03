@@ -99,7 +99,7 @@
                   <% gym.gym_classes.each do |gClass| %>
                     <% gClass.class_bookings.each do |booking| %>
                       <li class="list-group-item">
-                        <%= booking.date.to_formatted_s(:rfc822) %> -
+                        <%= booking.date.strftime("%e %b") %> -
                         <%= booking.gym_class.name %>
                         <br>
                         <%= booking.user.first_name %> <%= booking.user.last_name %>
@@ -115,7 +115,7 @@
                 <% current_user.restaurants.each do |restaurant|%>
                   <% restaurant.restaurant_bookings.each do |booking| %>
                     <li class="list-group-item">
-                      <%= booking.date.to_formatted_s(:rfc822) %> - <%= booking.time.strftime("%k:%M") %> -
+                      <%= booking.date.strftime("%e %b") %> - <%= booking.time.strftime("%k:%M") %> -
                       <%= booking.restaurant.name %>
                       <br>
                       <%= booking.user.first_name %> <%= booking.user.last_name %>
