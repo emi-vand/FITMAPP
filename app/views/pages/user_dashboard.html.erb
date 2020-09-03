@@ -1,5 +1,5 @@
 <div class="profile-page-top">
-  <div class="d-flex flex-row-reverse pt-1 pr-1">
+  <div class="d-flex flex-row-reverse pt-2 pr-2">
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-secondary btn-sm" %>
   </div>
 </div>
@@ -20,9 +20,6 @@
           <i class="fas fa-pencil-alt edit-icon-nophoto"></i>
         <% end %>
       <% end %>
-      <%= link_to edit_user_registration_path do %>
-            <i class="fas fa-pencil-alt edit-icon"></i>
-          <% end %>
     </div>
 
     <div class="col-12 info-section text-center pt-4 pb-4">
@@ -53,18 +50,16 @@
             <% if booking.date > Time.now %>
               <div class="col-12 col-md-6 pb-1">
                 <div class="card-product">
-                  <%= link_to restaurant_path(booking.restaurant) do %>
-                    <% if booking.restaurant.photo.attached? %>
-                      <%= cl_image_tag booking.restaurant.photo.key %>
-                    <% else %>
-                      <img style="background-color: #EDEDED">
-                    <% end %>
+                  <% if booking.restaurant.photo.attached? %>
+                    <%= cl_image_tag booking.restaurant.photo.key %>
+                  <% else %>
+                    <img style="background-color: #EDEDED">
                   <% end %>
                   <div class="card-info p-2">
                     <span class="badge badge-primary"> <%= booking.date.strftime("%A") %> - <strong> <%= booking.restaurant.name %> </strong> </span>
                     <div>
                       <p> <%= booking.date.strftime("%e %b") %> at <%= booking.time.strftime("%k:%M") %> </p>
-                      <p> <%= link_to "Edit", edit_restaurant_booking_path(booking)%> | <%= link_to "Delete", restaurant_booking_path(booking), method: :delete %> </p>
+                      <p> <%= link_to "View", restaurant_path(booking.restaurant) %> | <%= link_to "Edit", edit_restaurant_booking_path(booking)%> | <%= link_to "Delete", restaurant_booking_path(booking), method: :delete %> </p>
                     </div>
                   </div>
                 </div>
@@ -79,14 +74,12 @@
           <% current_user.class_bookings.each do |booking| %>
             <% if booking.date > Time.now %>
               <div class="col-12 col-md-6 pb-1">
-                <div class="card-product">
-                  <%= link_to gym_path(booking.gym_class.gym) do %>
-                    <% if booking.gym_class.photo.attached? %>
-                      <%= cl_image_tag booking.gym_class.photo.key %>
+                  <div class="card-product">
+                    <% if booking.gym_class.gym.photo.attached? %>
+                        <%= cl_image_tag booking.gym_class.gym.photo.key %>
                     <% else %>
                       <img style="background-color: #EDEDED">
                     <% end %>
-                  <% end %>
                   <div class="card-info p-2">
                     <span class="badge badge-primary"> <%= booking.date.strftime("%A") %> - <strong> <%= booking.gym_class.name %> </strong> </span>
                     <div>
@@ -94,7 +87,7 @@
                     </div>
                     <div>
                       <p><%= booking.gym_class.gym.name %></p>
-                      <p> <%= link_to "Edit", edit_class_booking_path(booking)%> | <%= link_to "Delete", class_booking_path(booking), method: :delete %> </p>
+                      <p> <%= link_to "View", gym_path(booking.gym_class.gym) %> | <%= link_to "Edit", edit_class_booking_path(booking)%> | <%= link_to "Delete", class_booking_path(booking), method: :delete %> </p>
                     </div>
                   </div>
                 </div>
