@@ -30,9 +30,12 @@
   position: relative;
   top: -180px;
   right: -35px;
-  font-size: 20px;
+  font-size: 22px;
   color: white;
-  text-shadow: 1px 1px 3px $blue;
+  text-shadow: 1px 1px 1px $blue;
+  &:hover {
+    color: $blue;
+  }
 }
 .info-section {
   position: relative;
