@@ -18,7 +18,7 @@ class ClassBookingsController < ApplicationController
     @class_booking.save
     authorize @class_booking
     sleep(2)
-    redirect_to gym_path(@gym_class)
+    redirect_to gym_path(@gym)
   end
 
   def update
