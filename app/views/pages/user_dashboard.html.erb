@@ -47,10 +47,12 @@
             <% if booking.date > Time.now %>
               <div class="col-12 col-md-6 pb-1">
                 <div class="card-product">
-                  <% if booking.restaurant.photo.attached? %>
-                    <%= cl_image_tag booking.restaurant.photo.key %>
-                  <% else %>
-                    <img style="background-color: #EDEDED">
+                  <%= link_to restaurant_path(booking.restaurant) do %>
+                    <% if booking.restaurant.photo.attached? %>
+                      <%= cl_image_tag booking.restaurant.photo.key %>
+                    <% else %>
+                      <img style="background-color: #EDEDED">
+                    <% end %>
                   <% end %>
                   <div class="card-info p-2">
                     <span class="badge badge-primary"> <%= booking.date.strftime("%A") %> - <strong> <%= booking.restaurant.name %> </strong> </span>
@@ -72,10 +74,12 @@
             <% if booking.date > Time.now %>
               <div class="col-12 col-md-6 pb-1">
                 <div class="card-product">
-                  <% if booking.gym_class.photo.attached? %>
-                    <%= cl_image_tag booking.gym_class.photo.key %>
-                  <% else %>
-                    <img style="background-color: #EDEDED">
+                  <%= link_to gym_path(booking.gym_class.gym) do %>
+                    <% if booking.gym_class.photo.attached? %>
+                      <%= cl_image_tag booking.gym_class.photo.key %>
+                    <% else %>
+                      <img style="background-color: #EDEDED">
+                    <% end %>
                   <% end %>
                   <div class="card-info p-2">
                     <span class="badge badge-primary"> <%= booking.date.strftime("%A") %> - <strong> <%= booking.gym_class.name %> </strong> </span>
@@ -101,12 +105,12 @@
             <div class="col-12 col-md-6 pb-1">
               <%= link_to restaurant_path(fav) do %>
                 <div class="card-product">
-                  <% if fav.photo.attached? %>
-                    <%= cl_image_tag fav.photo.key %>
-                  <% else %>
-                    <img style="background-color: #EDEDED">
-                  <% end %>
-                  <p class="p-3"> <%= fav.name %> </p>
+                    <% if fav.photo.attached? %>
+                      <%= cl_image_tag fav.photo.key %>
+                    <% else %>
+                      <img style="background-color: #EDEDED">
+                    <% end %>
+                  <p class="p-3 card-fav-name"> <%= fav.name %> </p>
                 </div>
               <% end %>
             </div>
@@ -125,7 +129,7 @@
                   <% else %>
                     <img style="background-color: #EDEDED">
                   <% end %>
-                  <p class="p-3"> <%= fav.name %> </p>
+                  <p class="p-3 card-fav-name"> <%= fav.name %> </p>
                 </div>
               <% end %>
             </div>
